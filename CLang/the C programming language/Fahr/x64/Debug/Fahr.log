@@ -1,0 +1,4 @@
+﻿  Fahr.c
+C:\Users\alanb\source\repos\CLang\the C programming language\Fahr\Fahr.c(17,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\alanb\source\repos\CLang\the C programming language\Fahr\Fahr.c(19,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Fahr.vcxproj -> C:\Users\alanb\source\repos\CLang\the C programming language\Fahr\x64\Debug\Fahr.exe
