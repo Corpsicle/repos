@@ -1,0 +1,4 @@
+﻿  celsius.c
+C:\Users\alanb\source\repos\repos\CLang\the C programming language\celsius\celsius.c(19,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\alanb\source\repos\repos\CLang\the C programming language\celsius\celsius.c(21,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  celsius.vcxproj -> C:\Users\alanb\source\repos\repos\CLang\the C programming language\celsius\x64\Debug\celsius.exe
