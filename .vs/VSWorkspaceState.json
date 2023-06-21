@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\C++\\MyPrograms",
+    "\\CLang",
+    "\\Fortran",
+    "\\Python",
+    "\\Python\\numbers"
   ],
-  "SelectedNode": "\\Fahr.sln",
+  "SelectedNode": "\\Python\\numbers\\number.py",
   "PreviewInSolutionExplorer": true
 }

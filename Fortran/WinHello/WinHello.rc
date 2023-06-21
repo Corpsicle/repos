@@ -1,0 +1,270 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+#include "winver.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+ABOUTDLG DIALOG 22, 17, 167, 64
+STYLE DS_MODALFRAME | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About WinHello"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,132,2,32,14
+    ICON            "WinHello",-1,2,3,1,1
+    LTEXT           "CompanyName",IDC_VER1,30,2,100,8
+    LTEXT           "FileDescription",IDC_VER2,30,10,82,8
+    LTEXT           "ProductVersion",IDC_VER3,114,10,16,8
+    LTEXT           "LegalCopyright (c)",IDC_VER4,30,18,137,8
+    LTEXT           "LegalTrademarks",IDC_VER5,30,34,136,27
+    CONTROL         "",501,"Static",SS_BLACKRECT,28,31,138,1
+END
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+WinHello     ICON    "WinHello.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+WinHello MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        IDM_NEW
+        MENUITEM "&Open...",                    IDM_OPEN, GRAYED
+        MENUITEM "&Save",                       IDM_SAVE, GRAYED
+        MENUITEM "Save &As...",                 IDM_SAVEAS, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...",                   IDM_PRINT, GRAYED
+        MENUITEM "P&rint Setup...",             IDM_PRINTSETUP, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               IDM_UNDO, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                IDM_CUT, GRAYED
+        MENUITEM "&Copy\tCtrl+C",               IDM_COPY, GRAYED
+        MENUITEM "&Paste\tCtrl+V",              IDM_PASTE, GRAYED
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM  "&Cascade",					IDM_CASCADE
+        MENUITEM  "&Tile",						IDM_TILE
+        MENUITEM  "Arrange &Icons",				IDM_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   IDM_HELPCONTENTS
+        MENUITEM "&Search for Help On...",      IDM_HELPSEARCH
+        MENUITEM "&How to Use Help",            IDM_HELPHELP
+        MENUITEM SEPARATOR
+        MENUITEM "&About WinHello...",           IDM_ABOUT
+    END
+END
+
+WinHelloChild MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        IDM_NEW
+        MENUITEM "&Open...",                    IDM_OPEN, GRAYED
+        MENUITEM "&Save",                       IDM_SAVE, GRAYED
+        MENUITEM "Save &As...",                 IDM_SAVEAS, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...",                   IDM_PRINT, GRAYED
+        MENUITEM "P&rint Setup...",             IDM_PRINTSETUP, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               IDM_UNDO, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                IDM_CUT, GRAYED
+        MENUITEM "&Copy\tCtrl+C",               IDM_COPY, GRAYED
+        MENUITEM "&Paste\tCtrl+V",              IDM_PASTE, GRAYED
+    END
+    POPUP  "&Option"
+    BEGIN
+        MENUITEM  "One\t F1",					IDM_OPT_1
+        MENUITEM  "Two\t F2",					IDM_OPT_2
+        MENUITEM  "Three\t F3",					IDM_OPT_3
+        MENUITEM  "Four\t F4",					IDM_OPT_4
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM  "&Cascade",					IDM_CASCADE
+        MENUITEM  "&Tile",						IDM_TILE
+        MENUITEM  "Arrange &Icons",				IDM_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   IDM_HELPCONTENTS
+        MENUITEM "&Search for Help On...",      IDM_HELPSEARCH
+        MENUITEM "&How to Use Help",            IDM_HELPHELP
+        MENUITEM SEPARATOR
+        MENUITEM "&About WinHello...",          IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+WinHello ACCELERATORS
+BEGIN
+    VK_F1,          IDM_HELPCONTENTS,       VIRTKEY
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+END
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS VOS__WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName", "My Company\0"
+            VALUE "FileDescription", "WinHello Application\0"
+            VALUE "FileVersion", "1.0\0"
+            VALUE "InternalName", "WinHello\0"
+            VALUE "LegalCopyright", "\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "ProductName", "WinHello\0"
+            VALUE "ProductVersion", "1.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+#endif    // !_MAC
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_WinHello_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 178
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 85
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE
+BEGIN
+    "#include ""winres.h""\r\n"
+    "#include ""winver.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    0                       " "
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

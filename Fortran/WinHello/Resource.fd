@@ -1,0 +1,39 @@
+!
+! C:\Users\alanb\source\repos\repos\Fortran\WinHello\Resource.fd generat
+! ed from C:\Users\alanb\source\repos\repos\Fortran\WinHello\Resource.h
+!
+      integer, parameter :: IDC_VER3 = 1003
+      integer, parameter :: IDM_SAVE = 30004
+      integer, parameter :: IDC_VER4 = 1004
+      integer, parameter :: IDM_OPT_1 = 30019
+      integer, parameter :: IDM_OPT_2 = 30020
+      integer, parameter :: IDM_OPT_3 = 30021
+      integer, parameter :: IDM_OPT_4 = 30022
+      integer, parameter :: IDM_OPT_5 = 30023
+      integer, parameter :: IDM_OPT_6 = 30024
+      integer, parameter :: IDM_OPT_7 = 30025
+      integer, parameter :: IDM_OPT_8 = 30026
+      integer, parameter :: IDC_VER5 = 1005
+      integer, parameter :: IDM_TILE = 30028
+      integer, parameter :: IDM_PASTE = 30011
+      integer, parameter :: IDM_ARRANGE = 30029
+      integer, parameter :: IDM_HELPCONTENTS = 30012
+      integer, parameter :: IDM_CLOSEALL = 30030
+      integer, parameter :: IDM_PRINTSETUP = 30007
+      integer, parameter :: IDM_RESERVE1 = 30016
+      integer, parameter :: IDM_RESERVE2 = 30017
+      integer, parameter :: IDM_RESERVE3 = 30018
+      integer, parameter :: IDM_SAVEAS = 30005
+      integer, parameter :: IDM_CUT = 30009
+      integer, parameter :: IDM_COPY = 30010
+      integer, parameter :: IDM_HELPSEARCH = 30013
+      integer, parameter :: IDM_ABOUT = 30015
+      integer, parameter :: IDM_EXIT = 30001
+      integer, parameter :: IDM_HELPHELP = 30014
+      integer, parameter :: IDM_NEW = 30002
+      integer, parameter :: IDM_OPEN = 30003
+      integer, parameter :: IDM_PRINT = 30006
+      integer, parameter :: IDM_UNDO = 30008
+      integer, parameter :: IDC_VER1 = 1001
+      integer, parameter :: IDM_CASCADE = 30027
+      integer, parameter :: IDC_VER2 = 1002

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ProfilingTarget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProjectTarget>
+    <TargetProject>a5529bb7-8b56-42f4-ae08-e1ea4a5327fd</TargetProject>
+    <FriendlyName>Hello</FriendlyName>
+  </ProjectTarget>
+  <Reports>
+    <Report>
+      <Filename>C:\Users\alanb\AppData\Local\Temp\Hello_20230614.vsp</Filename>
+    </Report>
+    <Report>
+      <Filename>C:\Users\alanb\AppData\Local\Temp\Hello_20230614(1).vsp</Filename>
+    </Report>
+  </Reports>
+  <UseVTune>false</UseVTune>
+</ProfilingTarget>
