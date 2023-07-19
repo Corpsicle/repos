@@ -1,0 +1,33 @@
+[
+ {
+  "name" : "Hello",
+  "kind" : "module",
+  "file" : "Hello.d",
+  "members" : [
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "main",
+    "kind" : "function",
+    "protection" : "public",
+    "line" : 5,
+    "char" : 5,
+    "deco" : "FZi",
+    "endline" : 9,
+    "endchar" : 1
+   },
+   {
+    "name" : "_d_cmain!()",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 5,
+    "char" : 5
+   }
+  ]
+ }
+]
