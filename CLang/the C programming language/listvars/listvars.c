@@ -7,19 +7,19 @@
 #include <stdlib.h>
 
 struct tnode {                  /* the tree node:                   */     
-    char* word;                 /* points to the text               */
+    char * word;                /* points to the text               */
     int match;                  /* match found                      */
-    struct tnode* left;         /* left child                       */
-    struct tnode* right;        /* right child                      */
+    struct tnode * left;        /* left child                       */
+    struct tnode * right;       /* right child                      */
 };
 
 #define MAXWORD 100
 #define YES     1
 #define NO      0
 
-struct tnode *addtreex(struct tnode*, char*, int, int*);
-void treexprint(struct tnode*);
-int getword(char*, int);
+struct tnode *addtreex(struct tnode *, char *, int, int *);
+void treexprint(struct tnode *);
+int getword(char *, int);
 
 /* print in alphabetic order each group of variable names           */
 /* identicle in the first num characters (default 6)                */
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-struct tnode* talloc(void);
-struct linklist* lalloc(void);
+struct tnode * talloc(void);
+struct linklist * lalloc(void);
 void addln(struct tnode *, int)
 
 /* addtreex: add a node with w, at or below p                        */

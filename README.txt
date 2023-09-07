@@ -1,0 +1,1 @@
+﻿This archive contains the workbooks, csv files, and image files, used for the examples contained in the book "Excel VBA in easy steps". All contents of this archive are provided without guarantee or warranty, purely for the convenience of readers. Find more information online at www.ineasysteps.com.

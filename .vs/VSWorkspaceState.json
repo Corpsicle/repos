@@ -1,12 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CLang",
-    "\\CLang\\the C programming language",
-    "\\Fortran\\Hello",
-    "\\Fortran\\WinHello",
-    "\\Python\\numbers"
+    "\\DLang",
+    "\\DLang\\Hello",
+    "\\Fortran\\WinHello"
   ],
-  "SelectedNode": "\\Fortran",
+  "SelectedNode": "\\DLang\\Hello\\Hello.sln",
   "PreviewInSolutionExplorer": true
 }
