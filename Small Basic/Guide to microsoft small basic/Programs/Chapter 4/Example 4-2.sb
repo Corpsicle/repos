@@ -1,0 +1,10 @@
+'Guide to Small Basic, Example 4-2
+TextWindow.Title = "Example 4-2"
+A = TextWindow.Read()
+TextWindow.WriteLine(A)
+B = TextWindow.ReadNumber()
+TextWindow.WriteLine(B)
+GetKeystroke:
+C = TextWindow.ReadKey()
+TextWindow.WriteLine(C)
+Goto GetKeystroke

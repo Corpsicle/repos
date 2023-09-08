@@ -1,0 +1,41 @@
+'Guide to Small Basic, Example 8-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 8-2"
+  GraphicsWindow.BackgroundColor = "Pink"
+  GraphicsWindow.Width = 320
+  GraphicsWindow.Height = 100
+  'text box/buttons
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  WordTextBox = Controls.AddTextBox(10, 10)
+  Controls.SetSize(WordTextBox, 300, 30)
+  EncodeButton = Controls.AddButton("Encode", 10, 50)
+  DecodeButton = Controls.AddButton("Decode", 90, 50)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.LastClickedButton = EncodeButton) Then
+    CodeChange = -1
+  ElseIf (Controls.LastClickedButton = DecodeButton) Then
+    CodeChange = 1
+  EndIf
+  Word1 = Controls.GetTextBoxText(WordTextBox)
+  Word2 = ""
+  'Find Unicode representation for each character and apply Codechanges
+  For I = 1 To Text.GetLength(Word1)
+    Character = Text.GetSubText(Word1, I, 1)
+    Code = Text.GetCharacterCode(Character) + CodeChange
+    NewCharacter = Text.GetCharacter(Code)
+    Word2 = Text.Append(Word2, NewCharacter)
+  EndFor
+  'Display newly formed word
+  Controls.SetTextBoxText(WordTextBox, Word2)
+EndSub
+
+
+

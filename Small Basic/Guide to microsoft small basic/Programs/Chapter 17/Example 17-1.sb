@@ -1,0 +1,155 @@
+'Guide to Small Basic, Example 17-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 17-1"
+  GraphicsWindow.Width = 220
+  GraphicsWindow.Height = 170
+  'text boxes
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 18
+  GraphicsWindow.FontBold = "false"
+  Date1TextBox = Controls.AddTextBox(10, 10)
+  Controls.SetSize(Date1TextBox, 200, 30)
+  Date2TextBox = Controls.AddTextBox(10, 50)
+  Controls.SetSize(Date2TextBox, 200, 30)
+  'shapes object
+  GraphicsWindow.BrushColor = "Yellow"
+  GraphicsWindow.FillRectangle(10, 130, 200, 30)
+  GraphicsWindow.BrushColor = "Blue"
+  DaysDisplay = Shapes.AddText("0 Days")
+  Shapes.Move(DaysDisplay, 70, 135)
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 14
+  ValidateButton = Controls.AddButton("Compute Difference", 40, 90)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  'do Date1 then Date2
+  DateToValidate = Controls.GetTextBoxText(Date1TextBox)
+  ValidateDate()
+  If (DateIsValid) Then
+    'compute elapsed days
+    ComputeElapsedDays()
+    ElapsedDays1 = ElapsedDays
+  EndIf
+  DateToValidate = Controls.GetTextBoxText(Date2TextBox)
+  ValidateDate()
+  If (DateIsValid) Then
+    'compute elapsed days
+    ComputeElapsedDays()
+    ElapsedDays2 = ElapsedDays
+  EndIf
+  Shapes.SetText(DaysDisplay, (ElapsedDays1 - ElapsedDays2) + " Days")
+EndSub
+
+Sub ValidateDate
+  'days in each month
+  MonthDays[1] = 31
+  MonthDays[2] = 28
+  MonthDays[3] = 31
+  MonthDays[4] = 30
+  MonthDays[5] = 31
+  MonthDays[6] = 30
+  MonthDays[7] = 31
+  MonthDays[8] = 31
+  MonthDays[9] = 30
+  MonthDays[10] = 31
+  MonthDays[11] = 30
+  MonthDays[12] = 31
+  'store DateToValidate in temporary string
+  DV = DateToValidate
+  DateIsValid = "true"
+  'find first slash and  month
+  SL = Text.GetIndexOf(DV, "/")
+  If (SL = 0) Then
+    GraphicsWindow.ShowMessage("Invalid format for date - must be Month/Day/Year", "Invalid Date")
+    DateIsValid = "false"
+    Goto ExitValidateDate
+  EndIf
+  Month = Text.GetSubText(DV, 1, SL - 1)
+  'find next slash and  day
+  DV = Text.GetSubTextToEnd(DV, SL + 1)
+  SL = Text.GetIndexOf(DV, "/")
+  If (SL = 0) Then
+    GraphicsWindow.ShowMessage("Invalid format for date - must be Month/Day/Year", "Invalid Date")
+    DateIsValid = "false"
+    Goto ExitValidateDate
+  EndIf
+  Day = Text.GetSubText(DV, 1, SL - 1)
+  'find  year
+  Year = Text.GetSubTextToEnd(DV, SL + 1)
+  'maximum days in month (check for leap year if february)
+  If (Month = 2 And Math.Remainder(Year, 4) = 0) Then
+    MaxDays = 29
+  Else
+    MaxDays = MonthDays[Month]
+  EndIf
+  If (Month < 1 Or Month > 12) Then
+    GraphicsWindow.ShowMessage("Month number must be 1 to 12", "Invalid Month")
+    DateIsValid = "false"
+  ElseIf (Day < 1 Or Day > MaxDays) Then
+    GraphicsWindow.ShowMessage("Day number must be 1 to " + MaxDays, "Invalid Day")
+    DateIsValid = "false"
+  ElseIf (Year < 1901) Then
+    GraphicsWindow.ShowMessage("Year must be greater than 1900", "Invalid Year")
+    DateIsValid = "false"
+  EndIf
+  ExitValidateDate:
+EndSub
+
+Sub ComputeElapsedDays
+  'number of days in each month
+  MonthDays[1] = 31
+  MonthDays[2] = 28
+  MonthDays[3] = 31
+  MonthDays[4] = 30
+  MonthDays[5] = 31
+  MonthDays[6] = 30
+  MonthDays[7] = 31
+  MonthDays[8] = 31
+  MonthDays[9] = 30
+  MonthDays[10] = 31
+  MonthDays[11] = 30
+  MonthDays[12] = 31
+  'January 1, 1901 is Day 1
+  BaseYear = 1901
+  ElapsedDays = 0
+  'Difference in years
+  DeltaY = Year - BaseYear
+  If (DeltaY > 0) Then 
+    'move to January 1 of current year
+    For J = BaseYear To Year - 1
+      'leap year?
+      If (Math.Remainder(J, 4) = 0) Then
+        ElapsedDays = ElapsedDays + 366
+      Else
+        ElapsedDays = ElapsedDays + 365
+      EndIf
+    EndFor
+  EndIf
+  'Difference in months
+  DeltaM = Month - 1
+  If (DeltaM > 0) Then
+    'move to current month
+    For J = 1 To Month - 1
+      'if february, leap year?
+      If (J = 2) Then
+        If (Math.Remainder(Year, 4) = 0) Then
+          ElapsedDays = ElapsedDays + 29
+        Else
+          ElapsedDays = ElapsedDays + 28
+        EndIf
+      Else
+        ElapsedDays = ElapsedDays + MonthDays[J]
+      EndIf
+    EndFor
+  EndIf
+  'difference in days
+  ElapsedDays = ElapsedDays + Day - 1
+EndSub
+
+

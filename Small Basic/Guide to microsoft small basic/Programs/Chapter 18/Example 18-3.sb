@@ -1,0 +1,113 @@
+'Guide to Small Basic, Example 18-3
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Width = 490
+  GraphicsWindow.Height = 220
+  GraphicsWindow.BackgroundColor = GraphicsWindow.GetColorFromRGB(192, 192, 255)
+  GraphicsWindow.Title = "Example 18-3"
+  'buttons
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  DealButton = Controls.AddButton("Deal Cards", 10, 170)
+  AddCardsButton = Controls.AddButton("Add Cards", 10, 170)
+  Controls.HideControl(AddCardsButton)
+  'load card images 
+  For CardNumber = 1 To 52
+    ImageFile = Program.Directory + "\card"
+    If (CardNumber < 10) Then
+      ImageFile = ImageFile + Text.Append("0", CardNumber) +".gif"
+    Else
+      ImageFile = ImageFile + CardNumber +".gif"
+    EndIf
+    CardImage[CardNumber] = ImageList.LoadImage(ImageFile)
+  EndFor
+  'Shuffle cards
+  NumberIntegers = 52
+  ShuffleIntegers()
+  CardIndex = 1
+  CanDiscard = "false"
+  Controls.ButtonClicked = ButtonClickedSub
+  GraphicsWindow.MouseDown = MouseDownSub
+EndSub
+
+Sub ShuffleIntegers
+  'Randomly shuffles NumberIntegers integers and puts results in SortedArray
+  'Order all elements initially
+  For I = 1 To NumberIntegers
+    ShuffledArray[I] = I
+  EndFor
+  'J is the number of integers remaining
+  For J = NumberIntegers To 2 Step -1
+    I = Math.GetRandomNumber(J)
+    Temp = ShuffledArray[J]
+    ShuffledArray[J] = ShuffledArray[I]
+    ShuffledArray[I] = Temp
+  EndFor
+EndSub 
+  
+Sub ButtonClickedSub
+  B = Controls.LastClickedButton
+  If (B = DealButton) Then
+    DealButtonClicked()
+  ElseIf (B = AddCardsButton) Then
+    AddCardsButtonClicked()
+  EndIf
+EndSub
+
+Sub DealButtonClicked
+  'reshuffle?
+  If (CardIndex > 40) Then
+    ShuffleIntegers()
+    CardIndex = 1
+  EndIf
+  'draw next five cards
+  For I = 1 To 5
+    GraphicsWindow.DrawResizedImage(CardImage[ShuffledArray[CardIndex]], 10 + (I - 1) * 95, 40, 90, 120)
+    CardIndex = CardIndex + 1
+    Discard[I] = 0
+  EndFor
+  Controls.HideControl(DealButton)
+  Controls.ShowControl(AddCardsButton)
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 18
+  GraphicsWindow.FontBold = "false"
+  GraphicsWindow.DrawText(10, 10, "Click on Cards to Discard - Then Click Add Cards")
+  CanDiscard = "true"
+EndSub
+
+Sub MouseDownSub
+  'get discards
+  X = GraphicsWindow.MouseX
+  Y = GraphicsWindow.MouseY
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  If (CanDiscard And (Y > 40 And Y < 160)) Then
+    For I = 1 To 5
+      If (X > 10 + (I - 1) * 95 And X < 100 + (I - 1) * 95) Then
+        Discard[I] = 1
+        GraphicsWindow.FillRectangle(10 + (I - 1) * 95, 40, 90, 120)
+      EndIf
+    EndFor
+  EndIf
+EndSub
+  
+Sub AddCardsButtonClicked
+  'clear message
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  GraphicsWindow.FillRectangle(10, 10, 400, 20)
+  Controls.ShowControl(DealButton)
+  Controls.HideControl(AddCardsButton)
+  'add card?
+  For I = 1 To 5
+    If (Discard[I] <> 0) Then
+      GraphicsWindow.DrawResizedImage(CardImage[ShuffledArray[CardIndex]], 10 + (I - 1) * 95, 40, 90, 120)
+      CardIndex = CardIndex + 1
+    EndIf
+  EndFor
+  CanDiscard = "false"
+EndSub
+  
+
+  

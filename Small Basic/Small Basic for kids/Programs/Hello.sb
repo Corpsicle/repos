@@ -1,0 +1,2 @@
+' Program Hello.sb: to print 'Hello, world!" to the console window
+TextWindow.WriteLine("Hello, World!")

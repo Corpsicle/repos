@@ -1,0 +1,20 @@
+'Guide to Small Basic, Example 10-4
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 10-4"
+GraphicsWindow.Width = 500
+GraphicsWindow.Height = 250
+'load image
+Burger = ImageList.LoadImage(Program.Directory + "\burger.gif")
+'create shape and move it
+RegularBurger = Shapes.AddImage(Burger)
+Shapes.Move(RegularBurger, 0, 20)
+'tiny burger
+TinyBurger = Shapes.AddImage(Burger)
+Shapes.Move(TinyBurger, 120, 20)
+Shapes.Zoom(TinyBurger, 0.5, 0.5)
+'giant burger
+GiantBurger = Shapes.AddImage(Burger)
+Shapes.Move(GiantBurger, 300, 50)
+Shapes.Zoom(GiantBurger, 1.5, 1.5)
+
+

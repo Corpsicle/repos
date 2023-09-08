@@ -1,0 +1,113 @@
+'Guide to Small Basic, Example 20-7
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 20-7"
+  GraphicsWindow.Width = 250
+  GraphicsWindow.Height = 400
+  'ball graphic
+  BallImage = ImageList.LoadImage(Program.Directory + "\ball.gif")
+  BallW = ImageList.GetWidthOfImage(BallImage)
+  BallH = ImageList.GetHeightOfImage(BallImage)
+  Ball = Shapes.AddImage(BallImage)
+  BallX = 0.5 * (GraphicsWindow.Width - BallW)
+  BallY = 0
+  BallXSpeed = 5
+  BallYSpeed = 10
+  Shapes.Move(Ball, BallX, BallY)
+  'paddle
+  GraphicsWindow.PenWidth = 2
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.BrushColor = "Red"
+  PaddleW = 40
+  PaddleH = 20
+  Paddle = Shapes.AddRectangle(PaddleW, PaddleH)
+  PaddleX = 100
+  PaddleY = 380
+  Shapes.Move(Paddle, PaddleX, PaddleY)
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  TimerButton = Controls.AddButton("Start", 190, 10)
+  Controls.ButtonClicked = ButtonClickedSub
+  Timer.Interval = 100
+  Timer.Tick = TickSub
+  Timer.Pause()
+  GraphicsWindow.KeyDown = KeyDownSub
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.GetButtonCaption(TimerButton) = "Start") Then
+    Controls.SetButtonCaption(TimerButton, "Stop")
+    Timer.Resume()
+  Else
+    Controls.SetButtonCaption(TimerButton, "Start")
+    Timer.Pause()
+  EndIf
+EndSub
+
+Sub TickSub
+  BallX = BallX + BallXSpeed
+  BallY = BallY + BallYSpeed
+  Shapes.Move(Ball, BallX, BallY)
+  If (BallX < 0) Then 
+    BallX = 0
+    BallXSpeed = -BallXSpeed
+    Sound.Stop(Program.Directory + "\bounce.wav")
+    Sound.Play(Program.Directory + "\bounce.wav")
+  ElseIf (BallX + BallW > GraphicsWindow.Width) Then
+    BallX = GraphicsWindow.Width - BallW
+    BallXSpeed = -BallXSpeed
+    Sound.Stop(Program.Directory + "\bounce.wav")
+    Sound.Play(Program.Directory + "\bounce.wav")
+  ElseIf (BallY + BallH > GraphicsWindow.Height) Then 
+    BallY = 0
+    Sound.Stop(Program.Directory + "\missed.wav")
+    Sound.Play(Program.Directory + "\missed.wav")
+  ElseIf (BallY < 0) Then
+    BallY = 0
+    BallYSpeed = -BallYSpeed
+    Sound.Stop(Program.Directory + "\bounce.wav")
+    Sound.Play(Program.Directory + "\bounce.wav")
+  EndIf
+  'check for collision with paddle
+  ShapeX[1] = BallX
+  ShapeY[1] = BallY
+  ShapeW[1] = BallW
+  ShapeH[1] = BallH
+  ShapeX[2] = PaddleX
+  ShapeY[2] = PaddleY
+  ShapeW[2] = PaddleW
+  ShapeH[2] = PaddleH
+  CheckCollision()
+  If (Collision) Then
+    BallYSpeed = -BallYSpeed
+  EndIf
+EndSub
+
+Sub CheckCollision
+  Collision = "false"
+  If (ShapeX[1] + ShapeW[1] > ShapeX[2]) Then
+    If (ShapeX[1] < ShapeX[2] + ShapeW[2]) Then
+      If (ShapeY[1] + ShapeH[1] > ShapeY[2]) Then
+        If (ShapeY[1] < ShapeY[2] + ShapeH[2]) Then
+          Collision = "true"
+        EndIf
+      EndIf
+    EndIf
+  EndIf
+EndSub
+
+Sub KeyDownSub
+  K = GraphicsWindow.LastKey
+  If (K = "Left") Then
+    PaddleX = PaddleX - 3
+  ElseIf (K = "Right") Then
+    PaddleX = PaddleX + 3
+  EndIf
+  Shapes.Move(Paddle, PaddleX, PaddleY)
+EndSub
+
+

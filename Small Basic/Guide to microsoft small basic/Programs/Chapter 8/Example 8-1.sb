@@ -1,0 +1,25 @@
+'Guide to Small Basic, Example 8-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 8-1"
+  GraphicsWindow.BackgroundColor = "Blue"
+  GraphicsWindow.Width = 200
+  GraphicsWindow.Height = 100
+  'text box
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 24
+  GraphicsWindow.FontBold = "false"
+  TypedTextBox = Controls.AddTextBox(10, 10)
+  GraphicsWindow.KeyDown = KeyDownSub
+EndSub
+
+Sub KeyDownSub
+  KeyPressed = Text.GetSubTextToEnd(GraphicsWindow.LastKey, Text.GetLength(GraphicsWindow.LastKey))
+  KeyCode = Text.GetCharacterCode(KeyPressed)
+  Controls.SetTextBoxText(TypedTextBox, KeyPressed + " - " + KeyCode)
+EndSub
+
+
+

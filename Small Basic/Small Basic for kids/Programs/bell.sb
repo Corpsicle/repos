@@ -1,0 +1,4 @@
+' Bell
+TextWindow.Clear()
+Sound.PlayBellRingAndWait()
+TextWindow.WriteLine("Dinner time!")

@@ -1,0 +1,35 @@
+'Guide to Small Basic, Example 13-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 13-2"
+  GraphicsWindow.Width = 300
+  GraphicsWindow.Height = 100
+  GraphicsWindow.MouseDown = MouseDownSub
+EndSub
+
+Sub MouseDownSub
+  'play one of four sounds
+  GraphicsWindow.Clear()
+  GraphicsWindow.FontSize = 16
+  J = Math.GetRandomNumber(4)
+  If (J = 1) Then
+    GraphicsWindow.DrawText(10, 10, "Throw")
+    Sound.Stop(Program.Directory + "\throw.wav")
+    Sound.Play(Program.Directory + "\throw.wav")
+  ElseIf (J = 2) Then
+    GraphicsWindow.DrawText(10, 10, "Splat")
+    Sound.Stop(Program.Directory + "\splat.wav")
+    Sound.Play(Program.Directory + "\splat.wav")
+  ElseIf (J = 3) Then
+    GraphicsWindow.DrawText(10, 10, "Ouch")
+    Sound.Stop(Program.Directory + "\ouch.wav")
+    Sound.Play(Program.Directory + "\ouch.wav")
+  ElseIf (J = 4) Then
+    GraphicsWindow.DrawText(10, 10, "Game Over")
+    Sound.Stop(Program.Directory + "\gameover.wav")
+    Sound.Play(Program.Directory + "\gameover.wav")
+  EndIf
+EndSub
+

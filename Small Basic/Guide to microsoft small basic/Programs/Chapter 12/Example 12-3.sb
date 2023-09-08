@@ -1,0 +1,28 @@
+'Guide to Small Basic, Example 12-3
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 12-3"
+  GraphicsWindow.Width = 250
+  GraphicsWindow.Height = 150
+  'shapes to hold displays - initialize with current values
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 36
+  GraphicsWindow.FontBold = "false"
+  DateShape = Shapes.AddText(Clock.Date)
+  Shapes.Move(DateShape, 20, 20)
+  TimeShape = Shapes.AddText(Clock.Time)
+  Shapes.Move(TimeShape, 20, 80)
+  Timer.Interval = 1000
+  Timer.Tick = TickSub
+EndSub
+
+Sub TickSub
+  'update displays
+  Shapes.SetText(DateShape, Clock.Date)
+  Shapes.SetText(TimeShape, Clock.Time)
+EndSub
+
+
+

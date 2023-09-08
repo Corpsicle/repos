@@ -1,0 +1,22 @@
+'Guide to Small Basic, Example 23-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 23-2"
+  GraphicsWindow.Show()
+  GraphicsWindow.Width = 600
+  GraphicsWindow.Height = 400
+  GraphicsWindow.FontSize = 14
+  GraphicsWindow.FontBold = "false"
+  TagTextBox = Controls.AddTextBox(10, 10)
+  ShowPhotoButton = Controls.AddButton("Show Photo", 10, 40)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  Tag = Controls.GetTextBoxText(TagTextBox)
+  Photo = Flickr.GetRandomPicture(Tag)
+  GraphicsWindow.DrawResizedImage(Photo, 0, 0, 600, 400)
+EndSub
+

@@ -1,0 +1,35 @@
+'Guide to Small Basic, Example 6-5
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 6-5"
+  GraphicsWindow.BackgroundColor = "LightYellow"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 200
+  'text boxes/button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  GraphicsWindow.DrawText(20, 30, "Your Guess:")
+  GuessTextBox = Controls.AddTextBox(110, 30)
+  MessageTextBox = Controls.AddTextBox(110, 70)
+  CheckButton = Controls.AddButton("Check Guess", 130, 110)
+  NumberToGuess = Math.GetRandomNumber(100)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  'check guess
+  YourGuess = Controls.GetTextBoxText(GuessTextBox)
+  If (YourGuess = NumberToGuess) Then
+    Controls.SetTextBoxText(MessageTextBox, "That's It!!")
+  ElseIf (YourGuess > NumberToGuess) Then
+    Controls.SetTextBoxText(MessageTextBox, "Too high ...")
+  Else
+    Controls.SetTextBoxText(MessageTextBox, "Too low ...")
+  EndIf
+EndSub
+
+
+

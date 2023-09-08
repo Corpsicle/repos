@@ -1,0 +1,56 @@
+'Guide to Small Basic, Example 6-6
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 6-6"
+  GraphicsWindow.BackgroundColor = "LightGreen"
+  GraphicsWindow.Width = 300
+  GraphicsWindow.Height = 200
+  'text boxes/button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  GraphicsWindow.DrawText(10, 10, "Length:")
+  LengthTextBox = Controls.AddTextBox(90, 10)
+  GraphicsWindow.DrawText(10, 40, "Width:")
+  WidthTextBox = Controls.AddTextBox(90, 40)
+  GraphicsWindow.DrawText(10, 110, "Cut Size:")
+  CutSizeTextBox = Controls.AddTextBox(90, 110)
+  GraphicsWindow.DrawText(10, 140, "Volume:")
+  VolumeTextBox = Controls.AddTextBox(90, 140)
+  ComputeButton = Controls.AddButton("Compute Cut Size", 90, 70)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  'Read L and W
+  L = Controls.GetTextBoxText(LengthTextBox)
+  W = Controls.GetTextBoxText(WidthTextBox)
+  If (L <= 0 Or W <= 0) Then
+    GraphicsWindow.ShowMessage("L and W must both be positive", "Invalid values")
+  Else
+    'Largest cut is one-half of smallest side
+    If (L > W) Then
+      XMax = W / 2
+    Else
+      XMax = L / 2
+    EndIf
+    'Go through 1000 possible cuts from 0 to XMax
+    'Find largest volume
+    VolMax = 0
+    For X = 0 To XMax Step XMax / 1000
+      Volume = X * (L - 2 * X) * (W - 2 * X)
+      If (Volume > VolMax) Then
+        XBest = X
+        VolMax = Volume
+      EndIf
+    EndFor
+    'Display best values
+    Controls.SetTextBoxText(CutSizeTextBox, XBest)
+    Controls.SetTextBoxText(VolumeTextBox, VolMax)
+  EndIf
+EndSub
+
+
+

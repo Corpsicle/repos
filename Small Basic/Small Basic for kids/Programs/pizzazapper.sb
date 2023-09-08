@@ -1,0 +1,156 @@
+'Pizza Zapper
+'Set up graphics window
+'initializations
+GraphicsWindow.Show()
+GraphicsWindow.Width = 1000
+GraphicsWindow.Height = 600
+GraphicsWindow.BackgroundColor = "SkyBlue"
+GraphicsWindow.KeyDown = KeyDownSub
+Timer.Interval = 50
+Timer.Tick = TickSub
+Timer.Pause()
+NewGame()
+
+Sub NewGame
+  'reinitialize everything for a new game
+  GraphicsWindow.Clear()
+  GraphicsWindow.Title = "Pizza Zapper - Score: 0"
+  Score = 0
+  Missed = 0
+  ZapperW = 50
+  ZapperH = 25
+  ZapperX = 500
+  ZapperY = 575
+  ZapperMove = 0
+  ZapperFired = "false"
+  MoveZapper()
+  PizzaD = 75
+  PizzaSpeed = 10
+  NewPizza()
+  Timer.Resume()
+EndSub
+
+Sub MoveZapper
+  'move the zapper
+  'erase first
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  GraphicsWindow.FillRectangle(ZapperX - ZapperW / 2 - 5, ZapperY - 5, ZapperW + 10, ZapperH + 10)
+  'move by ZapperMove
+  ZapperX = ZapperX + ZapperMove
+  If (ZapperX < 0) Then
+    ZapperX = 0
+  EndIf
+  If (ZapperX > GraphicsWindow.Width) Then
+    ZapperX = GraphicsWindow.Width
+  EndIf
+  ' draw zapper
+  GraphicsWindow.PenWidth = 5
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.DrawLine(ZapperX, ZapperY, ZapperX - ZapperW / 2, ZapperY + ZapperH)
+  GraphicsWindow.DrawLine(ZapperX, ZapperY, ZapperX + ZapperW / 2, ZapperY + ZapperH)
+EndSub
+
+Sub FireZapper
+  'fire the zapper
+  ZapperFired = "true"
+  GraphicsWindow.PenWidth = 3
+  GraphicsWindow.PenColor = "Blue"
+  GraphicsWindow.DrawLine(ZapperX, ZapperY, ZapperX, 0)
+  Sound.PlayBellRing()
+EndSub
+
+Sub NewPizza
+  ' start a new pizza falling
+  PizzaX = Math.GetRandomNumber(GraphicsWindow.Width - PizzaD)
+  PizzaY = 0
+  DrawPizza()
+EndSub
+ 
+Sub DrawPizza
+  'draw a pizza 
+  'yellow pizza red crust
+  GraphicsWindow.BrushColor = "Yellow"
+  GraphicsWindow.FillEllipse(PizzaX, PizzaY, PizzaD, PizzaD)
+  GraphicsWindow.PenWidth = 4
+  GraphicsWindow.PenColor = "Red"
+  GraphicsWindow.DrawEllipse(PizzaX, PizzaY, PizzaD, PizzaD)
+EndSub
+
+Sub ErasePizza
+  'erase a pizza 
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  GraphicsWindow.FillEllipse(PizzaX - 5, PizzaY - 5, PizzaD + 10, PizzaD + 10)
+EndSub
+
+Sub MovePizza
+  'move a pizza 
+  'erase first
+  ErasePizza()
+  'move
+  PizzaY = PizzaY + PizzaSpeed
+  DrawPizza()
+EndSub
+
+Sub KeyDownSub
+  'handle key presses
+  K = GraphicsWindow.LastKey
+  ZapperMove = 0
+  If (K = "Left") Then
+    ZapperMove = -10
+  EndIf
+  If (K = "Right") Then
+    ZapperMove = 10
+  EndIf
+  MoveZapper()
+  If (K = "Space") Then
+    'draw ray
+    FireZapper()
+  EndIf
+  If (K = "Y") Then
+    NewGame()
+  EndIf
+  If (K = "N") then
+    Program.End()
+  EndIf
+EndSub
+
+Sub TickSub
+  'zapper fired?  if so, check for zap
+  If (ZapperFired = "true") Then
+    ZapperFired = "false"
+    'check for  zapper hit
+    If (ZapperX > PizzaX And ZapperX < PizzaX + PizzaD) Then
+      ' a hit
+      Score = Score + 1
+      'make harder?
+      If (Math.Remainder(Score, 10) = 0) Then
+        PizzaD = PizzaD - 5
+        PizzaSpeed = PizzaSpeed + 1
+      EndIf
+      GraphicsWindow.Title = "Pizza Zapper - Score: " + Score
+      ErasePizza()
+      NewPizza()
+    EndIf
+    'erase ray
+    GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+    GraphicsWindow.FillRectangle(ZapperX - 5, 0, 10, GraphicsWindow.Height - ZapperH)
+  EndIf
+  'move pizza
+  MovePizza()
+  'check for miss
+  If (PizzaY + PizzaD > GraphicsWindow.Height - ZapperH) Then
+    ErasePizza()
+    Missed = Missed + 1
+    If (Missed = 3) Then
+      GraphicsWindow.Title = "Pizza Zapper - Game Over - Final Score: " + Score
+      Timer.Pause()
+      GraphicsWindow.BrushColor = "Black"
+      GraphicsWindow.FontSize = 24
+      GraphicsWindow.DrawText(100, 100, "Want to play again (Y or N)?")
+    EndIf
+    If (Missed <> 3) Then
+      NewPizza()
+    EndIf
+  EndIf
+EndSub
+  

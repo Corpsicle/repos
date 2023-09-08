@@ -1,0 +1,40 @@
+' Hangman Game
+' Main Programm
+New:
+' New Game
+NewGame()
+' Get the word to guess 
+GetWord()
+Guess:
+' Make a guess at a letter
+GetGuess()
+' Test if letter is right-add to the drawing if wrong
+TestGuess()
+' Test if game is over - will determine variable GameOver
+TestGameOver()
+' If not over, get another guess
+If (GameOver = "false") Then
+  Goto Guess
+EndIf
+If (GameOver = "true") Then
+  Goto New
+EndIf
+
+'Subroutines
+Sub NewGame
+  'Play a new game
+  ' Clear window
+  GameOver = "false"
+  TextWindow.BackgroundColor = "White"
+  TextWindow.ForegroundColor = "Black"
+  TextWindow.Title = "Hangman"
+  TextWindow.Clear()
+EndSub
+
+Sub GetWord
+  ' Enter a word to guess - draw game screen
+  TextWindow.ForegroundColor = "Black"
+  TextWindow.WriteLine("One player enters a word, the other guesses it.")
+  TextWindow.WriteLine("The guessing player should look away from the computer.")
+  TextWindow.WriteLine("")
+  

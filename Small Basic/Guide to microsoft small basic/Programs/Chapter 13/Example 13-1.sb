@@ -1,0 +1,31 @@
+'Guide to Small Basic, Example 13-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 13-1"
+  GraphicsWindow.Width = 300
+  GraphicsWindow.Height = 100
+  GraphicsWindow.MouseDown = MouseDownSub
+EndSub
+
+Sub MouseDownSub
+  'play one of four sounds
+  GraphicsWindow.Clear()
+  GraphicsWindow.FontSize = 16
+  J = Math.GetRandomNumber(4)
+  If (J = 1) Then
+    GraphicsWindow.DrawText(10, 10, "Bell Ring")
+    Sound.PlayBellRing()
+  ElseIf (J = 2) Then
+    GraphicsWindow.DrawText(10, 10, "Chime")
+    Sound.PlayChime()
+  ElseIf (J = 3) Then
+    GraphicsWindow.DrawText(10, 10, "Chimes")
+    Sound.PlayChimes()
+  ElseIf (J = 4) Then
+    GraphicsWindow.DrawText(10, 10, "Click")
+    Sound.PlayClick()
+  EndIf
+EndSub
+

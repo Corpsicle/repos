@@ -1,0 +1,82 @@
+'Guide to Small Basic, Example 20-5
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 20-5"
+  GraphicsWindow.Width = 600
+  GraphicsWindow.Height = 400
+  'ball graphic
+  BallImage = ImageList.LoadImage(Program.Directory + "\ball.gif")
+  BallW = ImageList.GetWidthOfImage(BallImage)
+  BallH = ImageList.GetHeightOfImage(BallImage)
+  Ball[1] = Shapes.AddImage(BallImage)
+  Ball[2] = Shapes.AddImage(BallImage)
+  Shapes.HideShape(Ball[1])
+  Shapes.HideShape(Ball[2])
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  TimerButton = Controls.AddButton("Start", 280, 360)
+  Controls.ButtonClicked = ButtonClickedSub
+  Timer.Interval = 100
+  Timer.Tick = TickSub
+  Timer.Pause()
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.GetButtonCaption(TimerButton) = "Start") Then
+    Controls.SetButtonCaption(TimerButton, "Stop")
+    For I = 1 To 2
+      BallX[I] = Math.GetRandomNumber(GraphicsWindow.Width - BallW) - 1
+      BallY[I] = Math.GetRandomNumber(GraphicsWindow.Height - BallH) - 1
+      BallXSpeed[I] = 21 - Math.GetRandomNumber(41)
+      BallYSpeed[I] = 21 - Math.GetRandomNumber(41)
+      Shapes.Move(Ball[I], BallX[I], BallY[I])
+      Shapes.ShowShape(Ball[I])
+    EndFor
+    Timer.Resume()
+  Else
+    Controls.SetButtonCaption(TimerButton, "Start")
+    Shapes.HideShape(Ball[1])
+    Shapes.HideShape(Ball[2])
+    Timer.Pause()
+  EndIf
+EndSub
+
+Sub TickSub
+  For I = 1 To 2
+    BallX[I] = BallX[I] + BallXSpeed[I]
+    BallY[I] = BallY[I] + BallYSpeed[I]
+    Shapes.Move(Ball[I], BallX[I], BallY[I])
+    If (BallY[I] + BallH > GraphicsWindow.Height) Then 
+      'top bounce?
+      BallY[I] = GraphicsWindow.Height - BallH
+      BallYSpeed[I] = -BallYSpeed[I]
+      Sound.Stop(Program.Directory + "\bounce.wav")
+      Sound.Play(Program.Directory + "\bounce.wav")
+    ElseIf (BallY[I] < 0) Then
+      'bottom bounce?
+      BallY[I] = 0
+      BallYSpeed[I] = -BallYSpeed[I]
+      Sound.Stop(Program.Directory + "\bounce.wav")
+      Sound.Play(Program.Directory + "\bounce.wav")
+    ElseIf (BallX[I] < 0) Then
+      'left bounce?
+      BallX[I] = 0
+      BallXSpeed[I] = -BallXSpeed[I]
+      Sound.Stop(Program.Directory + "\bounce.wav")
+      Sound.Play(Program.Directory + "\bounce.wav")
+    ElseIf (BallX[I] + BallW > GraphicsWindow.Width) Then 
+      'right bounce?
+      BallX[I] = GraphicsWindow.Width - BallW
+      BallXSpeed[I] = -BallXSpeed[I]
+      Sound.Stop(Program.Directory + "\bounce.wav")
+      Sound.Play(Program.Directory + "\bounce.wav")
+    EndIf
+  EndFor
+EndSub
+
+
+

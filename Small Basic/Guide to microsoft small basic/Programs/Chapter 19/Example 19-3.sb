@@ -1,0 +1,195 @@
+'Guide to Small Basic, Example 19-3
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Width = 500
+  GraphicsWindow.Height = 300
+  GraphicsWindow.Title = "Example 19-3"
+  'Mariners data
+  NPoints = 10
+  XValue[1] = 1991
+  XValue[2] = 1992
+  XValue[3] = 1993
+  XValue[4] = 1994
+  XValue[5] = 1995
+  XValue[6] = 1996
+  XValue[7] = 1997
+  XValue[8] = 1998
+  XValue[9] = 1999
+  XValue[10] = 2000
+  YValue[1] = 2.15
+  YValue[2] = 1.65
+  YValue[3] = 2.05
+  YValue[4] = 1.1
+  YValue[5] = 1.64
+  YValue[6] = 2.72
+  YValue[7] = 3.19
+  YValue[8] = 2.65
+  YValue[9] = 2.92
+  YValue[10] = 3.15
+  LineColor = "Blue"
+  'plot area
+  PlotLeft = 100
+  PlotTop = 50
+  PlotWidth = 350
+  PlotHeight = 200
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.DrawRectangle(PlotLeft, PlotTop, PlotWidth, PlotHeight)
+  FindMinMax()
+  'compute spacing on y axis
+  AxisMin = YMin
+  AxisMax = YMax
+  FindAxisSpacing()
+  YMin = AxisMin
+  YMax = AxisMax
+  LineChart()
+  DrawYGrid = "true"
+  LabelYAxis()
+  AxisMin = 1991
+  AxisMax = 2000
+  NumberIntervals = 9
+  AxisSpacing = 1
+  DrawXGrid = "false"
+  LabelXAxis()
+EndSub
+
+Sub FindMinMax
+  'find minimums and maximums
+  XMin = XValue[1]
+  XMax = XValue[1]
+  YMin = YValue[1]
+  Ymax = YValue[1]
+  For I = 2 To NPoints
+    XMin = Math.Min(XMin, XValue[I])
+    XMax = Math.Max(XMax, XValue[I])
+    YMin = Math.Min(YMin, YValue[I])
+    Ymax = Math.Max(Ymax, YValue[I])
+  EndFor
+EndSub
+
+Sub LineChart
+  'Constructs a  line chart - pairs of (x,y) coordinates
+  'NPoints - number of points to plot
+  'XValue - array of x points
+  'YValue - array of y points 
+  If (NPoints < 2) Then
+    Goto ExitLineChart
+  EndIf
+  'plot the pairs -  get first point
+  XData = XValue[1]
+  YData = YValue[1]
+  XDataToXPlot()
+  YDataToYPlot()
+  XPrevious = XPlot
+  YPrevious = YPlot
+  GraphicsWindow.PenColor = LineColor
+  GraphicsWindow.PenWidth = 1
+  For I = 2 To NPoints
+    'connect subsequent points to previous
+    XData = XValue[I]
+    YData = YValue[I]
+    XDataToXPlot()
+    YDataToYPlot()
+    GraphicsWindow.DrawLine(XPrevious, YPrevious, XPlot, YPlot)
+    XPrevious = XPlot
+    YPrevious = YPlot
+  EndFor
+ExitLineChart:
+EndSub
+
+Sub XDataToXPlot
+  'converts XData to XPlot
+  XPlot = PlotLeft + (XData - XMin) * (PlotWidth - 1) / (XMax - XMin)
+EndSub
+  
+Sub YDataToYPlot
+  'converts YData) to YPlot
+  YPlot = PlotTop + (Ymax - YData) * (PlotHeight - 1) / (Ymax - YMin)
+EndSub
+
+Sub FindAxisSpacing
+  'provide AxisMin and AxisMax
+  'computes new AxisMin, AxisMax, IntervalSpacing, NumberIntervals
+  Eps = 0.025
+  If (AxisMin = AxisMax) Then
+    AxisMin = 0.9 * AxisMax
+  EndIf
+  ATemp = Math.Abs(AxisMin)
+  If Math.Abs(AxisMin) < Math.Abs(AxisMax) Then 
+    ATemp = Math.Abs(AxisMax)
+  EndIf
+  Scale = Math.Power(10, Math.Floor(Math.Log(ATemp) / Math.Log(10) / 10.0))
+  NextScale:
+  Scale = Scale * 10
+  MinA = AxisMin / Scale 
+  MaxA = AxisMax / Scale
+  DTemp = (MaxA - MinA) / 4.5
+  JTemp = DTemp * Eps
+  ETemp = Math.Floor((Math.Log(DTemp) / Math.Log(10)))
+  FTemp = DTemp / Math.Power(10, ETemp)
+  VTemp = 10
+  If FTemp < Math.SquareRoot(2) Then 
+    VTemp = 1
+  ElseIf FTemp < Math.SquareRoot(10) Then 
+    VTemp = 2
+  ElseIf FTemp < Math.SquareRoot(50) Then 
+    VTemp = 5
+  EndIf
+  Delta = VTemp * Math.Power(10, ETemp)
+  GTemp = Math.Floor(MinA / Delta)
+  If Math.Abs(GTemp + 1 - MinA / Delta) < JTemp Then 
+    GTemp = GTemp + 1
+  EndIf
+  MinP = Delta * GTemp
+  HTemp = Math.Floor(MaxA / Delta) + 1
+  If Math.Abs(MaxA / Delta + 1 - HTemp) < JTemp Then 
+    HTemp = HTemp - 1
+  EndIf
+  MaxP = Delta * HTemp
+  NumberIntervals = HTemp - GTemp
+  If (Math.Abs(MaxP) >= 10 Or Math.Abs(MinP) >= 10) Then
+    Goto NextScale
+  EndIf
+  AxisMin = MinP * Scale 
+  AxisSpacing = Delta * Scale
+  AxisMax = AxisMin + NumberIntervals * AxisSpacing
+EndSub
+
+Sub LabelYAxis
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 14
+  GraphicsWindow.FontBold = "false"
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.PenWidth = 1
+  YData = AxisMin
+  For I = 1 To NumberIntervals + 1
+    'get y position
+    YDataToYPlot()
+    GraphicsWindow.DrawText(PlotLeft - 40, YPlot - 10, YData)
+    If (DrawYGrid And I > 1 And I < NumberIntervals + 1) Then
+      GraphicsWindow.DrawLine(PlotLeft, YPlot, PlotLeft + PlotWidth, YPlot)
+    EndIf
+    YData = YData + AxisSpacing
+  EndFor
+EndSub
+
+Sub LabelXAxis
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 14
+  GraphicsWindow.FontBold = "false"
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.PenWidth = 1
+  XData = AxisMin
+  For I = 1 To NumberIntervals + 1
+    'get x position
+    XDataToXPlot()
+    GraphicsWindow.DrawText(XPlot - 15, PlotTop + PlotHeight + 5, XData)
+    If (DrawXGrid And I > 1 And I < NumberIntervals + 1) Then
+      GraphicsWindow.DrawLine(XPlot, PlotTop, XPlot, PlotTop + PlotHeight)
+    EndIf
+    XData = XData + AxisSpacing
+  EndFor
+EndSub
+
+  

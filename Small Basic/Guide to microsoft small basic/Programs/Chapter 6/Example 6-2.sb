@@ -1,0 +1,22 @@
+'Guide to Small Basic, Example 6-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 6-1"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 200
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 24
+  GraphicsWindow.FontBold = "false"
+  ColorButton = Controls.AddButton("Change Color", 70, 70)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  GraphicsWindow.BackgroundColor = GraphicsWindow.GetRandomColor()
+EndSub
+
+
+

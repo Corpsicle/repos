@@ -1,0 +1,11 @@
+'Guide to Small Basic, Example 5-1
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 5-1"
+GraphicsWindow.Width = 400
+GraphicsWindow.Height = 150
+GraphicsWindow.BackgroundColor = "Yellow"
+GraphicsWindow.FontSize = 36
+GraphicsWindow.FontBold = "true"
+GraphicsWindow.FontItalic = "true"
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.DrawText(20, 40, "Graphics Window")

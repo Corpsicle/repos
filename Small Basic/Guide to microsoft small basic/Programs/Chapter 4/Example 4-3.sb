@@ -1,0 +1,21 @@
+'Guide to Small Basic, Example 4-3
+TextWindow.Title = "Example 4-3"
+TextWindow.BackgroundColor = "White"
+TextWindow.ForegroundColor = "Black"
+TextWindow.Clear()
+GetNumberSixes:
+TextWindow.Write("How many sixes must be rolled? ")
+Number = TextWindow.ReadNumber()
+Rolls = 0
+Counter = 0
+While (Counter < Number)
+  '  Roll a simulated die
+  Rolls = Rolls + 1
+  If (Math.GetRandomNumber(6) = 6) Then
+    Counter = Counter + 1
+  EndIf
+EndWhile
+TextWindow.WriteLine("It took " + Rolls + " rolls to get " + Number + " sixes.")
+TextWindow.WriteLine("")
+Goto GetNumberSixes
+

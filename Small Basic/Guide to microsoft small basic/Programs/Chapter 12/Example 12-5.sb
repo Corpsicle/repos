@@ -1,0 +1,38 @@
+'Guide to Small Basic, Example 12-5
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 12-5"
+  GraphicsWindow.Width = 200
+  GraphicsWindow.Height = 300
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  ShowButton = Controls.AddButton("Show Burger", 40, 200)
+  Controls.ButtonClicked = ButtonClickedSub
+  'image
+  Burger = ImageList.LoadImage(Program.Directory + "\burger.gif")
+  Timer.Interval = 2000
+  Timer.Tick = TickSub
+  Timer.Pause()
+EndSub
+
+Sub ButtonClickedSub
+  'display/delay/clear
+  GraphicsWindow.DrawResizedImage(Burger, 25, 25, 150, 150)
+  Timer.Resume()
+  'Program.Delay(2000)
+  'GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  'GraphicsWindow.FillRectangle(25, 25, 150, 150)
+EndSub
+
+Sub TickSub
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  GraphicsWindow.FillRectangle(25, 25, 150, 150)
+  Timer.Pause()
+EndSub
+
+
+

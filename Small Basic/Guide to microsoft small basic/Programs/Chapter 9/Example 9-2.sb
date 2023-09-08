@@ -1,0 +1,9 @@
+'Guide to Small Basic, Example 9-2
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 9-2"
+GraphicsWindow.BackgroundColor = "LightYellow"
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 200
+GraphicsFile = "seattle.bmp"
+ImageToDraw = ImageList.LoadImage(Program.Directory + "\" + GraphicsFile)
+GraphicsWindow.DrawResizedImage(ImageToDraw, 0, 0, GraphicsWindow.Width, GraphicsWindow.Height)

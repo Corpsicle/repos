@@ -1,0 +1,186 @@
+'Guide to Small Basic, Example 20-8
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 20-8"
+  GraphicsWindow.Width = 600
+  GraphicsWindow.Height = 400
+  GraphicsWindow.BackgroundColor = GraphicsWindow.GetColorFromRGB(48, 48, 48)
+  'ball graphic 
+  BallW = 20
+  BallH = 20
+  GraphicsWindow.BrushColor = "White"
+  GraphicsWindow.PenColor = "White"
+  Ball = Shapes.AddEllipse(BallW, BallH)
+  Shapes.HideShape(Ball)
+  'paddles
+  PaddleW = 10
+  PaddleH = 50
+  Paddle[1] = Shapes.AddRectangle(PaddleW, PaddleH)
+  Paddle[2] = Shapes.AddRectangle(PaddleW, PaddleH)
+  PaddleX[1] = 20
+  PaddleY[1] = 175
+  PaddleX[2] = 570
+  PaddleY[2] = 175
+  Shapes.Move(Paddle[1], PaddleX[1], PaddleY[1])
+  Shapes.Move(Paddle[2], PaddleX[2], PaddleY[2])
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  TimerButton = Controls.AddButton("Start", 280, 360)
+  Controls.ButtonClicked = ButtonClickedSub
+  Timer.Interval = 100
+  Timer.Tick = TickSub
+  Timer.Pause()
+  GraphicsWindow.KeyDown = KeyDownSub
+  SpeedMax = 20
+  'scores
+  GraphicsWindow.BrushColor = "White"
+  GraphicsWindow.FontSize = 48
+  ScoreDisplay[1] = Shapes.AddText("0")
+  Shapes.Move(ScoreDisplay[1], 120, 10)
+  ScoreDisplay[2] = Shapes.AddText("0")
+  Shapes.Move(ScoreDisplay[2], 450, 10)
+EndSub
+
+Sub ButtonClickedSub
+  Controls.HideControl(TimerButton)
+  'get ball started randomly
+  If (Math.GetRandomNumber(2) = 1) Then
+    BallX = PaddleX[1] + PaddleW
+    BallXSpeed = SpeedMax
+  Else
+    BallX = PaddleX[2] - BallW
+    BallXSpeed = -SpeedMax
+  EndIf
+  BallY = 0.5 * (GraphicsWindow.Height - 0.5 * PaddleH)
+  BallYSpeed = 0
+  Shapes.Move(Ball, BallX, BallY)
+  Shapes.ShowShape(Ball)
+  Score[1] = 0
+  Score[2] = 0
+  UpdateScore()
+  Timer.Resume()
+EndSub
+
+Sub TickSub
+  BallX = BallX + BallXSpeed
+  BallY = BallY + BallYSpeed
+  Shapes.Move(Ball, BallX, BallY)
+  'wall hit?
+  If (BallY + BallH > GraphicsWindow.Height) Then 
+    BallY = GraphicsWindow.Height - BallH
+    BallYSpeed = -BallYSpeed
+    Sound.Stop(Program.Directory + "\wallhit.wav")
+    Sound.Play(Program.Directory + "\wallhit.wav")
+    Goto ExitTickSub
+  ElseIf (BallY < 0) Then
+    BallY = 0
+    BallYSpeed = -BallYSpeed
+    Sound.Stop(Program.Directory + "\wallhit.wav")
+    Sound.Play(Program.Directory + "\wallhit.wav")
+    Goto ExitTickSub
+  EndIf
+  'check for collision with paddle
+  For I = 1 To 2
+    ShapeX[1] = BallX
+    ShapeY[1] = BallY
+    ShapeW[1] = BallW
+    ShapeH[1] = BallH
+    ShapeX[2] = PaddleX[I]
+    ShapeY[2] = PaddleY[I]
+    ShapeW[2] = PaddleW
+    ShapeH[2] = PaddleH
+    CheckCollision()
+    If (Collision) Then
+      Sound.Stop(Program.Directory + "\bounce.wav")
+      Sound.Play(Program.Directory + "\bounce.wav")
+      BallXSpeed = -BallXSpeed
+      'set BallYSpeed based on where ball hits paddle
+      BallCenter = BallY + 0.5 * BallH
+      If (BallCenter < PaddleY[I] + 0.2 * PaddleH) Then
+        BallYSpeed = -SpeedMax
+      ElseIf (BallCenter  < PaddleY[I] + 0.4 * PaddleH) Then
+        BallYSpeed = -0.5 * SpeedMax
+      ElseIf (BallCenter  < PaddleY[I] + 0.6 * PaddleH) Then
+        BallYSpeed = 0
+      ElseIf (BallCenter  < PaddleY[I] + 0.8 * PaddleH) Then
+        BallYSpeed = 0.5 * SpeedMax
+      Else
+        BallYSpeed = SpeedMax
+      EndIf
+      Goto ExitTickSub
+    EndIf
+  EndFor
+  'off ends?
+  If (BallX < 0) Then 
+    'point for player 2
+    Score[2] = Score[2] + 1
+    Sound.Stop(Program.Directory + "\missed.wav")
+    Sound.Play(Program.Directory + "\missed.wav")
+    BallX = PaddleX[2] - BallW
+    BallXSpeed = -SpeedMax
+    BallY = 0.5 * (GraphicsWindow.Height - 0.5 * PaddleH)
+    BallYSpeed = 0
+    Shapes.Move(Ball, BallX, BallY)
+    Goto ExitTickSub
+  ElseIf (BallX + BallW > GraphicsWindow.Width) Then
+    'point for player 1
+    Score[1] = Score[1] + 1
+    Sound.Stop(Program.Directory + "\missed.wav")
+    Sound.Play(Program.Directory + "\missed.wav")
+    BallX = PaddleX[1] + PaddleW
+    BallXSpeed = SpeedMax
+    BallY = 0.5 * (GraphicsWindow.Height - 0.5 * PaddleH)
+    BallYSpeed = 0
+    Shapes.Move(Ball, BallX, BallY)
+  EndIf
+  ExitTickSub:
+  UpdateScore()
+EndSub
+
+Sub CheckCollision
+  Collision = "false"
+  If (ShapeX[1] + ShapeW[1] > ShapeX[2]) Then
+    If (ShapeX[1] < ShapeX[2] + ShapeW[2]) Then
+      If (ShapeY[1] + ShapeH[1] > ShapeY[2]) Then
+        If (ShapeY[1] < ShapeY[2] + ShapeH[2]) Then
+          Collision = "true"
+        EndIf
+      EndIf
+    EndIf
+  EndIf
+EndSub
+
+Sub KeyDownSub
+  K = GraphicsWindow.LastKey
+  If (K = "A") Then
+    PaddleY[1] = PaddleY[1] - 10
+    Shapes.Move(Paddle[1], PaddleX[1], PaddleY[1])
+  ElseIf (K = "Z") Then
+    PaddleY[1] = PaddleY[1] + 10
+    Shapes.Move(Paddle[1], PaddleX[1], PaddleY[1])
+  ElseIf (K = "K") Then
+    PaddleY[2] = PaddleY[2] - 10
+    Shapes.Move(Paddle[2], PaddleX[2], PaddleY[2])
+  ElseIf (K = "M") Then
+    PaddleY[2] = PaddleY[2] + 10
+    Shapes.Move(Paddle[2], PaddleX[2], PaddleY[2])
+  EndIf
+EndSub
+
+Sub UpdateScore
+  Shapes.SetText(ScoreDisplay[1], Score[1])
+  Shapes.SetText(ScoreDisplay[2], Score[2])
+  If (Score[1] = 11 Or Score[2] = 11) Then
+    Timer.Pause()
+    Shapes.HideShape(Ball)
+    Sound.PlayAndWait(Program.Directory + "\cheering.wav")
+    Controls.ShowControl(TimerButton)
+  EndIf
+EndSub
+
+
+

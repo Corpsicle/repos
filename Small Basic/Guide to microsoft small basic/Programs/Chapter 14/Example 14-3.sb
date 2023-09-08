@@ -1,0 +1,64 @@
+'Guide to Small Basic, Example 14-3
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 14-3"
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 200
+'multi-line text box
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontSize = 16
+GraphicsWindow.FontBold = "false"
+ResultsTextBox = Controls.AddMultiLineTextBox(10, 10)
+Controls.SetSize(ResultsTextBox, 280, 180)
+'initialize Streak
+Streak = 0
+'read from file
+NumberOfGames = File.ReadLine(Program.Directory + "\mar95.csv", 1)
+For I = 1 To NumberOfGames
+  DataLine = File.ReadLine(Program.Directory + "\mar95.csv", I + 1)
+  NextVariable()
+  GameDate = Variable
+  NextVariable()
+  Opponent = Variable
+  NextVariable()
+  HomeAway = Variable
+  NextVariable()
+  MarRuns = Variable
+  NextVariable()
+  OppRuns = Variable
+  'See who won
+  If (MarRuns > OppRuns) Then
+    'Mariners win - extend existing streak or start new one
+    If (Streak > 0) Then
+      Streak = Streak + 1
+    Else
+      Streak = 1
+    EndIf
+  Else
+    'Mariners lose - extend existing streak or start new one
+    If (Streak < 0) Then
+      Streak = Streak - 1
+    Else
+      Streak = -1
+    EndIf
+  EndIf
+  'Write DataLine to file and append to text box as check
+  DataLine = I + "," + Streak
+  File.WriteLine(Program.Directory + "\streak.csv", I, DataLine)
+  CurrentText = Controls.GetTextBoxText(ResultsTextBox)
+  Controls.SetTextBoxText(ResultsTextBox, CurrentText + DataLine + Text.GetCharacter(13))
+EndFor
+
+Sub NextVariable
+  'look for comma in DataLine
+  CL = Text.GetIndexOf(DataLine, ",")
+  If (CL <> 0) Then
+    'parse out variable
+    Variable = Text.GetSubText(DataLine, 1, CL - 1)
+    'shorten line
+    DataLine = Text.GetSubTextToEnd(DataLine, CL + 1)
+  Else
+    'one variable remains
+    Variable = DataLine
+  EndIf
+EndSub
+

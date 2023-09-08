@@ -1,0 +1,23 @@
+'Guide to Small Basic, Example 22-3
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 22-3"
+'show turtle
+Turtle.Show()
+Turtle.Speed = 10
+'you can change these numbers
+NSides = 30
+Perimeter = 600
+NCircles = 50
+GraphicsWindow.PenColor = "Blue"
+'draw polygon
+Side = Perimeter / NSides
+Angle = 360 / NSides
+For J = 1 To NCircles
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  For I = 1 To NSides
+    Turtle.Move(Side)
+    Turtle.Turn(Angle)
+  EndFor
+  Turtle.Turn(360 / NCircles)
+EndFor
+

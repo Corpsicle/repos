@@ -1,0 +1,11 @@
+'Guide to Small Basic, Example 5-4
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 5-4"
+GraphicsWindow.Width = 400
+GraphicsWindow.Height = 300
+GraphicsWindow.BrushColor = "Red"
+GraphicsWindow.FillRectangle(50, 50, 300, 200)
+GraphicsWindow.PenColor = "Blue"
+GraphicsWindow.PenWidth = 5
+GraphicsWindow.DrawRectangle(50, 50, 300, 200)
+

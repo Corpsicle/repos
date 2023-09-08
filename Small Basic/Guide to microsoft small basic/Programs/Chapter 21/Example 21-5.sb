@@ -1,0 +1,263 @@
+'Guide to Small Basic, Example 21-5
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 21-5"
+  GraphicsWindow.Width = 290
+  GraphicsWindow.Height = 280
+  'size radio button group
+  RBGroupNumber = 1
+  RBBackColor = "Blue"
+  RBForeColor = "White"
+  RBLeft = 10
+  RBTop = 10
+  RBWidth = 100
+  RBHeight = 100
+  RBTitle = "Size"
+  RBNumberButtons = 3
+  RBText[1] = "Small"
+  RBText[2] = "Medium"
+  RBText[3] = "Large"
+  RBChecked[1] = "true"
+  RBChecked[2] = "false"
+  RBChecked[3] = "false"
+  CreateRadioButtonGroup()
+  'set default size
+  PizzaSize = "Small"
+  'crust type radio button group
+  RBGroupNumber = 2
+  RBLeft = 10
+  RBTop = 120
+  RBHeight = 80
+  RBTitle = "Crust"
+  RBNumberButtons = 2
+  RBText[1] = "Thin Crust"
+  RBText[2] = "Thick Crust"
+  RBChecked[1] = "true"
+  RBChecked[2] = "false"
+  CreateRadioButtonGroup()
+  'set default size
+  PizzaCrust = "Thin Crust"
+  'where radio button group
+  RBGroupNumber = 3
+  RBLeft = 10
+  RBTop = 210
+  RBHeight = 60
+  RBTitle = ""
+  RBNumberButtons = 2
+  RBText[1] = "Eat In"
+  RBText[2] = "Take Out"
+  RBChecked[1] = "true"
+  RBChecked[2] = "false"
+  CreateRadioButtonGroup()
+  'set default where
+  PizzaWhere = "Eat In"
+  'toppings check box group
+  CBGroupNumber = 1
+  CBBackColor = "DarkRed"
+  CBForeColor = "White"
+  CBLeft = 120
+  CBTop = 10
+  CBWidth = 160
+  CBHeight = 160
+  CBTitle = "Toppings"
+  CBNumberBoxes = 6
+  CBText[1] = "Extra Cheese"
+  CBText[2] = "Mushrooms"
+  CBText[3] = "Green Peppers"
+  CBText[4] = "Onions"
+  CBText[5] = "Black Olives"
+  CBText[6] = "Tomatoes"
+  CBChecked[1] = "false"
+  CBChecked[2] = "false"
+  CBChecked[3] = "false"
+  CBChecked[4] = "false"
+  CBChecked[5] = "false"
+  CBChecked[6] = "false"
+  CreateCheckBoxGroup()
+  'build button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  BuildButton = Controls.AddButton("Build Pizza", 150, 180)
+  GraphicsWindow.MouseDown = MouseDownSub
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub MouseDownSub
+  RadioButtonClick()
+  If (RadioButtonClicked) Then
+    'radio button clicked
+    If (ClickedGroup = 1) Then      
+      PizzaSize = RadioButtonText[1][ClickedButton]
+    ElseIf (ClickedGroup = 2) Then
+      PizzaCrust = RadioButtonText[2][ClickedButton]
+    Else 
+      PizzaWhere = RadioButtonText[3][ClickedButton]
+    EndIf
+  EndIf
+  CheckBoxClick()
+EndSub
+
+Sub ButtonClickedSub
+  'build button clicked
+  CRLF = Text.GetCharacter(13)
+  s = PizzaWhere + CRLF
+  s = s + PizzaSize + " Pizza" + CRLF
+  s = s + PizzaCrust + CRLF
+  'Check each topping 
+  For I = 1 To 6
+    If (CheckBoxChecked[1][I]) Then
+      s = s + CheckBoxText[1][I] + CRLF
+    EndIf
+  EndFor
+  GraphicsWindow.ShowMessage(s, "Your Pizza:")
+EndSub
+
+Sub CreateRadioButtonGroup
+  NumberRadioButtonGroups = RBGroupNumber
+  NumberRadioButtons[RBGroupNumber] = RBNumberButtons
+  'draw backing
+  GraphicsWindow.BrushColor = RBBackColor
+  GraphicsWindow.FillRectangle(RBLeft, RBTop, RBWidth, RBHeight)
+  'add title (optional)
+  If (RBTitle <> "") Then
+    GraphicsWindow.BrushColor = RBForeColor
+    GraphicsWindow.FontSize = 16
+    GraphicsWindow.FontBold = "true"
+    GraphicsWindow.DrawText(RBLeft + 5, RBTop + 5, RBTitle)
+    TopOffset = 10
+  Else
+    TopOffset = -10
+  EndIf
+  'create and add radio buttons
+  For I = 1 To RBNumberButtons
+    GraphicsWindow.PenColor = "White"
+    GraphicsWindow.BrushColor = "White"
+    RadioButton[RBGroupNumber][I] = Shapes.AddEllipse(15, 15)
+    Shapes.Move(RadioButton[RBGroupNumber][I], RBLeft + 5, RBTop + TopOffset + I * 20)
+    RadioButtonChecked[RBGroupNumber][I] = RBChecked[I]
+    GraphicsWindow.BrushColor = RBForeColor
+    GraphicsWindow.FontSize = 14
+    GraphicsWindow.FontBold = "false"
+    RadioButtonText[RBGroupNumber][I] = RBText[I]
+    TextShape = Shapes.AddText(RBText[I])
+    Shapes.Move(TextShape, RBLeft + 25, RBTop + TopOffset + I * 20)
+  EndFor
+  'create marker
+  GraphicsWindow.PenColor = "SlateGray"
+  GraphicsWindow.BrushColor = "SlateGray"
+  Marker[RBGroupNumber] = Shapes.AddEllipse(9, 9)
+  'position marker
+  For I = 1 To RBNumberButtons
+    If (RBChecked[I]) Then
+      ClickedGroup = RBGroupNumber
+      ClickedButton = I
+      MarkRadioButton()
+    EndIf
+  EndFor
+EndSub
+
+Sub MarkRadioButton
+  'move marker to selected button
+  RadioButtonChecked[ClickedGroup][ClickedButton] = "true"
+  RBL = Shapes.GetLeft(RadioButton[ClickedGroup][ClickedButton])
+  RBT = Shapes.GetTop(RadioButton[ClickedGroup][ClickedButton])
+  Shapes.Move(Marker[ClickedGroup], RBL + 3, RBT + 3)
+  Shapes.ShowShape(Marker[ClickedGroup])
+EndSub
+
+Sub RadioButtonClick
+  RadioButtonClicked = "false"
+  X = GraphicsWindow.MouseX
+  Y = GraphicsWindow.MouseY
+  For I = 1 to NumberRadioButtonGroups
+    For J = 1 to NumberRadioButtons[I]
+      RBL = Shapes.GetLeft(RadioButton[I][J])
+      RBT = Shapes.GetTop(RadioButton[I][J])
+      If (X > RBL And X < RBL + 15 And Y > RBT And Y < RBT + 15) Then
+        RadioButtonClicked = "true"
+        ClickedGroup = I
+        ClickedButton = J
+        'change checked status
+        MarkRadioButton()
+      EndIf
+    EndFor
+  EndFor
+EndSub
+
+Sub CreateCheckBoxGroup
+  NumberCheckBoxGroups = CBGroupNumber
+  NumberCheckBoxes[CBGroupNumber] = CBNumberBoxes
+  'draw backing
+  GraphicsWindow.BrushColor = CBBackColor
+  GraphicsWindow.FillRectangle(CBLeft, CBTop, CBWidth, CBHeight)
+  'add title (optional)
+  If (CBTitle <> "") Then
+    GraphicsWindow.BrushColor = CBForeColor
+    GraphicsWindow.FontSize = 16
+    GraphicsWindow.FontBold = "true"
+    GraphicsWindow.DrawText(CBLeft + 5, CBTop + 5, CBTitle)
+    TopOffset = 10
+  Else
+    TopOffset = -10
+  EndIf
+  'create and add check boxes
+  For I = 1 To CBNumberBoxes
+    GraphicsWindow.PenColor = "White"
+    GraphicsWindow.BrushColor = "White"
+    CheckBox[CBGroupNumber][I] = Shapes.AddRectangle(15, 15)
+    Shapes.Move(CheckBox[CBGroupNumber][I], CBLeft + 5, CBTop + TopOffset + I * 20)
+    CheckBoxChecked[CBGroupNumber][I] = CBChecked[I]
+    If (CBChecked[I]) Then
+      ClickedGroup = CBGroupNumber
+      ClickedBox = I
+      MarkCheckBox()
+    EndIf
+    GraphicsWindow.BrushColor = CBForeColor
+    GraphicsWindow.FontSize = 14
+    GraphicsWindow.FontBold = "false"
+    CheckBoxText[CBGroupNumber][I] = CBText[I]
+    TextShape = Shapes.AddText(CBText[I])
+    Shapes.Move(TextShape, CBLeft + 25, CBTop + TopOffset + I * 20)
+  EndFor
+EndSub
+
+Sub MarkCheckBox
+  CheckBoxChecked[ClickedGroup][ClickedBox] = "true"
+  CBL = Shapes.GetLeft(CheckBox[ClickedGroup][ClickedBox])
+  CBT = Shapes.GetTop(CheckBox[ClickedGroup][ClickedBox])
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.PenWidth = 1
+  CheckMark1[ClickedGroup][ClickedBox] = Shapes.AddLine(CBL + 3, CBT + 8, CBL + 7, CBT + 12)
+  CheckMark2[ClickedGroup][ClickedBox] = Shapes.AddLine(CBL + 7, CBT + 12, CBL + 12, CBT + 3)
+EndSub
+
+Sub CheckBoxClick
+  CheckBoxClicked = "false"
+  X = GraphicsWindow.MouseX
+  Y = GraphicsWindow.MouseY
+  For I = 1 to NumberCheckBoxGroups
+    For J = 1 to NumberCheckBoxes[I]
+      CBL = Shapes.GetLeft(CheckBox[I][J])
+      CBT = Shapes.GetTop(CheckBox[I][J])
+      If (X > CBL And X < CBL + 15 And Y > CBT And Y < CBT + 15) Then
+        CheckBoxClicked = "true"
+        ClickedGroup = I
+        ClickedBox = J
+        'change checked status
+        If (CheckBoxChecked[I][J]) Then
+          CheckBoxChecked[I][J] = "false"
+          Shapes.Remove(CheckMark1[I][J])
+          Shapes.Remove(CheckMark2[I][J])
+        Else
+          MarkCheckBox()
+        EndIf
+      EndIf
+    EndFor
+  EndFor
+EndSub
+
+
+
+  

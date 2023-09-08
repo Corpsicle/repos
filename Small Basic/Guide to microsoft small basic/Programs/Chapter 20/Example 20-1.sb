@@ -1,0 +1,45 @@
+'Guide to Small Basic, Example 20-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 20-1"
+  GraphicsWindow.Width = 250
+  GraphicsWindow.Height = 400
+  'ball graphic
+  BallImage = ImageList.LoadImage(Program.Directory + "\ball.gif")
+  BallW = ImageList.GetWidthOfImage(BallImage)
+  BallH = ImageList.GetHeightOfImage(BallImage)
+  Ball = Shapes.AddImage(BallImage)
+  BallX = 50
+  BallY = 0
+  BallYSpeed = 10
+  Shapes.Move(Ball, BallX, BallY)
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  TimerButton = Controls.AddButton("Start", 190, 10)
+  Controls.ButtonClicked = ButtonClickedSub
+  Timer.Interval = 100
+  Timer.Tick = TickSub
+  Timer.Pause()
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.GetButtonCaption(TimerButton) = "Start") Then
+    Controls.SetButtonCaption(TimerButton, "Stop")
+    Timer.Resume()
+  Else
+    Controls.SetButtonCaption(TimerButton, "Start")
+    Timer.Pause()
+  EndIf
+EndSub
+
+Sub TickSub
+  BallY = BallY + BallYSpeed
+  Shapes.Move(Ball, BallX, BallY)
+EndSub
+
+
+

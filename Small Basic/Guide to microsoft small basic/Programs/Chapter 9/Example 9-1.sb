@@ -1,0 +1,10 @@
+'Guide to Small Basic, Example 9-1
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 9-1"
+GraphicsWindow.BackgroundColor = "LightYellow"
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 200
+GraphicsFile = "cdrom.ico"
+ImageToDraw = ImageList.LoadImage(Program.Directory + "\" + GraphicsFile)
+GraphicsWindow.DrawImage(ImageToDraw, 20, 20)
+'GraphicsWindow.DrawResizedImage(ImageToDraw, 0, 0, GraphicsWindow.Width, GraphicsWindow.Height)

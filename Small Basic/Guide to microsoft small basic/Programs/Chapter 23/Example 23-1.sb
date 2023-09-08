@@ -1,0 +1,11 @@
+'Guide to Small Basic, Example 23-1
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 23-1"
+GraphicsWindow.Show()
+GraphicsWindow.Width = 600
+GraphicsWindow.Height = 400
+GetPhoto:
+Photo = Flickr.GetPictureOfMoment()
+GraphicsWindow.DrawResizedImage(Photo, 0, 0, 600, 400)
+Program.Delay(5000)
+Goto GetPhoto

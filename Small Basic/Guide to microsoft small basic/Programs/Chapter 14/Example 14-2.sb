@@ -1,0 +1,20 @@
+'Guide to Small Basic, Example 14-2
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 14-2"
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 200
+'multi-line text box
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontSize = 16
+GraphicsWindow.FontBold = "false"
+MonthsTextBox = Controls.AddMultiLineTextBox(10, 10)
+Controls.SetSize(MonthsTextBox, 280, 180)
+'read from file
+DisplayText = ""
+For I = 1 To 12
+  Month = File.ReadLine(Program.Directory + "\months.txt", I * 2 - 1)
+  Days = File.ReadLine(Program.Directory + "\months.txt", I * 2)
+  DisplayText = DisplayText + Month + " has " + Days + " days." + Text.GetCharacter(13)
+EndFor
+Controls.SetTextBoxText(MonthsTextBox, DisplayText)
+  

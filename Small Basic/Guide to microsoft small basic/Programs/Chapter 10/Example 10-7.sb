@@ -1,0 +1,23 @@
+'Guide to Small Basic, Example 10-7
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 10-7"
+GraphicsWindow.Width = 500
+GraphicsWindow.Height = 400
+'create and stack boxes
+GraphicsWindow.PenColor = "Black"
+GraphicsWindow.PenWidth = 1
+X = 450
+Y = 370
+For I = 1 To 100
+  GraphicsWindow.BrushColor = GraphicsWindow.GetRandomColor()
+  Box[I] = Shapes.AddRectangle(50, 30)
+  Shapes.Animate(Box[I], X, Y, 250)
+  Program.Delay(200)
+  X = X - 50
+  If (X < 0) Then
+    X = 450
+    Y = Y - 30
+  EndIf
+EndFor
+
+

@@ -1,0 +1,9 @@
+'Guide to Small Basic, Example 10-1
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 10-1"
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 200
+GraphicsWindow.PenColor = "Blue"
+GraphicsWindow.PenWidth = 5
+ExampleLine = Shapes.AddLine(30, 30, 100, 100)
+

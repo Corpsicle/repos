@@ -1,0 +1,45 @@
+'Guide to Small Basic, Example 12-4
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 12-4"
+  GraphicsWindow.Width = 230
+  GraphicsWindow.Height = 200
+  'images
+  Dice[1] = ImageList.LoadImage(Program.Directory + "\dice1.gif")
+  Dice[2] = ImageList.LoadImage(Program.Directory + "\dice2.gif")
+  Dice[3] = ImageList.LoadImage(Program.Directory + "\dice3.gif")
+  Dice[4] = ImageList.LoadImage(Program.Directory + "\dice4.gif")
+  Dice[5] = ImageList.LoadImage(Program.Directory + "\dice5.gif")
+  Dice[6] = ImageList.LoadImage(Program.Directory + "\dice6.gif")
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  TimerButton = Controls.AddButton("Roll the Dice", 10, 160)
+  Controls.ButtonClicked = ButtonClickedSub
+  Timer.Interval = 200
+  Timer.Tick = TickSub
+  Timer.Pause()
+EndSub
+
+Sub ButtonClickedSub
+  NumberTicks = 0
+  NumberTicksMax = 5 + Math.GetRandomNumber(20)
+  Timer.Resume()
+EndSub
+
+Sub TickSub
+  'draw two random dice
+  GraphicsWindow.DrawImage(Dice[Math.GetRandomNumber(6)], 10, 30)
+  GraphicsWindow.DrawImage(Dice[Math.GetRandomNumber(6)], 120, 30)
+  NumberTicks = NumberTicks + 1
+  'if maximum exceeded stop timer
+  If (NumberTicks > NumberTicksMax) Then
+    Timer.Pause()
+  EndIf
+EndSub
+
+
+

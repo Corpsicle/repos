@@ -1,0 +1,33 @@
+'Guide to Small Basic, Example 11-4
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 11-4"
+  GraphicsWindow.Width = 600
+  GraphicsWindow.Height = 400
+  GraphicsWindow.MouseDown = MouseDownSub
+  GraphicsWindow.MouseMove = MouseMoveSub
+EndSub
+
+Sub MouseDownSub
+  X = GraphicsWindow.MouseX
+  Y = GraphicsWindow.MouseY
+  GraphicsWindow.PenWidth = 3
+  If (Mouse.IsLeftButtonDown) Then
+    GraphicsWindow.PenColor = "Red"
+  ElseIf (Mouse.IsRightButtonDown) Then
+    GraphicsWindow.PenColor = "Blue"
+  EndIf
+EndSub
+
+Sub MouseMoveSub
+  If (Mouse.IsLeftButtonDown Or Mouse.IsRightButtonDown) Then
+    XNew = GraphicsWindow.MouseX
+    YNew = GraphicsWindow.MouseY
+    GraphicsWindow.DrawLine(X, Y, XNew, YNew)
+    X = XNew
+    Y = YNew
+  EndIf
+EndSub
+

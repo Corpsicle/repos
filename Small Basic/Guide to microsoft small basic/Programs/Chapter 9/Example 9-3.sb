@@ -1,0 +1,14 @@
+'Guide to Small Basic, Example 9-3
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 9-3"
+  GraphicsWindow.Width = 600
+  GraphicsWindow.Height = 400
+  GraphicsWindow.MouseDown = MouseDownSub
+EndSub
+
+Sub MouseDownSub
+  TextWindow.WriteLine("Clicked X = " + GraphicsWindow.MouseX + ", Y = " + GraphicsWindow.MouseY)
+EndSub

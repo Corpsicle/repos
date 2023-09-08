@@ -1,0 +1,55 @@
+GraphicsWindow.Width = 640
+GraphicsWindow.Height = 480
+PenColour = "White"
+BackGroundColour = "Black"
+GraphicsWindow.BackgroundColor = BackGroundColour
+GraphicsWindow.PenColor = PenColour
+GraphicsWindow.Title = "Brian's Theme"
+GraphicsWindow.KeyDown = KeyDownSub
+GraphicsWindow.Show()
+
+main:
+gHeight= GraphicsWindow.Height
+gWidth = GraphicsWindow.Width
+CentreX = Math.GetRandomNumber(gWidth -1)
+CentreY = Math.GetRandomNumber(gHeight -1)
+Stepping = Math.GetRandomNumber(5) + 2
+
+For X = 1 To gWidth Step Stepping
+  For S = 0 To 1
+    If S = 0 Then 
+      GraphicsWindow.PenColor = BackGroundColour
+    Else
+      GraphicsWindow.PenColor = PenColour
+    EndIf
+    GraphicsWindow.DrawLine(X + S, 1, CentreX, CentreY)   
+    GraphicsWindow.DrawLine(CentreX,CentreY, gWidth -X -S, gHeight)
+  EndFor
+EndFor
+
+For Y = gHeight to 1 Step -Stepping
+  For S = 0 To 1
+    If S = 0 Then
+      GraphicsWindow.PenColor = BackGroundColour
+    Else
+      GraphicsWindow.PenColor = PenColour
+    EndIf
+    GraphicsWindow.DrawLine(1, Y - S, CentreX, CentreY)
+    GraphicsWindow.DrawLine(CentreX, CentreY, gWidth, gHeight -Y +S)
+  EndFor
+EndFor
+
+Program.Delay(2000)
+GraphicsWindow.Clear()
+Goto main
+
+Sub KeyDownSub
+  If GraphicsWindow.LastKey = "Escape" Then
+    GraphicsWindow.Clear()
+    Goto main
+  ElseIf GraphicsWindow.LastKey = "Q" then
+    GraphicsWindow.Clear()
+    Program.End()
+  EndIf
+EndSub
+

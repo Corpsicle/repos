@@ -1,0 +1,33 @@
+'Guide to Small Basic, Example 14-1
+'month arrays
+MonthName[1] = "January"
+MonthName[2] = "February"
+MonthName[3] = "March"
+MonthName[4] = "April"
+MonthName[5] = "May"
+MonthName[6] = "June"
+MonthName[7] = "July"
+MonthName[8] = "August"
+MonthName[9] = "September"
+MonthName[10] = "October"
+MonthName[11] = "November"
+MonthName[12] = "December"
+MonthDays[1] = 31
+MonthDays[2] = 28
+MonthDays[3] = 31
+MonthDays[4] = 30
+MonthDays[5] = 31
+MonthDays[6] = 30
+MonthDays[7] = 31
+MonthDays[8] = 31
+MonthDays[9] = 30
+MonthDays[10] = 31
+MonthDays[11] = 30
+MonthDays[12] = 31
+'write to file
+For I = 1 To 12
+  File.WriteLine(Program.Directory + "\months.txt", I * 2 - 1, MonthName[I])
+  File.WriteLine(Program.Directory + "\months.txt", I * 2, MonthDays[I])
+EndFor
+
+  

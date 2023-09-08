@@ -1,0 +1,30 @@
+'Guide to Small Basic, Example 19-8
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Width = 300
+  GraphicsWindow.Height = 300
+  GraphicsWindow.Title = "Example 19-8"
+  RCircle = 100
+  XCircle = 150
+  YCircle = 150
+  StartAngle = 45
+  SweepAngle = 60
+  SegmentColor = "Red"
+  DrawPieSegment()
+EndSub
+  
+Sub DrawPieSegment
+  'converts degrees to radians
+  DegToRad = Math.Pi / 180
+  'draws segment from StartAngle, through SweepAngle, in SegmentColor
+  For I = StartAngle To StartAngle + SweepAngle - 1
+    X1 = XCircle + RCircle * Math.Sin(I * DegToRad)
+    Y1 = YCircle - RCircle * Math.Cos(I * DegToRad)
+    X2 = XCircle + RCircle * Math.Sin((I + 1) * DegToRad)
+    Y2 = YCircle - RCircle * Math.Cos((I + 1) * DegToRad)
+    GraphicsWindow.BrushColor = SegmentColor
+    GraphicsWindow.FillTriangle(XCircle, YCircle, X1, Y1, X2, Y2)
+  EndFor
+EndSub

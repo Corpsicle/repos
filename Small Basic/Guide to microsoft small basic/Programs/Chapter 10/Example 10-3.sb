@@ -1,0 +1,21 @@
+'Guide to Small Basic, Example 10-3
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 10-3"
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 100
+GraphicsWindow.BackgroundColor = "LightBlue"
+'draw background
+GraphicsWindow.BrushColor = "Yellow"
+GraphicsWindow.FillRectangle(20, 20, 260, 60)
+'shapes object
+GraphicsWindow.FontSize = 36
+GraphicsWindow.FontBold = "false"
+GraphicsWindow.BrushColor = "Blue"
+Display = Shapes.AddText("100")
+Shapes.Move(Display, 120, 25)
+For I = 100 To 0 Step -1
+  Shapes.SetText(Display, I)
+  Program.Delay(500)
+EndFor
+
+

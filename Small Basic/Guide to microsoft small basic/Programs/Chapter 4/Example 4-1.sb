@@ -1,0 +1,10 @@
+'Guide to Small Basic, Example 4-1
+TextWindow.Title = "Example 4-1"
+TextWindow.BackgroundColor = "Yellow"
+TextWindow.ForegroundColor = "Blue"
+TextWindow.Clear()
+TextWindow.Left = 200
+TextWindow.Top = 100
+TextWindow.CursorLeft = 30
+TextWindow.CursorTop = 10
+TextWindow.WriteLine("This is Example 4-1")

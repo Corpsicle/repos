@@ -1,0 +1,25 @@
+'Guide to Small Basic, Example 24-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 24-1"
+  GraphicsWindow.Show()
+  GraphicsWindow.Width = 320
+  GraphicsWindow.Height = 290
+  GraphicsWindow.BackgroundColor = "LightGray"
+  GraphicsWindow.FontSize = 14
+  GraphicsWindow.FontBold = "false"
+  WordTextBox = Controls.AddTextBox(10, 10)
+  DefineButton = Controls.AddButton("Define", 10, 40)
+  DefinitionTextBox = Controls.AddMultiLineTextBox(10, 80)
+  Controls.SetSize(DefinitionTextBox, 300, 200)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  Word = Controls.GetTextBoxText(WordTextBox)
+  Controls.SetTextBoxText(DefinitionTextBox, Dictionary.GetDefinition(Word))
+EndSub
+
+

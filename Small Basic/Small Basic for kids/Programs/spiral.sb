@@ -1,0 +1,15 @@
+' spiral
+D = 0.01
+A = 89.5
+X = 0.01
+S = 250
+
+Turtle.Turn(90)
+Turtle.Speed = 10
+GraphicsWindow.PenColor = "Blue"
+For I = 1 To S
+  Turtle.Move(D * 0.5 * GraphicsWindow.Width)
+  Turtle.Turn(A)
+  D = D + X
+EndFor
+  

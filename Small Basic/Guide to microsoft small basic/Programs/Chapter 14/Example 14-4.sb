@@ -1,0 +1,43 @@
+'Guide to Small Basic, Example 14-4
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 14-4"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 300
+  'multi-line text box
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  ExampleTextBox = Controls.AddMultiLineTextBox(60, 40)
+  Controls.SetSize(ExampleTextBox, 280, 180)
+  'button
+  ColorButton = Controls.AddButton("Exit", 180, 240)
+  Controls.ButtonClicked = ButtonClickedSub
+  GraphicsWindow.MouseDown = MouseDownSub
+  'read configuration files
+  Red = File.ReadLine(Program.Directory + "\colors.ini", 1)
+  Green = File.ReadLine(Program.Directory + "\colors.ini", 2)
+  Blue = File.ReadLine(Program.Directory + "\colors.ini", 3)
+  GraphicsWindow.BackgroundColor = GraphicsWindow.GetColorFromRGB(Red, Green, Blue)
+  Controls.SetTextBoxText(ExampleTextBox, File.ReadContents(Program.Directory + "\text.ini"))
+EndSub
+
+Sub MouseDownSub
+  Red = Math.GetRandomNumber(256) - 1
+  Green = Math.GetRandomNumber(256) - 1
+  Blue = Math.GetRandomNumber(256) - 1
+  GraphicsWindow.BackgroundColor = GraphicsWindow.GetColorFromRGB(Red, Green, Blue)
+EndSub
+
+Sub ButtonClickedSub
+  'write configuration files
+  File.WriteLine(Program.Directory + "\colors.ini", 1, Red)
+  File.WriteLine(Program.Directory + "\colors.ini", 2, Green)
+  File.WriteLine(Program.Directory + "\colors.ini", 3, Blue)
+  File.WriteContents(Program.Directory + "\text.ini", Controls.GetTextBoxText(ExampleTextBox))
+  Program.End()
+EndSub
+
+

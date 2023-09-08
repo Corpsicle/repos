@@ -1,0 +1,22 @@
+'Guide to Small Basic, Example 10-5
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 10-5"
+GraphicsWindow.Width = 500
+GraphicsWindow.Height = 300
+'load image
+Burger = ImageList.LoadImage(Program.Directory + "\burger.gif")
+BurgerWidth = ImageList.GetWidthOfImage(Burger)
+BurgerHeight = ImageList.GetHeightOfImage(Burger)
+'create shape
+RegularBurger = Shapes.AddImage(Burger)
+'randomly position the burger 25 times
+For I = 1 To 25
+  X = Math.GetRandomNumber(GraphicsWindow.Width - BurgerWidth)
+  Y = Math.GetRandomNumber(GraphicsWindow.Height - BurgerHeight)
+  Shapes.Move(RegularBurger, X, Y)
+  Program.Delay(500)
+EndFor
+
+
+
+

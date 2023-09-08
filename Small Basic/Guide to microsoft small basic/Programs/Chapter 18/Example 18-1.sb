@@ -1,0 +1,46 @@
+'Guide to Small Basic, Example 18-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 18-1"
+  GraphicsWindow.Width = 200
+  GraphicsWindow.Height = 300
+  'text box
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 14
+  GraphicsWindow.FontBold = "false"
+  NumberTextBox = Controls.AddMultiLineTextBox(10, 10)
+  Controls.SetSize(NumberTextBox, 180, 240)
+  'button
+  NextButton = Controls.AddButton("Randomize", 60, 260)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  NumberIntegers = 25
+  ShuffleIntegers()
+  ShuffledList = ""
+  For I = 1 To NumberIntegers
+    ShuffledList = Text.Append(ShuffledList, ShuffledArray[I] + Text.GetCharacter(13))
+  EndFor
+  Controls.SetTextBoxText(NumberTextBox, ShuffledList)
+EndSub
+
+Sub ShuffleIntegers
+  'Randomly shuffles NumberIntegers integers and puts results in SortedArray
+  'Order all elements initially
+  For I = 1 To NumberIntegers
+    ShuffledArray[I] = I
+  EndFor
+  'J is the number of integers remaining
+  For J = NumberIntegers To 2 Step -1
+    I = Math.GetRandomNumber(J)
+    Temp = ShuffledArray[J]
+    ShuffledArray[J] = ShuffledArray[I]
+    ShuffledArray[I] = Temp
+  EndFor
+EndSub
+
+
+

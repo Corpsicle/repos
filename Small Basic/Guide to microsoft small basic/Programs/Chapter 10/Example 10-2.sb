@@ -1,0 +1,22 @@
+'Guide to Small Basic, Example 10-2
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 10-2"
+GraphicsWindow.Width = 400
+GraphicsWindow.Height = 200
+GraphicsWindow.PenColor = "Blue"
+GraphicsWindow.PenWidth = 5
+GraphicsWindow.BrushColor = "Yellow"
+ExampleRectangle = Shapes.AddRectangle(50, 100)
+Shapes.Move(ExampleRectangle, 20, 20)
+GraphicsWindow.PenColor = "Black"
+GraphicsWindow.PenWidth = 2
+GraphicsWindow.BrushColor = "LightBlue"
+ExampleEllipse = Shapes.AddEllipse(150, 75)
+Shapes.Move(ExampleEllipse, 80, 20)
+GraphicsWindow.PenColor = "Red"
+GraphicsWindow.PenWidth = 2
+GraphicsWindow.BrushColor = "PeachPuff"
+ExampleTriangle = Shapes.AddTriangle(300, 40, 350, 160, 200, 150)
+
+
+

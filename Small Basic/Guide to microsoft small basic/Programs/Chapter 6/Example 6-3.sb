@@ -1,0 +1,30 @@
+'Guide to Small Basic, Example 6-3
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 6-3"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 200
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  Button1 = Controls.AddButton("Button 1", 70, 30)
+  Button2 = Controls.AddButton("Button 2", 70, 70)
+  Controls.HideControl(Button2)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.LastClickedButton = Button1) Then
+    Controls.HideControl(Button1)
+    Controls.ShowControl(Button2)
+  Else
+    Controls.ShowControl(Button1)
+    Controls.HideControl(Button2)
+  EndIf
+EndSub
+
+
+

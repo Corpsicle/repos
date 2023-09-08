@@ -1,0 +1,44 @@
+'Guide to Small Basic, Example 12-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 12-2"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 350
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  TimerButton = Controls.AddButton("Start", 170, 310)
+  Controls.ButtonClicked = ButtonClickedSub
+  Timer.Interval = 100
+  Timer.Tick = TickSub
+  Timer.Pause()
+  Delta = 0
+  GraphicsWindow.PenWidth = 2
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.GetButtonCaption(TimerButton) = "Start") Then
+    Controls.SetButtonCaption(TimerButton, "Stop")
+    Timer.Resume()
+  Else
+    Controls.SetButtonCaption(TimerButton, "Start")
+    Timer.Pause()
+  EndIf
+EndSub
+
+Sub TickSub
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  GraphicsWindow.DrawEllipse(Delta, Delta, GraphicsWindow.Width - 2 * Delta, 300 - 2 * Delta)
+  Delta = Delta + GraphicsWindow.PenWidth
+  If (Delta > 150) Then
+    Delta = 0
+    GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+    GraphicsWindow.FillRectangle(0, 0, GraphicsWindow.Width, 350)
+  EndIf
+EndSub
+
+
+

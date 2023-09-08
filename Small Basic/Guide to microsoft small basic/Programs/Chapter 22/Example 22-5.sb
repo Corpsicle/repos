@@ -1,0 +1,25 @@
+'Guide to Small Basic, Example 22-5
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 22-5"
+GraphicsWindow.BackgroundColor = "Black"
+'show turtle
+Turtle.Show()
+Turtle.Speed = 10
+For I = 1 To 10
+  For J = 1 To 18
+    If (Math.Remainder(J, 3) = 0) Then
+      GraphicsWindow.PenColor = "Red"
+    EndIf
+    If (Math.Remainder(J, 3) = 1) Then
+      GraphicsWindow.PenColor = "White"
+    EndIf
+    If (Math.Remainder(J, 3) = 2) Then
+      GraphicsWindow.PenColor = "Blue"
+    EndIf
+    For K =1 To 2
+      Turtle.Move(200)
+      Turtle.Turn(200)
+    EndFor
+  EndFor
+  Turtle.Turn(36)
+EndFor

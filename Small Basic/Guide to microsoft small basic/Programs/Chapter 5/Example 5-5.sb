@@ -1,0 +1,11 @@
+'Guide to Small Basic, Example 5-5
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 5-5"
+GraphicsWindow.Width = 400
+GraphicsWindow.Height = 340
+GraphicsWindow.BrushColor = "Yellow"
+GraphicsWindow.FillEllipse(100, 20, 200, 300)
+GraphicsWindow.PenColor = "Red"
+GraphicsWindow.PenWidth = 5
+GraphicsWindow.DrawEllipse(100, 20, 200, 300)
+

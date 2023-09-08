@@ -1,0 +1,24 @@
+'Guide to Small Basic, Example 6-4
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 6-4"
+  GraphicsWindow.BackgroundColor = "LightYellow"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 200
+  'text box
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  NumberTextBox = Controls.AddTextBox(70, 30)
+  NumberButton = Controls.AddButton("Random Number", 70, 60)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  Controls.SetTextBoxText(NumberTextBox, Math.GetRandomNumber(100))
+EndSub
+
+
+

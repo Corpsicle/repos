@@ -1,0 +1,95 @@
+'Guide to Small Basic, Example 9-5
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 9-5"
+  GraphicsWindow.Width = 380
+  GraphicsWindow.Height = 420
+  'images
+  XImage = ImageList.LoadImage(Program.Directory + "\apple.jpg")
+  OImage = ImageList.LoadImage(Program.Directory + "\banana.jpg")
+  'grid
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.PenWidth = 5
+  GraphicsWindow.DrawLine(10, 130, 370, 130)
+  GraphicsWindow.DrawLine(10, 250, 370, 250)
+  GraphicsWindow.DrawLine(130, 10, 130, 370)
+  GraphicsWindow.DrawLine(250, 10, 250, 370)
+  'grid locations
+  BoxX[1] = 20
+  BoxY[1] = 20
+  BoxX[2] = 140
+  BoxY[2] = 20
+  BoxX[3] = 260
+  BoxY[3] = 20
+  BoxX[4] = 20
+  BoxY[4] = 140
+  BoxX[5] = 140
+  BoxY[5] = 140
+  BoxX[6] = 260
+  BoxY[6] = 140
+  BoxX[7] = 20
+  BoxY[7] = 260
+  BoxX[8] = 140
+  BoxY[8] = 260
+  BoxX[9] = 260
+  BoxY[9] = 260
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  NewGameButton = Controls.AddButton("New Game", 140, 380)
+  Controls.ButtonClicked = ButtonClickedSub
+  GraphicsWindow.MouseDown = MouseDownSub
+  CanClick = "false"
+EndSub
+
+Sub ButtonClickedSub
+  'hide button, clear boxes
+  Controls.HideControl(NewGameButton)
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  For I = 1 To 9
+    GraphicsWindow.FillRectangle(BoxX[I], BoxY[I], 100, 100)
+    BoxValue[I] = 0
+  EndFor
+  CanClick = "true"
+  XTurn = "true"
+  NumberClicks = 0
+EndSub
+
+Sub MouseDownSub
+  'find clicked box
+  If (CanClick) Then
+    X = GraphicsWindow.MouseX
+    Y = GraphicsWindow.MouseY
+    ClickedBox = 0
+    For I = 1 To 9
+      If (Y > BoxY[I] And Y < BoxY[I] + 100) Then
+        If (X > BoxX[I] And X < BoxX[I] + 100) Then
+          ClickedBox = I
+        EndIf
+      EndIf
+    EndFor
+    If (ClickedBox <> 0 And BoxValue[ClickedBox] = 0) Then
+      'hasn't been selected yet
+      If (XTurn) Then
+        'show apple
+        BoxValue[ClickedBox] = 1
+        GraphicsWindow.DrawResizedImage(XImage, BoxX[ClickedBox], BoxY[ClickedBox], 100, 100)      
+        XTurn = "false"
+      Else 
+        'show orange
+        BoxValue[ClickedBox] = 2
+        GraphicsWindow.DrawResizedImage(OImage, BoxX[ClickedBox], BoxY[ClickedBox], 100, 100)      
+        XTurn = "true"
+      EndIf
+      NumberClicks = NumberClicks + 1
+      If (NumberClicks = 9) Then
+        CanClick = "false"
+        Controls.ShowControl(NewGameButton)
+      EndIf
+    EndIf
+  EndIf
+EndSub
+

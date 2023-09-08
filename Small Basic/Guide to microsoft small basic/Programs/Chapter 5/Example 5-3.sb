@@ -1,0 +1,13 @@
+'Guide to Small Basic, Example 5-3
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 5-3"
+GraphicsWindow.Width = 600
+GraphicsWindow.Height = 400
+GraphicsWindow.PenWidth = 1
+For I = 1 To 200
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  X = Math.GetRandomNumber(600) - 1
+  Y = Math.GetRandomNumber(400) - 1
+  GraphicsWindow.DrawLine(300, 200, X, Y)
+EndFor
+

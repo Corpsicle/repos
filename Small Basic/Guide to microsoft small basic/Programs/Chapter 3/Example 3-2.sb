@@ -1,0 +1,7 @@
+'Guide to Small Basic, Example 3-2
+TextWindow.Title = "Example 3-2"
+TextWindow.WriteLine("Line 1")
+Program.Delay(1000)
+TextWindow.WriteLine("Line 2")
+Program.Delay(2000)
+

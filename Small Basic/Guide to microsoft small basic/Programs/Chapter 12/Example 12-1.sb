@@ -1,0 +1,35 @@
+'Guide to Small Basic, Example 12-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 12-1"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 200
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 24
+  GraphicsWindow.FontBold = "false"
+  TimerButton = Controls.AddButton("Start", 70, 70)
+  Controls.ButtonClicked = ButtonClickedSub
+  Timer.Interval = 1000
+  Timer.Tick = TickSub
+  Timer.Pause()
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.GetButtonCaption(TimerButton) = "Start") Then
+    Controls.SetButtonCaption(TimerButton, "Stop")
+    Timer.Resume()
+  Else
+    Controls.SetButtonCaption(TimerButton, "Start")
+    Timer.Pause()
+  EndIf
+EndSub
+
+Sub TickSub
+  GraphicsWindow.BackgroundColor = GraphicsWindow.GetRandomColor()
+EndSub
+
+
+

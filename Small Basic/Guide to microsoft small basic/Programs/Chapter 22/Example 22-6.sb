@@ -1,0 +1,17 @@
+'Guide to Small Basic, Example 22-6
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 22-6"
+'show turtle
+Turtle.Show()
+D = 0.01
+A = 89.5
+X = 0.01
+S = 250
+Turtle.Turn(90)
+Turtle.Speed = 10
+For I = 1 To S
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  Turtle.Move(D * 0.5 * GraphicsWindow.Width)
+  Turtle.Turn(A)
+  D = D + X
+EndFor

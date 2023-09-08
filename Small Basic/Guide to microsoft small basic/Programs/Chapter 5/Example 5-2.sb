@@ -1,0 +1,10 @@
+'Guide to Small Basic, Example 5-2
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 5-2"
+GraphicsWindow.Width = 300
+GraphicsWindow.Height = 200
+For X = 0 To 299
+  For Y = 0 To 199
+    GraphicsWindow.SetPixel(X, Y, GraphicsWindow.GetRandomColor())
+  EndFor
+EndFor

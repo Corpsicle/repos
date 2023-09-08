@@ -1,0 +1,27 @@
+'Guide to Small Basic, Example 11-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 11-2"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 300
+  GraphicsWindow.MouseDown = MouseDownSub
+  GraphicsWindow.MouseMove = MouseMoveSub
+EndSub
+
+Sub MouseDownSub
+  If (Mouse.IsLeftButtonDown) Then
+    TextWindow.WriteLine("Clicked Left Mouse Button")
+  ElseIf (Mouse.IsRightButtonDown) Then
+    TextWindow.WriteLine("Clicked Right Mouse Button")
+  EndIf
+  TextWindow.WriteLine("Clicked at X = " + GraphicsWindow.MouseX + "  Y = " + GraphicsWindow.MouseY)
+EndSub
+
+Sub MouseMoveSub
+  If (Mouse.IsLeftButtonDown Or Mouse.IsRightButtonDown) Then
+    TextWindow.WriteLine("Moved to X = " + GraphicsWindow.MouseX + "  Y = " + GraphicsWindow.MouseY)
+  EndIf
+EndSub
+

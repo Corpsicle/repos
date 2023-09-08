@@ -1,0 +1,37 @@
+'Guide to Small Basic, Example 18-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 18-2"
+  GraphicsWindow.Width = 200
+  GraphicsWindow.Height = 300
+  GraphicsWindow.BackgroundColor = "Blue"
+  'button
+  NextButton = Controls.AddButton("Next Card", 60, 260)
+  Controls.ButtonClicked = ButtonClickedSub
+  'preload images
+  For CardNumber = 1 To 52
+    ImageFile = Program.Directory + "\card"
+    If (CardNumber < 10) Then
+      ImageFile = ImageFile + Text.Append("0", CardNumber) +".gif"
+    Else
+      ImageFile = ImageFile + CardNumber +".gif"
+    EndIf
+    CardImage[CardNumber] = ImageList.LoadImage(ImageFile)
+  EndFor
+  CardNumber = 0
+EndSub
+
+Sub ButtonClickedSub
+  CardNumber = CardNumber + 1
+  If (CardNumber > 52) Then
+    CardNumber = 1
+  EndIf
+  'display cardnumber
+  GraphicsWindow.DrawResizedImage(CardImage[CardNumber], 10, 10, 180, 240)
+EndSub
+
+
+
+

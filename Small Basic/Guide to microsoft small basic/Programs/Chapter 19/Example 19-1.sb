@@ -1,0 +1,96 @@
+'Guide to Small Basic, Example 19-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Width = 500
+  GraphicsWindow.Height = 300
+  GraphicsWindow.Title = "Example 19-1"
+  'Mariners data
+  NPoints = 10
+  XValue[1] = 1991
+  XValue[2] = 1992
+  XValue[3] = 1993
+  XValue[4] = 1994
+  XValue[5] = 1995
+  XValue[6] = 1996
+  XValue[7] = 1997
+  XValue[8] = 1998
+  XValue[9] = 1999
+  XValue[10] = 2000
+  YValue[1] = 2.15
+  YValue[2] = 1.65
+  YValue[3] = 2.05
+  YValue[4] = 1.1
+  YValue[5] = 1.64
+  YValue[6] = 2.72
+  YValue[7] = 3.19
+  YValue[8] = 2.65
+  YValue[9] = 2.92
+  YValue[10] = 3.15
+  LineColor = "Blue"
+  'plot area
+  PlotLeft = 100
+  PlotTop = 50
+  PlotWidth = 350
+  PlotHeight = 200
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.DrawRectangle(PlotLeft, PlotTop, PlotWidth, PlotHeight)
+  FindMinMax()
+  LineChart()
+EndSub
+
+Sub FindMinMax
+  'find minimums and maximums
+  XMin = XValue[1]
+  XMax = XValue[1]
+  YMin = YValue[1]
+  Ymax = YValue[1]
+  For I = 2 To NPoints
+    XMin = Math.Min(XMin, XValue[I])
+    XMax = Math.Max(XMax, XValue[I])
+    YMin = Math.Min(YMin, YValue[I])
+    Ymax = Math.Max(Ymax, YValue[I])
+  EndFor
+EndSub
+
+Sub LineChart
+  'Constructs a  line chart - pairs of (x,y) coordinates
+  'NPoints - number of points to plot
+  'XValue - array of x points
+  'YValue - array of y points 
+  If (NPoints < 2) Then
+    Goto ExitLineChart
+  EndIf
+  'plot the pairs -  get first point
+  XData = XValue[1]
+  YData = YValue[1]
+  XDataToXPlot()
+  YDataToYPlot()
+  XPrevious = XPlot
+  YPrevious = YPlot
+  GraphicsWindow.PenColor = LineColor
+  GraphicsWindow.PenWidth = 1
+  For I = 2 To NPoints
+    'connect subsequent points to previous
+    XData = XValue[I]
+    YData = YValue[I]
+    XDataToXPlot()
+    YDataToYPlot()
+    GraphicsWindow.DrawLine(XPrevious, YPrevious, XPlot, YPlot)
+    XPrevious = XPlot
+    YPrevious = YPlot
+  EndFor
+ExitLineChart:
+EndSub
+
+Sub XDataToXPlot
+  'converts XData to XPlot
+  XPlot = PlotLeft + (XData - XMin) * (PlotWidth - 1) / (XMax - XMin)
+EndSub
+  
+Sub YDataToYPlot
+  'converts YData) to YPlot
+  YPlot = PlotTop + (Ymax - YData) * (PlotHeight - 1) / (Ymax - YMin)
+EndSub
+  

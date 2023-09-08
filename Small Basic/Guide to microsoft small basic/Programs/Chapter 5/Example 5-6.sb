@@ -1,0 +1,9 @@
+'Guide to Small Basic, Example 5-6
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 5-6"
+GraphicsWindow.Width = 400
+GraphicsWindow.Height = 300
+GraphicsWindow.PenWidth = 3
+GraphicsWindow.PenColor = "Green"
+GraphicsWindow.DrawTriangle(250, 50, 50, 200, 350, 250)
+

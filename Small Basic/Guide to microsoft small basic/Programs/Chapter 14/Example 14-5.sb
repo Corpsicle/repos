@@ -1,0 +1,23 @@
+'Guide to Small Basic, Example 14-5
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 14-5"
+GraphicsWindow.Width = 600
+GraphicsWindow.Height = 200
+'multi-line text box
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontSize = 16
+GraphicsWindow.FontBold = "false"
+FilesTextBox = Controls.AddMultiLineTextBox(20, 20)
+Controls.SetSize(FilesTextBox, 560, 160)
+'get files
+AllFiles = File.GetFiles(Program.Directory)
+NumberFiles = Array.GetItemCount(AllFiles)
+FilesText = ""
+For I = 1 To NumberFiles
+  'add next file
+  FileName = Text.GetSubTextToEnd(AllFiles[I], Text.GetLength(Program.Directory) + 2)
+  FilesText = FilesText + FileName + Text.GetCharacter(13)
+EndFor
+Controls.SetTextBoxText(FilesTextBox, FilesText)
+  
+

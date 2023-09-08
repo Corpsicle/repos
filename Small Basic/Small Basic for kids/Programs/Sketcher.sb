@@ -1,0 +1,45 @@
+' Random sketcher
+' start near center
+C = 40
+R = 12
+GetDirection:
+' get random direction ( -1, 0, +1)
+D = 2 - Math.GetRandomNumber(3)
+C = C + D
+If (C < 0) Then
+  C = 0
+EndIf
+If (C > 79) Then
+  C = 79
+EndIf
+D = 2 - Math.GetRandomNumber(3)
+R = R + D
+If (R < 0) Then
+  R = 0
+EndIf
+If (R > 24) Then
+  R = 24
+EndIf
+' pick one of five random colours
+N = Math.GetRandomNumber(5)
+If (N = 1) Then
+  TextWindow.BackgroundColor = "Yellow"
+EndIf
+If (N = 2) Then
+  TextWindow.BackgroundColor = "Blue"
+EndIf
+If (N = 3) Then
+  TextWindow.BackgroundColor = "Red"
+EndIf
+If (N = 4) Then
+  TextWindow.BackgroundColor = "Green"
+EndIf
+If (N = 5) Then
+  TextWindow.BackgroundColor = "Magenta"
+EndIf
+TextWindow.CursorLeft = C
+TextWindow.CursorTop = R
+TextWindow.Write(" ")
+Program.Delay(50)
+Goto GetDirection
+  

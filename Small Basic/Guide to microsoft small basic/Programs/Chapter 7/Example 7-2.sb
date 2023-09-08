@@ -1,0 +1,33 @@
+'Guide to Small Basic, Example 7-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 7-2"
+  GraphicsWindow.BackgroundColor = "LightBlue"
+  GraphicsWindow.Width = 300
+  GraphicsWindow.Height = 100
+  'text box/buttons
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  GraphicsWindow.DrawText(10, 10, "Elapsed Time:")
+  ElapsedTimeTextBox = Controls.AddTextBox(120, 10)
+  Controls.SetTextBoxText(ElapsedTimeTextBox, "0.0")
+  StartStopButton = Controls.AddButton("Start", 90, 50)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  If (Controls.GetButtonCaption(StartStopButton) = "Start") Then
+    StartTime = Clock.ElapsedMilliseconds
+    Controls.SetTextBoxText(ElapsedTimeTextBox, "Timing ...")
+    Controls.SetButtonCaption(StartStopButton, "Stop")
+  Else
+    Controls.SetTextBoxText(ElapsedTimeTextBox, (Clock.ElapsedMilliseconds - StartTime) / 1000)
+    Controls.SetButtonCaption(StartStopButton, "Start")
+  EndIf
+EndSub
+
+
+

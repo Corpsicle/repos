@@ -1,0 +1,117 @@
+'Guide to Small Basic, Example 21-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 21-2"
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 200
+  CBGroupNumber = 1
+  CBBackColor = "SkyBlue"
+  CBForeColor = "Black"
+  CBLeft = 20
+  CBTop = 20
+  CBWidth = 160
+  CBHeight = 120
+  CBTitle = "Text Formatting"
+  CBNumberBoxes = 4
+  CBText[1] = "Bold"
+  CBText[2] = "Italic"
+  CBText[3] = "Underline"
+  CBText[4] = "Strikethrough"
+  CBChecked[1] = "false"
+  CBChecked[2] = "false"
+  CBChecked[3] = "false"
+  CBChecked[4] = "false"
+  CreateCheckBoxGroup()
+  'status text box
+  Status = Shapes.AddText("No box clicked.")
+  Shapes.Move(Status, 200, 20)
+  GraphicsWindow.MouseDown = MouseDownSub
+EndSub
+
+Sub MouseDownSub
+  CheckBoxClick()
+  If (CheckBoxClicked) Then
+    CRLF = Text.GetCharacter(13)
+    StatusMessage = "A check box was clicked." + CRLF
+    StatusMessage = StatusMessage + "It is Box " + ClickedBox + " in Group " + ClickedGroup + CRLF
+    StatusMessage = StatusMessage + "Checked property is " + CheckBoxChecked[ClickedGroup][ClickedBox]
+    Shapes.SetText(Status, StatusMessage)
+  EndIf
+EndSub
+
+Sub CreateCheckBoxGroup
+  NumberCheckBoxGroups = CBGroupNumber
+  NumberCheckBoxes[CBGroupNumber] = CBNumberBoxes
+  'draw backing
+  GraphicsWindow.BrushColor = CBBackColor
+  GraphicsWindow.FillRectangle(CBLeft, CBTop, CBWidth, CBHeight)
+  'add title (optional)
+  If (CBTitle <> "") Then
+    GraphicsWindow.BrushColor = CBForeColor
+    GraphicsWindow.FontSize = 16
+    GraphicsWindow.FontBold = "true"
+    GraphicsWindow.DrawText(CBLeft + 5, CBTop + 5, CBTitle)
+    TopOffset = 10
+  Else
+    TopOffset = -10
+  EndIf
+  'create and add check boxes
+  For I = 1 To CBNumberBoxes
+    GraphicsWindow.PenColor = "White"
+    GraphicsWindow.BrushColor = "White"
+    CheckBox[CBGroupNumber][I] = Shapes.AddRectangle(15, 15)
+    Shapes.Move(CheckBox[CBGroupNumber][I], CBLeft + 5, CBTop + TopOffset + I * 20)
+    CheckBoxChecked[CBGroupNumber][I] = CBChecked[I]
+    If (CBChecked[I]) Then
+      ClickedGroup = CBGroupNumber
+      ClickedBox = I
+      MarkCheckBox()
+    EndIf
+    GraphicsWindow.BrushColor = CBForeColor
+    GraphicsWindow.FontSize = 14
+    GraphicsWindow.FontBold = "false"
+    CheckBoxText[CBGroupNumber][I] = CBText[I]
+    TextShape = Shapes.AddText(CBText[I])
+    Shapes.Move(TextShape, CBLeft + 25, CBTop + TopOffset + I * 20)
+  EndFor
+EndSub
+
+Sub MarkCheckBox
+  CheckBoxChecked[ClickedGroup][ClickedBox] = "true"
+  CBL = Shapes.GetLeft(CheckBox[ClickedGroup][ClickedBox])
+  CBT = Shapes.GetTop(CheckBox[ClickedGroup][ClickedBox])
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.PenWidth = 1
+  CheckMark1[ClickedGroup][ClickedBox] = Shapes.AddLine(CBL + 3, CBT + 8, CBL + 7, CBT + 12)
+  CheckMark2[ClickedGroup][ClickedBox] = Shapes.AddLine(CBL + 7, CBT + 12, CBL + 12, CBT + 3)
+EndSub
+
+Sub CheckBoxClick
+  CheckBoxClicked = "false"
+  X = GraphicsWindow.MouseX
+  Y = GraphicsWindow.MouseY
+  For I = 1 to NumberCheckBoxGroups
+    For J = 1 to NumberCheckBoxes[I]
+      CBL = Shapes.GetLeft(CheckBox[I][J])
+      CBT = Shapes.GetTop(CheckBox[I][J])
+      If (X > CBL And X < CBL + 15 And Y > CBT And Y < CBT + 15) Then
+        CheckBoxClicked = "true"
+        ClickedGroup = I
+        ClickedBox = J
+        'change checked status
+        If (CheckBoxChecked[I][J]) Then
+          CheckBoxChecked[I][J] = "false"
+          Shapes.Remove(CheckMark1[I][J])
+          Shapes.Remove(CheckMark2[I][J])
+        Else
+          MarkCheckBox()
+        EndIf
+      EndIf
+    EndFor
+  EndFor
+EndSub
+
+
+  

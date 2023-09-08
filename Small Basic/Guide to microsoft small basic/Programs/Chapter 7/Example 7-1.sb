@@ -1,0 +1,29 @@
+'Guide to Small Basic, Example 7-1
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 7-1"
+  GraphicsWindow.BackgroundColor = "LightBlue"
+  GraphicsWindow.Width = 300
+  GraphicsWindow.Height = 120
+  'text boxes/button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  GraphicsWindow.DrawText(10, 10, "Time:")
+  TimeTextBox = Controls.AddTextBox(90, 10)
+  GraphicsWindow.DrawText(10, 40, "Date:")
+  DateTextBox = Controls.AddTextBox(90, 40)
+  DisplayButton = Controls.AddButton("Display Time/Date", 90, 70)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  'Display  values
+  Controls.SetTextBoxText(TimeTextBox, Clock.Time)
+  Controls.SetTextBoxText(DateTextBox, Clock.Date)
+EndSub
+
+
+

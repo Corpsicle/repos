@@ -1,0 +1,106 @@
+'Guide to Small Basic, Example 19-10
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Width = 400
+  GraphicsWindow.Height = 300
+  GraphicsWindow.Title = "Example 19-10"
+  'rainfall data
+  NPoints = 12
+  YValue[1] = 4.5
+  YValue[2] = 5.0
+  YValue[3] = 4.1
+  YValue[4] = 2.1
+  YValue[5] = 0.8
+  YValue[6] = 1.5
+  YValue[7] = 1.3
+  YValue[8] = 1.8
+  YValue[9] = 0.9
+  YValue[10] = 3.9
+  YValue[11] = 10.4
+  YValue[12] = 6.4
+  'colors
+  PieColor[1] = "Red"
+  PieColor[2] = "Blue"
+  PieColor[3] = "Green"
+  PieColor[4] = "Magenta"
+  PieColor[5] = "Yellow"
+  PieColor[6] = "Black"
+  PieColor[7] = "Brown"
+  PieColor[8] = "Cyan"
+  PieColor[9] = "DarkRed"
+  PieColor[10] = "DarkBlue"
+  PieColor[11] = "DarkGreen"
+  PieColor[12] = "CornflowerBlue"
+  'circle location
+  RCircle = 100
+  XCircle = 150
+  YCircle = 150
+  PieChart()
+  PlotTitle = "Seattle Monthly Rainfall"
+  'segment labels
+  SegmentLabel[1] = "Jan"
+  SegmentLabel[2] = "Feb"
+  SegmentLabel[3] = "Mar"
+  SegmentLabel[4] = "Apr"
+  SegmentLabel[5] = "May""
+  SegmentLabel[6] = "Jun"
+  SegmentLabel[7] = "Jul"
+  SegmentLabel[8] = "Aug"
+  SegmentLabel[9] = "Sep"
+  SegmentLabel[10] = "Oct"
+  SegmentLabel[11] = "Nov"
+  SegmentLabel[12] = "Dec"
+  LabelPieChart()
+EndSub
+
+Sub PieChart
+  'find sum of values
+  Sum = 0
+  For I = 1 To NPoints
+    Sum = Sum + YValue[I]
+  EndFor
+  'for each slice determine SweepAngle and draw using PieColor
+  StartAngle = 0
+  For I = 1 To NPoints
+    SegmentColor = PieColor[I]
+    SweepAngle = 360 * YValue[I] / Sum
+    DrawPieSegment()
+    StartAngle = StartAngle + SweepAngle
+  EndFor
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.PenWidth = 1
+  GraphicsWindow.DrawEllipse(XCircle - RCircle, YCircle - RCircle, 2 * RCircle, 2 * RCircle)
+EndSub
+  
+Sub DrawPieSegment
+  'converts degrees to radians
+  DegToRad = Math.Pi / 180
+  'draws segment from StartAngle, through SweepAngle, in SegmentColor
+  For AValue = StartAngle To StartAngle + SweepAngle
+    X1 = XCircle + RCircle * Math.Sin(AValue * DegToRad)
+    Y1 = YCircle - RCircle * Math.Cos(AValue * DegToRad)
+    X2 = XCircle + RCircle * Math.Sin((AValue + 1) * DegToRad)
+    Y2 = YCircle - RCircle * Math.Cos((AValue + 1) * DegToRad)
+    GraphicsWindow.BrushColor = SegmentColor
+    GraphicsWindow.FillTriangle(XCircle, YCircle, X1, Y1, X2, Y2)
+  EndFor
+EndSub
+
+Sub LabelPieChart
+  'title
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 18
+  GraphicsWindow.FontBold = "false"
+  TitleDisplay = Shapes.AddText(PlotTitle)
+  Shapes.Move(TitleDisplay, XCircle - RCircle, YCircle - RCircle -40)
+  'legends
+  GraphicsWindow.FontSize = 14
+  For I =1 To NPoints
+    GraphicsWindow.BrushColor = PieColor[I]
+    GraphicsWindow.FillRectangle(XCircle + RCircle + 20, YCircle - RCircle - 20 + (I - 1) *20, 20, 20)
+    GraphicsWindow.BrushColor = "Black"
+    GraphicsWindow.DrawText(XCircle + RCircle + 45, YCircle - RCircle - 20 + (I - 1) * 20, SegmentLabel[I])
+  EndFor
+EndSub

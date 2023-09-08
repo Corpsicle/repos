@@ -1,0 +1,41 @@
+'Guide to Small Basic, Example 14-6
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 14-6"
+  GraphicsWindow.Width = 520
+  GraphicsWindow.Height = 150
+  'text box
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 14
+  GraphicsWindow.FontBold = "false"
+  FileTextBox = Controls.AddTextBox(10, 40)
+  Controls.SetSize(FileTextBox, 500, 30)
+  'button
+  NextButton = Controls.AddButton("Next File", 60, 80)
+  Controls.ButtonClicked = ButtonClickedSub
+  'get .sb files
+  AllFiles = File.GetFiles(Program.Directory)
+  NumberFiles = Array.GetItemCount(AllFiles)
+  NumberSBFiles = 0
+  For I = 1 To NumberFiles
+    'check for sb extension
+    If (Text.IsSubText(AllFiles[I], ".sb")) Then
+      NumberSBFiles = NumberSBFiles + 1
+      SBFiles[NumberSBFiles] = AllFiles[I]
+    EndIf
+  EndFor
+  FileIndex = 1
+  Controls.SetTextBoxText(FileTextBox, SBFiles[FileIndex])
+EndSub
+
+Sub ButtonClickedSub
+  FileIndex = FileIndex + 1
+  If (FileIndex > NumberSBFiles) Then
+    FileIndex = 1
+  EndIf
+  Controls.SetTextBoxText(FileTextBox, SBFiles[FileIndex])
+EndSub
+
+

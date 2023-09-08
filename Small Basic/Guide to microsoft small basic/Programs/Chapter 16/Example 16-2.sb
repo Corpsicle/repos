@@ -1,0 +1,55 @@
+'Guide to Small Basic, Example 16-2
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 16-2"
+  GraphicsWindow.Width = 220
+  GraphicsWindow.Height = 150
+  'text box
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 18
+  GraphicsWindow.FontBold = "false"
+  NumberTextBox = Controls.AddTextBox(10, 40)
+  Controls.SetSize(NumberTextBox, 200, 30)
+  'button
+  GraphicsWindow.FontSize = 14
+  ValidateButton = Controls.AddButton("Validate Number", 60, 80)
+  Controls.ButtonClicked = ButtonClickedSub
+EndSub
+
+Sub ButtonClickedSub
+  NumberToValidate = Controls.GetTextBoxText(NumberTextBox)
+  ValidateNumber()
+  If (NumberIsValid) Then
+    GraphicsWindow.ShowMessage("Entry is properly formatted.", "Valid Number")
+  EndIf
+EndSub
+
+Sub ValidateNumber
+  'sees if NumberToValidate has only digits and a single decimal and is not blank
+  NumberIsValid = "true"
+  If (NumberToValidate = "") Then
+    GraphicsWindow.ShowMessage("Entry is blank", "Invalid Number")
+    NumberIsValid = "false"
+    Goto ExitValidateNumber
+  EndIf
+  DecimalCount = 0
+  For I = 1 To Text.GetLength(NumberToValidate)
+    CC = Text.GetCharacterCode(Text.GetSubText(NumberToValidate, I, 1))
+    If (CC = Text.GetCharacterCode(".")) Then
+      DecimalCount = DecimalCount + 1
+      If (DecimalCount > 1) Then
+        GraphicsWindow.ShowMessage("Multiple decimal points", "Invalid Number")
+        NumberIsValid = "false"
+        Goto ExitValidateNumber
+      EndIf
+    ElseIf (CC < Text.GetCharacterCode("0") Or CC > Text.GetCharacterCode("9")) Then
+      GraphicsWindow.ShowMessage("Only 0 through 9 allowed", "Invalid Number")
+      NumberIsValid = "false"
+      Goto ExitValidateNumber
+    EndIf
+  EndFor
+ExitValidateNumber:
+EndSub
+

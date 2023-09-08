@@ -1,0 +1,114 @@
+'Guide to Small Basic, Example 12-6
+InitializeProgram()
+
+Sub InitializeProgram
+  GraphicsWindow.Show()
+  GraphicsWindow.Title = "Example 12-6"
+  GraphicsWindow.Width = 380
+  GraphicsWindow.Height = 180
+  'burger
+  BurgerImage = ImageList.LoadImage(Program.Directory + "\burger.gif")
+  'box locations/boxes
+  BoxX[1] = 20
+  BoxX[2] = 140
+  BoxX[3] = 260
+  GraphicsWindow.PenColor = "Blue"
+  GraphicsWindow.BrushColor = "Blue"
+  For I = 1 To 3
+    Box[I] = Shapes.AddRectangle(100, 100)
+    Shapes.HideShape(Box[I])
+  EndFor
+  'button
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "false"
+  NewGameButton = Controls.AddButton("New Game", 140, 140)
+  Controls.ButtonClicked = ButtonClickedSub
+  GraphicsWindow.MouseDown = MouseDownSub
+  Timer.Interval = 1000
+  Timer.Tick = TickSub
+  Timer.Pause()
+EndSub
+
+Sub ButtonClickedSub
+  'hide button
+  Controls.HideControl(NewGameButton)
+  'clear screen, determine burger location
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  For I = 1 To 3
+    GraphicsWindow.FillRectangle(BoxX[I], 20, 100, 100)
+    Shapes.Move(Box[I], BoxX[I], 20)
+    Shapes.HideShape(Box[I])
+    BoxOrder[I] = I
+  EndFor
+  BurgerLocation = Math.GetRandomNumber(3)
+  'display burger for brief time, then draw boxes
+  GraphicsWindow.DrawResizedImage(BurgerImage, BoxX[BurgerLocation], 20, 100, 100)
+  Timer.Resume()
+EndSub
+
+Sub TickSub
+  Timer.Pause()
+  'erase burger and show boxes
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  For I = 1 To 3
+    GraphicsWindow.FillRectangle(BoxX[I], 20, 100, 100)
+    Shapes.ShowShape(Box[I])
+  EndFor
+  'animate the boxes
+  NumberSwaps = 5 + Math.GetRandomNumber(10)
+  For I = 1 To NumberSwaps
+    J = Math.GetRandomNumber(3)
+    If (J = 1) Then
+      'swap 1 and 2
+      FromBox = 1
+      ToBox = 2
+    ElseIf (J = 2) Then
+      'swap 1 and 3
+      FromBox = 1
+      ToBox = 3
+    Else
+      'swap 2 and 3
+      FromBox = 2
+      ToBox = 3
+    EndIf
+    If (Math.GetRandomNumber(2) = 1) Then
+      'do from first
+      Shapes.Animate(Box[BoxOrder[FromBox]], BoxX[ToBox], 20, 1500)
+      Program.Delay(500)
+      Shapes.Animate(Box[BoxOrder[ToBox]], BoxX[FromBox], 20, 1500)
+      Program.Delay(1500)
+    Else
+      'do to first
+      Shapes.Animate(Box[BoxOrder[ToBox]], BoxX[FromBox], 20, 1500)
+      Program.Delay(500)
+      Shapes.Animate(Box[BoxOrder[FromBox]], BoxX[ToBox], 20, 1500)
+      Program.Delay(1500)
+    EndIf
+    Temp = BoxOrder[FromBox]
+    BoxOrder[FromBox] = BoxOrder[ToBox]
+    BoxOrder[ToBox] = Temp
+  EndFor
+EndSub
+
+
+Sub MouseDownSub
+  'find clicked box
+  X = GraphicsWindow.MouseX
+  Y = GraphicsWindow.MouseY
+  ClickedBox = 0
+  If (Y > 20 And Y < 120) Then
+    For I = 1 To 3
+      If (X > BoxX[I] And X < BoxX[I] + 100) Then
+        ClickedBox = I
+      EndIf
+    EndFor
+  EndIf
+  'clear box, see if burger is there
+  Shapes.HideShape(Box[BoxOrder[ClickedBox]])
+  If (BoxOrder[ClickedBox] = BurgerLocation) Then
+    GraphicsWindow.DrawResizedImage(BurgerImage, BoxX[ClickedBox], 20, 100, 100)
+    Controls.ShowControl(NewGameButton)
+  EndIf
+EndSub
+

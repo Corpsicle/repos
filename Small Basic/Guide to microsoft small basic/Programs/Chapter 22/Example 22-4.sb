@@ -1,0 +1,57 @@
+'Guide to Small Basic, Example 22-4
+GraphicsWindow.Show()
+GraphicsWindow.Title = "Example 22-4"
+'show turtle
+Turtle.Show()
+'move down a bit
+Turtle.Speed = 10
+Turtle.PenUp()
+Turtle.Turn(180)
+Turtle.Move(50)
+Turtle.Turn(180)
+'ground
+Turtle.PenDown()
+GraphicsWindow.PenColor = "Orange"
+Turtle.Turn(90)
+Turtle.Move(150)
+Turtle.Turn(180)
+Turtle.Move(300)
+Turtle.Turn(180)
+Turtle.Move(150)
+Turtle.Turn(-90)
+'draw plant body
+GraphicsWindow.PenColor = "Green"
+Turtle.Turn(-10)
+For I =1 To 3
+  Turtle.Move(100)
+  Turtle.Turn(180)
+  Turtle.Move(100)
+  Turtle.Turn(190)
+EndFor
+'Draw stem
+Turtle.Turn(-20)
+Turtle.Move(120)
+'Draw flower petals
+GraphicsWindow.PenColor = "Red"
+Turtle.Turn(-90)
+For I =1 To 10
+  Turtle.Move(20)
+  For J =1 To 10
+    Turtle.Turn(20)
+    Turtle.Move(2)
+  EndFor
+  Turtle.Move(20)
+EndFor
+'flower center
+GraphicsWindow.PenWidth = 3
+GraphicsWindow.PenColor = "Yellow"
+Turtle.PenUp()
+Turtle.Move(-2)
+Turtle.PenDown()
+For I =1 To 18
+  Turtle.Move(1)
+  Turtle.Turn(20)
+EndFor
+'get turtle out of way
+Turtle.PenUp()
+Turtle.Move(100)
