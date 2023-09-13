@@ -2,7 +2,7 @@
 C:\Users\alanb\source\repos\repos\CLang\the C programming language\celsius\celsius.c(18,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\alanb\source\repos\repos\CLang\the C programming language\celsius\celsius.c(20,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating code
-  Previous IPDB not found, fall back to full compilation.
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
   All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   celsius.vcxproj -> C:\Users\alanb\source\repos\repos\CLang\the C programming language\celsius\x64\Release\celsius.exe

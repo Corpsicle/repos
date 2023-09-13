@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\C#"
+    "\\CLang",
+    "\\CLang\\the C programming language",
+    "\\CLang\\the C programming language\\Arrays"
   ],
-  "SelectedNode": "\\C#\\C# in easy steps.zip",
+  "SelectedNode": "\\CLang\\the C programming language\\Arrays\\Arrays.sln",
   "PreviewInSolutionExplorer": true
 }
