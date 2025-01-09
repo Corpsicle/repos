@@ -7,7 +7,7 @@
     <CppWinRTOptimized>true</CppWinRTOptimized>
     <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
     <MinimalCoreWin>true</MinimalCoreWin>
-    <ProjectGuid>{c42d6e02-5667-4cbd-baea-8e3bb5615144}</ProjectGuid>
+    <ProjectGuid>{daee9c1b-def8-4c5e-a62d-ab7453a2efca}</ProjectGuid>
     <ProjectName>App1</ProjectName>
     <RootNamespace>App1</RootNamespace>
     <!--
