@@ -1,24 +1,30 @@
-// Vars.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Arrays.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
-
 using namespace std;
 
 int main()
 {
-	char letter; letter = 'A';	// Declared then initialized
-	int number; number = 100;	// Declared then initialized
-	float decimal = 7.5;		// Declared then initialized
-	double pi = 3.14159;		// Declared then initialized
-	bool isTrue = true;			// Declared then initialized
+    // Declared then initialized.
+    float nums[3];
+    nums[0] = 1.5;
+    nums[1] = 2.75;
+    nums[2] = 3.25;
 
-	cout << "Char letter is: " << letter << endl;
-	cout << "Int number is: " << number << endl;
-	cout << "Float decimal is: " << decimal << endl;
-	cout << "Double  pi is: " << pi << endl;
-	cout << "Bool truth is: " << isTrue << endl;
+    // Declared and initialized.
+    char name[5] = { 'm', 'i', 'k', 'e', '\0' };
+    int coords[2][3] = { {1, 2, 3}, {4, 5, 6} };
 
+    cout << "nums[0]: " << nums[0] << endl;
+	cout << "nums[1]: " << nums[1] << endl;
+	cout << "nums[2]: " << nums[2] << endl;
+	cout << "name[0]: " << name[0] << endl;
+	cout << "Text string: " << name << endl;
+	cout << "coords[0][2]: " << coords[0][2] << endl;
+	cout << "coords[1][2]: " << coords[1][2] << endl;
+
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
