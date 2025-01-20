@@ -1,30 +1,30 @@
-// Arrays.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Vector.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include <vector>
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    // Declared then initialized.
-    float nums[3];
-    nums[0] = 1.5;
-    nums[1] = 2.75;
-    nums[2] = 3.25;
+	vector <int> vec( 3, 100 );
 
-    // Declared and initialized.
-    char name[5] = { 'a', 'l', 'a', 'n', '\0' };
-    int coords[2][3] = { {1, 2, 3}, {4, 5, 6} };
+	cout << "Vector size: " << vec.size() << endl;
+	cout << "is empty?: " << vec.empty() << endl;
+	cout << "First element: " << vec.at(0) << endl;
 
-    cout << "nums[0]: " << nums[0] << endl;
-	cout << "nums[1]: " << nums[1] << endl;
-	cout << "nums[2]: " << nums[2] << endl;
-	cout << "name[0]: " << name[0] << endl;
-	cout << "Text string: " << name << endl;
-	cout << "coords[0][2]: " << coords[0][2] << endl;
-	cout << "coords[1][2]: " << coords[1][2] << endl;
+	vec.pop_back();		// remove last element
+	cout << "Vector size: " << vec.size() << endl;
+	cout << "Final element: " << vec.back() << endl;
 
-    return 0;
+	vec.clear();		// remove all elements	
+	cout << "Vector size: " << vec.size() << endl;
+
+	vec.push_back(200);	// add an element
+	cout << "Vector size: " << vec.size() << endl;
+	cout << "First element: " << vec.front() << endl;
+
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
