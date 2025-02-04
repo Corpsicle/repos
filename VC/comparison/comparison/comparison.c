@@ -11,12 +11,12 @@ int main()
 	printf("Equality (0 == 1) is %d\n", zero == one);
 	printf("Equality (A == a) is %d\n", upr == lwr);
 	printf("Inequality (A != a) is %d\n", upr != lwr);
-	printf("Gretaer than (1 > 0) is %d\n", one > zero);
+	printf("Greater than (1 > 0) is %d\n", one > zero);
 	printf("Less than (1 < 0) is %d\n", one < nil);
 	printf("Greater than or equal to (1 >= 0) is %d\n", one >= zero);
-	Printf("Less than or equal to (1 <= 0) is %d\n", one <= nil);
+	printf("Less than or equal to (1 <= 0) is %d\n", one <= nil);
 
-    return 0;;
+    return 0;
 }
 
 /* Run program : Ctrl + F5 or Debug > Start Without Debugging menu
