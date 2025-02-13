@@ -9,7 +9,7 @@ int main()
     char text[50];
     errno_t err;
 
-    err = fopen_s(&file_ptr, "farewell.txt", "r+a");
+    err = fopen_s(&file_ptr, "farewell.txt", "a");
     if (err == 0)
     {
         printf("File farewell.txt opened\n");

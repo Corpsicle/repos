@@ -18,7 +18,7 @@ typedef union
 int main()
 {
     Distinct sdata = { 10, 'C', "program" };
-    Unified udata;
+    Unified udata = { 0 };
 
 	printf("\nStructure\nNumber: %d", sdata.num);
 	printf("\tStored at: %p\n", &sdata.num);
