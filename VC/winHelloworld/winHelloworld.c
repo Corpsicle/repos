@@ -5,12 +5,12 @@
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,  PSTR cmdLine,  int cmdShow)
+int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int cmdShow)
 {
     static TCHAR appName[] = TEXT("Hello WindowsAPI");
     HWND hwnd;
     MSG msg;
-    WNDCLASS wndclass;
+    WNDCLASS wndclass = { 0 };
 
     wndclass.style = CS_HREDRAW | CS_VREDRAW;
     wndclass.lpfnWndProc = WndProc;
@@ -25,9 +25,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,  PSTR cmdLine,  
 
     if (!RegisterClass(&wndclass)) {
         MessageBox(NULL, TEXT("Could not register Window Class!"), appName, MB_ICONERROR);
+        return 0; // Add return statement to handle error
     }
 
     hwnd = CreateWindow(appName, TEXT("The Hello Windows Program"), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, NULL, NULL, hInstance, NULL);
+
+    if (!hwnd) {
+        MessageBox(NULL, TEXT("Could not create window!"), appName, MB_ICONERROR);
+        return 0; // Add return statement to handle error
+    }
 
     ShowWindow(hwnd, cmdShow);
     UpdateWindow(hwnd);
@@ -37,7 +43,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance,  PSTR cmdLine,  
         DispatchMessage(&msg);
     }
 
-    return msg.wParam;
+    return (int)msg.wParam; // Cast to int to match return type
 }
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
