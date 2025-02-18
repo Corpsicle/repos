@@ -5,31 +5,28 @@
 
 int main()
 {
-    FILE* file_ptr;
-    char text[50];
-    errno_t err;
-
-    err = fopen_s(&file_ptr, "farewell.txt", "a");
-    if (err == 0)
+    FILE* file_ptr = NULL ;
+    char text[50] ;
+    
+    file_ptr = fopen("farewll.txt", "r+a") ;
+	if (file_ptr != NULL)
     {
-        printf("File farewell.txt opened\n");
-        while (fgets(text, 50, file_ptr))
+        printf("File farewell.txt opened\n") ;
+		
+        while ( fgets( text, 50, file_ptr))
         {
-            printf("%s", text);
+            printf("%s", text) ;
         }
-        strcpy_s(text, sizeof(text), "...by Lord Alfred Tennyson");
-        fputs(text, file_ptr);
-        fclose(file_ptr);
-
-        return 0;
+        strcpy( text, "...by Lord Alfred Tennyson") ;
+        fputs(text, file_ptr) ;
+        fclose(file_ptr) ;
+        return 0 ;
     }
     else
     {
-        printf("unable to open file\n");
-        return 1;
+        printf("unable to open file\n") ;
+        return 1 ;
     }
-
-    return 0;
 }
 
 /* Run program : Ctrl + F5 or Debug > Start Without Debugging menu
