@@ -6,7 +6,7 @@
 using namespace std;
 
 inline void add(int& a, int* b) {
-    cout << "Total: " << (a + b) << endl;
+    cout << "Total: " << (a + *b) << endl;
 }
 
 int main()
@@ -14,7 +14,7 @@ int main()
     int num = 100, sum = 500;
     int& rNum = num;
     int* ptr = &num;
-    void (* fn) (Int& a, int* b) = add;
+    void (*fn)(int& a, int* b) = add;
     cout << "Reference: " << rNum << endl;
     cout << "Pointer: " << *ptr << endl;
     ptr = &sum;
