@@ -12,7 +12,6 @@ private:
     int age, weight;
     string color;
 public:
-    Dog(int, int, string);
     Dog();
 	Dog(int, int);
     ~Dog();
