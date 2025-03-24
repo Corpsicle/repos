@@ -14,6 +14,7 @@ private:
 public:
     Dog();
 	Dog(int, int);
+    Dog(int, int, string);
     ~Dog();
     void bark() { cout << "WOOF!" << endl; }
     void bark(string noise) { cout << noise << endl; }
