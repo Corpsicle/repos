@@ -21,7 +21,7 @@ public :
 
 class Pigeon : public Bird
 {
-public:
+public :
 	void Talk() const
 	{
 		cout << "Coo! Coo!" << endl;
@@ -35,7 +35,7 @@ public:
 
 class Chicken : public Bird
 {
-public:
+public :
 	void Talk() const
 	{
 		cout << "Cluck! Cluck!" << endl;
