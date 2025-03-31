@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80E1D5F2-809C-ED00-F12D-59527B70062F}</ProjectGuid>
+    <ProjectGuid>{C91C176C-2025-F5A7-54F6-3F88BFE0E31B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>DrawintText.DrawintTextModule</StartupObject>
-    <AssemblyName>DrawintText</AssemblyName>
+    <StartupObject>PenWidthDemo.PenWidthDemoModule</StartupObject>
+    <AssemblyName>PenWidthDemo</AssemblyName>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
@@ -41,7 +41,6 @@
       <HintPath>$(programfiles)\\WindowsApps\Microsoft.SmallBasic_1.3.0.0_x86__8wekyb3d8bbwe\Small Basic\SmallBasicLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -57,7 +56,7 @@
     <Import Include="Microsoft.SmallBasic.Library" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DrawintTextModule.vb" />
+    <Compile Include="PenWidthDemoModule.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

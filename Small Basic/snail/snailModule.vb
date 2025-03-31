@@ -12,14 +12,11 @@ Friend Module snailModule
         pw = 10
         GraphicsWindow.PenWidth = pw
 
-
         While True
             draw()
             Program.Delay(1000)
             GraphicsWindow.Clear()
         End While
-
-
 
     End Sub
     Sub draw()
