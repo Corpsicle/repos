@@ -1,4 +1,0 @@
-' Graphic.sb
-
-GraphicsWindow.DrawText(100,50,"Greetings, Planet!")
-
