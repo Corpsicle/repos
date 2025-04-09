@@ -2,7 +2,7 @@
 GraphicsWindow.Title = "Image Demo"
 GraphicsWindow.Width = 320    ' Same width as background image
 GraphicsWindow.Height = 240   ' Same height as image
-GraphicsWindow.DrawImage("C:\Small Basic\Ch03\BkGnd.bmp", 0, 0)
+GraphicsWindow.DrawImage("C:\users\alanb\source\repos\Small basic\Book Programs and solutions\ch03\Listings\BkGnd.bmp", 0, 0)
 
 GraphicsWindow.BrushColor = "White"    ' Text color
 GraphicsWindow.FontSize = 50
