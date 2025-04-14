@@ -51,7 +51,7 @@ Friend Module MandelbrotModule
             End If
         Next
     End Sub
-    Sub HSL_2_RGB()
+    Sub HSL_2_RGB(L)
         H = Hue / 360
         S = Saturation / 100
         L = Lightness / 100

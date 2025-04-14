@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<shelf>
+  <book>
+    <isbn>978-1-84078-425-1</isbn>
+    <title>HTML5 in easy steps</title>
+    <author>Mike McGrath</author>
+    <class>Web Development</class>
+  </book>
+  <book>
+    <isbn>978-1-84078-625-5</isbn>
+    <title>Web Design in easy steps</title>
+    <author>Sean McManus</author>
+    <class>Design and Graphics</class>
+  </book>
+  <book>
+    <isbn>978-1-84078-596-8</isbn>
+    <title>Python in easy steps</title>
+    <author>Mike McGrath</author>
+    <class>Programming</class>
+  </book>
+  <book>
+    <isbn>978-1-84078-822-8</isbn>
+    <title>Word 2019 in easy steps</title>
+    <author>Scott Basham</author>
+    <class>Microsoft Office</class>
+  </book>
+  <book>
+    <isbn>978-1-84078-619-4</isbn>
+    <title>jQuery in easy steps</title>
+    <author>Mike McGrath</author>
+    <class>Internet and Web</class>
+  </book>
+</shelf>
