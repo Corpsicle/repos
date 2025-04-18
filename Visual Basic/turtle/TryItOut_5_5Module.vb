@@ -6,7 +6,7 @@ Friend Module TryItOut_5_5Module
 
         Turtle.Speed = 10
         numSides = 6 ' Set to 3 (triangle), 4 (square)...
-        repeatCount = 8 ' How many times to rotate
+        repeatCount = 6 ' How many times to rotate
         sideLen1 = 30 ' Side length of polygon 1
         sideLen2 = 40 ' Side length of polygon 2
         sideLen3 = 50 ' Side length of polygon 3

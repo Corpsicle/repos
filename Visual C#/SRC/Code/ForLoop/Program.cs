@@ -1,14 +1,20 @@
-﻿Console.Title = "ForLoop";
-
-for (int i = 1; i < 4; i++)
+﻿internal class Program
 {
-    Console.WriteLine("Loop Iteration: " + i);
-
-    for (int j = 1; j < 4; j++)
+    private static void Main(string[] args)
     {
-        Console.WriteLine("\tInner Loop Iteration: " + j);
+        Console.Title = "ForLoop";
+
+        for (int i = 1; i < 4; i++)
+        {
+            Console.WriteLine("Loop Iteration: " + i);
+
+            for (int j = 1; j < 4; j++)
+            {
+                Console.WriteLine("\tInner Loop Iteration: " + j);
+            }
+
+        }
+
+        Console.ReadKey();
     }
-
 }
-
-Console.ReadKey();

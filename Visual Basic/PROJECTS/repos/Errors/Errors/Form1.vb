@@ -14,15 +14,15 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        'Dim num As Double = 7.5
-        'Dim str As String = "five"
-        'MsgBox(num * str)
+        Dim num As Double = 7.5
+        Dim str As String = "five"
+        MsgBox(num * str)
 
 
-        'Dim i, nums(10) As Integer
-        'For i = 1 To 20
-        ' nums(i) = i
-        ' Next
+        Dim i, nums(10) As Integer
+        For i = 1 To 20
+            nums(i) = i
+        Next
 
     End Sub
 

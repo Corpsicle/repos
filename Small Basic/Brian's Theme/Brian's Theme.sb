@@ -1,15 +1,16 @@
 ' Brian's Theme.sb
+
 ' Initial setup of window 
 GraphicsWindow.Width = 1024                        ' Size of Window we are using  1024 x 768 pixels 
 GraphicsWindow.Height = 768
 GraphicsWindow.Title = "Brian's Theme"             ' Initial window Title
-GraphicsWindow.Show()
 windowWidth = GraphicsWindow.Width                 ' Width 
 windowHeight = GraphicsWindow.Height               ' and Height of window in Pixels
+BackgroundColour =  "Black"                        ' Make Background always Black 
+GraphicsWindow.Show()                              ' Show the window on the Desktop
 
 Start:
 PenColour = GraphicsWindow.GetRandomColor()        ' Get a Random Pen coloyr  to draw in
-BackgroundColour = GraphicsWindow.GetRandomColor() ' Get a randome Background colour to draw on 
 If PenColour = BackgroundColour Then               ' let's make sure we aren't drawing in the same 
   goto Start                                       ' colour as the backgound 
 endif                                              ' if so try again 
@@ -19,7 +20,8 @@ CenterX = Math.GetRandomNumber(windowWidth)        ' Get a Random  X coordinate 
 CenterY = Math.GetRandomNumber(windowHeight)       ' and the same for a Y coordinate
 Stp = Math.GetRandomNumber(5) + 3                  ' draw a line every Stp pixels apart
 
-GraphicsWindow.Title = "Brian's Theme        Stepping By : " + Stp + "          PenColour = " + PenColour + "    Backgound Colour = " + BackgroundColour    
+GraphicsWindow.Title = "Brian's Theme        Stepping By : " + Stp + "          PenColour = " + PenColour   
+
 ' Now lets draw lines first from top to bottom through the Center point  
 ' Top to Bottom
 For I = 0 To windowWidth Step Stp
@@ -34,7 +36,6 @@ For I = 0 To windowWidth Step Stp
     GraphicsWindow.PenColor = PenColour
   EndFor  
 EndFor
-
 ' and again this time from  Side to side through the center point 
 For I = 0 To WindowHeight Step Stp
   For S = 0 To 1
