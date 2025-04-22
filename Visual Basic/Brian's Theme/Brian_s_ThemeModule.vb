@@ -1,7 +1,10 @@
 Friend Module Brian_s_ThemeModule
     Dim windowWidth, windowHeight, PenColour, BackgroundColour, CenterX, CenterY, Stp, I, S As Primitive
+    Dim ColorLookup As Primitive
     Sub Main()
         ' Brian's Theme.sb
+        'Initialize the Colour Lookup table
+        InitializeColorLookup()
         ' Initial setup of window 
         GraphicsWindow.Width = 1024                         ' Size of Window we are using  1024 x 768 pixels 
         GraphicsWindow.Height = 768
@@ -23,7 +26,7 @@ Start:
         CenterY = Microsoft.SmallBasic.Library.Math.GetRandomNumber(windowHeight) ' and the same for a Y coordinate
         Stp = Microsoft.SmallBasic.Library.Math.GetRandomNumber(5) + 3 ' draw a line every Stp pixels apart
 
-        GraphicsWindow.Title = "Brian's Theme        Stepping By : " + Stp + "          Colour = " + PenColour
+        GraphicsWindow.Title = "Brian's Theme        Stepping By : " + Stp + "          Colour = " + ColourLookup(PenColour)
         ' Now lets draw lines first from top to bottom through the Center point  
         ' Top to Bottom
         For I = 0 To windowWidth Step Stp
@@ -54,5 +57,19 @@ Start:
 
         Program.Delay(3000)
         GoTo Start
+    End Sub
+
+    Sub InitializeColorLookup()
+        ' Create a lookup table for colors
+        ColorLookup = Array.CreateDictionary()
+        ColorLookup("#000000") = "Black"
+        ColorLookup("#FFFFFF") = "White"
+        ColorLookup("#FF0000") = "Red"
+        ColorLookup("#00FF00") = "Green"
+        ColorLookup("#0000FF") = "Blue"
+        ColorLookup("#FFFF00") = "Yellow"
+        ColorLookup("#00FFFF") = "Cyan"
+        ColorLookup("#FF00FF") = "Magenta"
+        ' Add more colors as needed
     End Sub
 End Module
