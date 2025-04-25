@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C3E74862-68A2-F0B9-2CA7-037A0D6504FC}</ProjectGuid>
+    <ProjectGuid>{28B22A07-DD97-EE1E-086F-144E833F72B8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Brian_s_Theme.Brian_s_ThemeModule</StartupObject>
-    <AssemblyName>Brian_s_Theme</AssemblyName>
+    <StartupObject>Alan_s_Theme.Alan_s_ThemeModule</StartupObject>
+    <AssemblyName>Alan_s_Theme</AssemblyName>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsFormsWithCustomSubMain</MyType>
@@ -38,7 +38,7 @@
   <ItemGroup>
     <Reference Include="SmallBasicLibrary">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(programfiles)\\WindowsApps\Microsoft.SmallBasic_1.3.0.0_x86__8wekyb3d8bbwe\Small Basic\SmallBasicLibrary.dll</HintPath>
+      <HintPath>$(programfiles)\ (x86)\Microsoft\Small Basic\SmallBasicLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -56,7 +56,7 @@
     <Import Include="Microsoft.SmallBasic.Library" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brian_s_ThemeModule.vb" />
+    <Compile Include="Alan_s_ThemeModule.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
