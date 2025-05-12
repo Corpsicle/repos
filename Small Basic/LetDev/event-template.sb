@@ -1,0 +1,173 @@
+'####################################################
+' A TEMPLATE SMALL BASIC PROGRAM
+' Can be used as a starting point for graphical programming
+'####################################################
+
+'####################################################
+' INITIALISATION
+'####################################################
+
+Initialise()
+
+'####################################################
+' START EVENTS
+'####################################################
+
+GraphicsWindow.KeyDown = OnKeyDown
+GraphicsWindow.KeyUp = OnKeyUp
+GraphicsWindow.MouseDown = OnMouseDown
+GraphicsWindow.MouseUp = OnMouseUp
+GraphicsWindow.MouseMove = OnMouseMove
+GraphicsWindow.TextInput = OnTextInput
+KeyValue = ""
+MouseDownEvent = 0
+LeftMouseClick = 0
+RightMouseClick = 0
+MouseMoveEvent = 0
+TextInputEvent = 0
+TextInputValue = ""
+IsEvent = 0
+
+'####################################################
+' MAIN LOOP
+'####################################################
+
+While ("True")
+  CheckEvents()
+  GraphicsWindow.BrushColor = bg
+  GraphicsWindow.FillRectangle(50,50,300,400)
+  If (IsEvent = 1) Then
+    textOut = ""
+    For i = 1 To Array.GetItemCount(Keys)
+      textOut = textOut+Keys[i]+" "
+    EndFor
+    If (textOut <> "") Then
+      textOut = textOut+"Keys down."
+      textX = 50
+      TextY = 50
+      Output()
+    EndIf
+    If (MouseDownEvent > 0) Then
+      textOut = "Mouse is down."
+      textX = 50
+      TextY = 100
+      Output()
+    EndIf
+    If (MouseDownEvent = 1) Then
+      textOut = "Mouse is clicked."
+      textX = 50
+      TextY = 150
+      Output()
+    EndIf
+    If (LeftMouseClick = 1) Then
+      textOut = "Left Mouse is clicked."
+      textX = 50
+      TextY = 200
+      Output()
+      LeftMouseClick = 0
+    EndIf
+    If (RightMouseClick = 1) Then
+      textOut = "Right Mouse is clicked."
+      textX = 50
+      TextY = 250
+      Output()
+      RightMouseClick = 0
+    EndIf
+    If (MouseMoveEvent = 1) Then
+      textOut = "Mouse is moving and is at "+xM+","+yM
+      textX = 50
+      TextY = 300
+      Output()
+    EndIf
+    If (TextInputEvent = 1) Then
+      textOut = "Text input is "+TextInputValue
+      textX = 50
+      TextY = 350
+      Output()
+      TextInputEvent = 0
+    EndIf
+  EndIf
+  ResetEvents()
+  Program.Delay(100)
+EndWhile
+
+'####################################################
+' EVENT SUBROUTINES
+'####################################################
+
+Sub OnKeyDown
+  Key = GraphicsWindow.LastKey
+  KeyValue[Key] = 1
+EndSub
+
+Sub OnKeyUp
+  Key = GraphicsWindow.LastKey
+  KeyValue[Key] = ""
+EndSub
+
+Sub OnMouseDown
+  MouseDownEvent = 1
+EndSub
+
+Sub OnMouseUp
+  MouseDownEvent = 0
+EndSub
+
+Sub OnMouseMove
+  MouseMoveEvent = 1
+  xM = GraphicsWindow.MouseX
+  yM = GraphicsWindow.MouseY
+EndSub
+
+Sub OnTextInput
+  TextInputEvent = 1
+  TextInputValue = GraphicsWindow.LastText
+EndSub
+
+Sub CheckEvents
+  If (Array.GetItemCount(KeyValue) > 0 Or MouseDownEvent > 0 Or MouseMoveEvent = 1 Or TextInputEvent = 1) Then
+    IsEvent = 1
+    Keys = Array.GetAllIndices(KeyValue)
+    If (MouseDownEvent = 1) Then
+      If (Mouse.IsLeftButtonDown) Then
+        LeftMouseClick = 1
+      EndIf
+      If (Mouse.IsRightButtonDown) Then
+        RightMouseClick = 1
+      EndIf
+    EndIf
+  Else
+    IsEvent = 0
+  EndIf
+EndSub
+
+Sub ResetEvents
+  If (MouseDownEvent = 1) Then
+    MouseDownEvent = 2
+  EndIf
+  MouseMoveEvent = 0
+EndSub
+
+'####################################################
+' PROGRAM SUBROUTINES
+'####################################################
+
+Sub Initialise
+  gw = 800
+  gh = 600
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  GraphicsWindow.Left = 10
+  GraphicsWindow.Top = 10
+  GraphicsWindow.Title = "Small Basic Template"
+  GraphicsWindow.CanResize = "False"
+  bg = "LightBlue"
+  GraphicsWindow.BackgroundColor = bg
+  GraphicsWindow.Clear()
+EndSub
+
+Sub Output
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.DrawText(textX,textY,textOut)
+EndSub
+  

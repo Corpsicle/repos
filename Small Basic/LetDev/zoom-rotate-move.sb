@@ -1,0 +1,34 @@
+'Simple example downloading an image, displaying and scaling it, then move and rotate the scaled image
+
+'Create a GraphicsWindow
+gw = 600
+gh = 600
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+
+'Download an image and load it into a shape
+ballImage = ImageList.LoadImage(Program.Directory+"/images/ball-icon.jpg")
+ballWidth = ImageList.GetWidthOfImage(ballImage)
+ballHeight = ImageList.GetHeightOfImage(ballImage)
+ball = Shapes.AddImage(ballImage)
+Shapes.Move(ball,(gw-ballWidth)/2,(gh-ballHeight)/2) 'Center the ball on the screen
+
+'Scale the ball shape by zooming it and display the size in the title bar
+'Note that the zoom is relative to the original ball centre and this centre is not affected by the zoom
+For ballScale = 0.1 To 10 Step 0.1
+  Shapes.Zoom(ball,ballScale,ballScale) 
+  GraphicsWindow.Title = "Image width is "+ballScale*ballWidth
+  Program.Delay(100)
+EndFor
+
+'To move the scaled ball we set the centre at X,Y, and the top left coordinates relative to the unscaled image
+'The top left corner is therefore at X-ballWidth/2, Y-ballHeight/2
+For angle = 0 To 360
+  angleRadians = angle*Math.Pi/180
+  X = gw/2 + 50*Math.Cos(angleRadians)
+  Y = gw/2 + 50*Math.Sin(angleRadians)
+  Shapes.Move(ball,X-ballWidth/2,Y-ballHeight/2)
+  Shapes.Rotate(ball,angle)
+  Program.Delay(10)
+EndFor
+

@@ -1,0 +1,46 @@
+'Parse a csv (comma separated list) data file into any array of records and fields
+
+'Read file into an array (one entry for each line
+iLine = 1
+line = "First"
+While (line <> "")
+  line = File.ReadLine(Program.Directory+"\test.csv", iLine)
+  lines[iLine] = line
+  iLine = iLine+1
+EndWhile
+
+'Parse the lines
+parse()
+
+'Output the results
+For i = 1 To Array.GetItemCount(fields)
+  For j = 1 To Array.GetItemCount(fields[i])
+    TextWindow.Write(fields[i][j])
+    If (j < Array.GetItemCount(fields[i])) Then
+      TextWindow.Write(" : ")
+    Else
+      TextWindow.WriteLine("")
+    EndIf
+  EndFor
+EndFor
+
+Sub parse
+  For iLine = 1 To Array.GetItemCount(lines)
+    line = lines[iLine]
+    fields[iLine] = ""
+    i = 0
+    lineCopy = line
+    pos = Text.GetIndexOf(lineCopy,",")
+    While (pos > 0)
+      i = i+1
+      fields[iLine][i] = Text.GetSubText(lineCopy,1,pos-1)
+      lineCopy = Text.GetSubTextToEnd(lineCopy,pos+1)
+      pos = Text.GetIndexOf(lineCopy,",")
+    EndWhile
+    If (Text.GetLength(lineCopy) > 0) Then
+      i = i+1
+      fields[iLine][i] = lineCopy
+    EndIf
+  EndFor
+EndSub
+      

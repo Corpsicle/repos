@@ -1,0 +1,25 @@
+Setup(SldTrans, Colors.Transparent, Colors.Transparent)
+Setup(SldRed, Colors.DarkRed, Colors.Red)
+Setup(SldGreen, Colors.YellowGreen, Colors.Green)
+Setup(SldBlue, Colors.SkyBlue, Colors.Blue)
+OnSlide()
+
+Sub Setup(targetSlider, trackColor, thumbColor)
+   targetSlider.TrackColor = trackColor
+   targetSlider.ThumbColor = thumbColor
+   targetSlider.TickFrequency = 1
+   targetSlider.SnapToTick = True
+   targetSlider.Maximum = 255
+   targetSlider.OnSlide = OnSlide
+EndSub
+
+Sub OnSlide()
+   _color = Color.FromARGB(
+      255 - SldTrans.Value,
+      SldRed.Value,
+      SldGreen.Value,
+      SldBlue.Value
+   )
+   LblPreview.BackColor = _color
+   Me.Text = "Color Composer: " & _color.Name
+EndSub

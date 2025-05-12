@@ -1,0 +1,23 @@
+'Simple graphical progress bar
+
+For i = 1 To 100
+  frac = i/100
+  Progress()
+  Program.Delay(100)
+EndFor
+
+Sub Progress
+  GraphicsWindow.Show()
+  prsize = 20
+  prx = prsize
+  pry = GraphicsWindow.Height-2*prsize
+  prw = GraphicsWindow.Width-2*prsize
+  prh = prsize
+  GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+  GraphicsWindow.FillRectangle(prx,pry,prw,prh)
+  GraphicsWindow.PenColor = "Black"
+  GraphicsWindow.DrawRectangle(prx,pry,prw,prh)  
+  GraphicsWindow.BrushColor = "LightBlue"
+  GraphicsWindow.FillRectangle(prx+1,pry+1,frac*(prw-2),prh-2)
+EndSub
+  

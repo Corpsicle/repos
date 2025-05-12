@@ -1,0 +1,35 @@
+'@Form Hints:
+'#FrmControlTests{
+'    Button1: Button
+'    CheckBox1: CheckBox
+'    ComboBox1: ComboBox
+'    DatePicker1: DatePicker
+'    Label1: Label
+'    ProgressBar1: ProgressBar
+'    ListBox1: ListBox
+'    ScrollBar1: ScrollBar
+'    Slider1: Slider
+'    TextBox1: TextBox
+'    ToggleButton1: ToggleButton
+'    RadioButton1: RadioButton
+'}
+
+Me = "frmcontroltests"
+Button1 = "frmcontroltests.button1"
+CheckBox1 = "frmcontroltests.checkbox1"
+ComboBox1 = "frmcontroltests.combobox1"
+DatePicker1 = "frmcontroltests.datepicker1"
+Label1 = "frmcontroltests.label1"
+ProgressBar1 = "frmcontroltests.progressbar1"
+ListBox1 = "frmcontroltests.listbox1"
+ScrollBar1 = "frmcontroltests.scrollbar1"
+Slider1 = "frmcontroltests.slider1"
+TextBox1 = "frmcontroltests.textbox1"
+ToggleButton1 = "frmcontroltests.togglebutton1"
+RadioButton1 = "frmcontroltests.radiobutton1"
+_path = Program.Directory + "\FrmControlTests.xaml"
+FrmControlTests = Forms.LoadForm("FrmControlTests", _path)
+Form.SetArgsArr(frmcontroltests, Stack.PopValue("_frmcontroltests_argsArr"))
+Form.Show(Me)
+Form.Show(Me)
+Form.Show(Me)

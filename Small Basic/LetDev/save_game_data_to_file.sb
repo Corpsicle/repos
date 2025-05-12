@@ -1,0 +1,23 @@
+'Simple example showing how data from a game can be stored and retrieved from a file
+
+'Create a test array
+For i = 1 To 3
+  For j = 1 To 3
+    ball = Shapes.AddEllipse(10,10)
+    balls[i][j] = ball
+  EndFor
+EndFor
+
+output = Program.Directory+"/game.txt" 'File to save an array
+File.WriteLine(output,1,balls) 'Save array to a file in line 1
+
+balls = "" 'Delete array to test reading
+TextWindow.WriteLine(balls) 'Test it was deleted
+
+balls = File.ReadLine(output,1) 'Read array and use it
+For i = 1 To 3
+  For j = 1 To 3
+    ball = balls[i][j]
+    Shapes.Move(ball,50*i,50*j)
+  EndFor
+EndFor

@@ -1,0 +1,39 @@
+'Display all images in and below a given directory
+
+'Top level directory to find images - add it to the stack
+topDir = "C:\Users\Public\Pictures"
+Stack.PushValue("dirStack",topDir)
+
+'Use the stack to recursively add all subdirectories to an array of directories
+Dir = ""
+While (Stack.GetCount("dirStack") > 0)
+  nDir = Array.GetItemCount(Dir)+1
+  Dir[nDir] = Stack.PopValue("dirStack")
+  subDir = File.GetDirectories(Dir[nDir])
+  For i = 1 To Array.GetItemCount(subDir)
+    Stack.PushValue("dirStack",subDir[i])
+  EndFor
+EndWhile
+
+'Find all images in the directories that are jpg or img
+images = ""
+For i = 1 To nDir
+  files = File.GetFiles(Dir[i])
+  For j = 1 To Array.GetItemCount(files)
+    LC = Text.ConvertToLowerCase(files[j])
+    If (Text.EndsWith(LC,".jpg") Or Text.EndsWith(LC,".img")) Then
+      nImages = Array.GetItemCount(images)+1
+      images[nImages] = files[j]
+    EndIf
+  EndFor
+EndFor
+
+'Continuously pick a random image to display each second
+gw = GraphicsWindow.Width
+gh = GraphicsWindow.Height
+While ("True")
+  pic = images[Math.GetRandomNumber(nImages)]
+  GraphicsWindow.DrawResizedImage(pic,0,0,gw,gh)
+  Program.Delay(1000)
+EndWhile
+

@@ -1,0 +1,92 @@
+' An sVB flower drawn by the turtle.
+' Modified from a Smal Basic sample To color the leaves
+GW.FullScreen = True
+Turtle.Show()
+Turtle.Speed = 50
+Turtle.UseAnimation = False
+Turtle.X = 400
+Turtle.Y = 300
+Turtle.DirectTurn(30)
+GW.PenWidth = 4
+
+DrawLeaves()
+DrawCenter()
+DrawStem()
+DrawLeafLines()
+
+' -----------------------------------
+Sub DrawLeaves()
+   GW.BrushColor = Colors.Yellow
+   GW.PenColor = Colors.Gold
+   
+   For a = 1 To 7
+      Turtle.CreateFigure()
+      DrawArc()
+      Turtle.DirectTurn(118)
+      DrawArc()
+      Turtle.DirectTurn(19)
+      Turtle.PenUp()
+      Turtle.DirectMove(40)
+      Turtle.FillFigure()
+   Next
+EndSub
+
+' -----------------------------------
+Sub DrawArc()
+   Turtle.PenDown()
+   For i = 1 To 60
+      Turtle.DirectMove(5)
+      Turtle.DirectTurn(1)
+   Next
+EndSub
+
+' -----------------------------------
+Sub DrawCenter()
+   Turtle.X = 360
+   Turtle.Y = 300
+   GW.BrushColor = Colors.Green
+   Turtle.CreateFigure()
+   For i = 1 To 100
+      Turtle.Turn(3.6)
+      Turtle.Move(1.5)
+   Next
+   Turtle.FillFigure()
+EndSub
+
+' -----------------------------------
+Sub DrawStem()
+   Turtle.X = 376
+   Turtle.Y = 335
+   Turtle.DirectTurn(160)
+   
+   For i = 1 To 70
+      Turtle.PenDown()
+      GW.PenColor = Colors.Brown
+      Turtle.DirectMove(4)
+      Turtle.DirectTurn(-0.7)
+      Turtle.DirectMove(2)
+   Next
+EndSub
+
+
+' -----------------------------------
+Sub DrawLeafLines()
+   Turtle.X = 380
+   Turtle.Y = 310
+   Turtle.Angle = 10
+   GW.PenWidth = 2
+   For i = 1 To 7
+      Turtle.PenUp()
+      Turtle.DirectMove(70)
+      Turtle.PenDown()
+      For a = 0 To 90
+         GW.PenColor = Colors.Random
+         Turtle.DirectMove(1)
+      Next
+      Turtle.PenUp()
+      Turtle.MoveTo(380, 310)
+      Turtle.Angle = 10 + i * (360 / 7)
+   Next
+EndSub
+
+

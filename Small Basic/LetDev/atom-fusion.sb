@@ -1,0 +1,94 @@
+'Example of blobs coalescing - collision detection
+
+'Set up Window
+gw = 1250
+gh = 700
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+GraphicsWindow.Top = 0
+GraphicsWindow.Left = 0
+GraphicsWindow.Title = "Fusion"
+
+'Initialise atoms
+natom = 50
+rad = 5
+speed = 50
+dt = 0.2
+GraphicsWindow.PenWidth = 1
+GraphicsWindow.PenColor = "#10000000"
+GraphicsWindow.BrushColor = "Red"
+For i = 1 To natom
+  X[i] = Math.GetRandomNumber(gw)
+  Y[i] = Math.GetRandomNumber(gh)
+  U[i] = Math.GetRandomNumber(2*speed)-(1+2*speed)/2
+  V[i] = Math.GetRandomNumber(2*speed)-(1+2*speed)/2
+  atom[i] = Shapes.AddEllipse(2*rad,2*rad)
+  scale[i] = 1
+EndFor
+
+While ("True")
+  cpu = Clock.ElapsedMilliseconds
+  Update()
+  'Even time spacing between updates
+  dcpu = 10-(Clock.ElapsedMilliseconds-cpu)
+  If (dcpu > 0) Then
+    Program.Delay(dcpu)
+  EndIf
+EndWhile
+
+Sub Update
+  For i = 1 To natom
+    If (scale[i] > 0) Then
+      For j = i+1 To natom
+        If (scale[j] > 0) Then
+          dx = X[i]-X[j]
+          dy = Y[i]-Y[j]
+          dist2 = (dx*dx+dy*dy) ' distance squared
+          If (dist2 < 10000) Then ' Only consider nearish neighbours
+            If (dist2 < rad*rad*scale[i]*scale[j]) Then
+              'Collision, grow one (i) atom and delete the other (j)
+              scale[i] = Math.SquareRoot(scale[i]*scale[i]+scale[j]*scale[j])
+              Shapes.Zoom(atom[i],scale[i],scale[i])
+              scale[j] = 0
+              Shapes.Remove(atom[j])
+              Sound.PlayClickAndWait()
+            Else
+              'dist2 = Math.Power(dist2/100,1.5)
+              'Alter velocity by inverse square - repulsive force between atoms
+              dist2 = dist2/50
+              du = dx/dist2
+              dv = dy/dist2
+              U[i] = U[i]+du
+              V[i] = V[i]+dv
+              U[j] = U[j]-du
+              V[j] = V[j]-dv
+            EndIf
+          EndIf
+        EndIf
+      EndFor
+      'Update position from velocity
+      x1 = X[i]
+      y1 = Y[i]
+      X[i] = X[i]+U[i]*dt
+      Y[i] = Y[i]+V[i]*dt
+      If (X[i] < 0) Then
+        X[i] = -X[i]
+        U[i] = -U[i]
+      ElseIf (X[i] > gw) Then
+        X[i] = 2*gw-X[i]
+        U[i] = -U[i]
+      EndIf
+      If (Y[i] < 0) Then
+        Y[i] = -Y[i]
+        V[i] = -V[i]
+      ElseIf (Y[i] > gh) Then
+        Y[i] = 2*gh-Y[i]
+        V[i] = -V[i]
+      EndIf
+      'Move atom to new position
+      Shapes.Move(atom[i],X[i]-rad,Y[i]-rad)
+      GraphicsWindow.DrawLine(x1,y1,X[i],Y[i])
+    EndIf
+  EndFor
+EndSub
+

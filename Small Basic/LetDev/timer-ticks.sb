@@ -1,0 +1,51 @@
+'Simple example showing Timer event
+
+Timer.Tick = OnTimer
+Timer.Interval = 20 ' Tick interval should be slow enough to do most of the required stuff in the main loop
+
+iTimer = 0
+iTick1 = 0
+iTick3 = 0
+iTick7 = 0
+
+ball1 = Shapes.AddEllipse(50,50)
+ball2 = Shapes.AddEllipse(50,50)
+ball3 = Shapes.AddEllipse(50,50)
+
+x1 = 50
+y1 = 50
+x2 = 50
+y2 = 150
+x3 = 50
+y3 = 250
+
+While ("True")
+  If (iTick1 = 1) Then 'every tick
+    x1 = x1+1
+    Shapes.Move(ball1,x1,y1)
+    iTick1 = 0
+  EndIf
+  If (iTick3 = 1) Then 'every 3rd tick
+    x2 = x2+1
+    Shapes.Move(ball2,x2,y2)
+    iTick3 = 0
+  EndIf
+  If (iTick7 = 1) Then 'every 7th tick
+    x3 = x3+1
+    Shapes.Move(ball3,x3,y3)
+    iTick7 = 0
+  EndIf
+EndWhile
+
+Sub OnTimer
+  iTimer = iTimer+1
+  If (iTick1 = 0) Then 'every tick
+    iTick1 = 1
+  EndIf
+  If (iTick3 = 0 And Math.Remainder(iTimer,3) = 0) Then 'every 3rd tick
+    iTick3 = 1
+  EndIf
+  If (iTick7 = 0 And Math.Remainder(iTimer,7) = 0) Then 'every 7th tick
+    iTick7 = 1
+  EndIf
+EndSub

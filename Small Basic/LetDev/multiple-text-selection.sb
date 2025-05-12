@@ -1,0 +1,54 @@
+'Example getting multiple options from an input in TextWindow - some text parsing
+
+'Create some options
+nOptions = 10
+For i = 1 To nOptions
+  options[i] = "Option "+i
+EndFor
+
+'Output the options
+TextWindow.WriteLine("Please select options and press return e.g. 1,2,5,4")
+For i = 1 To nOptions
+  TextWindow.WriteLine(i+". "+options[i])
+EndFor
+TextWindow.WriteLine((nOptions+1)+". All")
+TextWindow.WriteLine("")
+
+'Read the input
+input = TextWindow.Read()
+
+'Find which options were selected
+selected = "" 'Clear selected array first
+While (input <> "") 'Continue to check while some entries left in the list
+  pos = Text.GetIndexOf(input,",") 'Find position of first deliminating character (comma)
+  If (pos > 0) Then
+    selection = Text.GetSubText(input,1,pos-1)
+    input = Text.GetSubTextToEnd(input,pos+1)
+  Else 'The last entry has no comma so it is just the remaining character(s)
+    selection = input
+    input = ""
+  EndIf
+  'Check value entered (selection) is a number, add it to the list if it is
+  If (selection/selection = 1 And selection >= 1 And selection <= nOptions+1) Then
+    If (selection = nOptions+1) Then 'All - we are done if this is chosen
+      selected = ""
+      For i = 1 To nOptions
+        selected[i] = i
+      EndFor
+      input = ""
+    ElseIf (Array.ContainsValue(selected,selection)) Then
+      TextWindow.WriteLine("Option "+selection+" already added")
+    Else
+      selected[Array.GetItemCount(selected)+1] = selection
+    EndIf
+  Else
+    TextWindow.WriteLine("option "+selection+" is not an allowed entry")
+  EndIf
+EndWhile
+
+'Output selected list
+TextWindow.WriteLine("")
+For i = 1 To Array.GetItemCount(selected)
+  TextWindow.WriteLine("option "+selected[i]+" selected : "+options[selected[i]])
+EndFor
+TextWindow.WriteLine("")

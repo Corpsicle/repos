@@ -1,0 +1,11 @@
+'Using the ReadKey command
+
+TextWindow.Show()
+TextWindow.WriteLine("Some instructions")
+TextWindow.WriteLine("More instructions")
+TextWindow.WriteLine("Press any key to continue")
+TextWindow.ReadKey()
+TextWindow.WriteLine("OK we can start now")
+Program.Delay(1000)
+TextWindow.Hide()
+

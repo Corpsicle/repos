@@ -1,0 +1,14 @@
+'Example showing simple 2 button event
+
+button1 = Controls.AddButton("Button 1",50,50)
+button2 = Controls.AddButton("Button 2",50,100)
+Controls.ButtonClicked = OnButtonClicked
+
+Sub OnButtonClicked
+  button = Controls.LastClickedButton
+  If (button = button1) Then
+    GraphicsWindow.ShowMessage("Button 1 pressed", "Information")
+  ElseIf (button = button2) Then
+    GraphicsWindow.ShowMessage("Button 2 pressed", "Information")
+  EndIf
+EndSub

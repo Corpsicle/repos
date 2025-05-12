@@ -1,0 +1,20 @@
+'@Form Hints:
+'#FrmMain{
+'    TxtEditor: TextBox
+'}
+
+Me = "frmmain"
+TxtEditor = "frmmain.txteditor"
+_path = Program.Directory + "\frmmain.xaml"
+FrmMain = Forms.LoadForm("FrmMain", _path)
+Form.SetArgsArr(frmmain, Stack.PopValue("_frmmain_argsArr"))
+'#Events{
+'    TxtEditor: OnTextChanged
+'}
+
+' TxtEditor Events:
+Control.HandleEvents(TxtEditor)
+TextBox.OnTextChanged = TxtEditor_OnTextChanged
+
+
+Form.Show(Me)

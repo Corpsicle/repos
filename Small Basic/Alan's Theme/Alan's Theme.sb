@@ -2,21 +2,24 @@
 ' Based on Brian's theme on the Apple ][ computer
 ' By Brian Howard (c) 1979 Apple Computers  inc
 ' Small Basic'd  by me (Alan) 2025 😁 
+' with a lot of help from Nonki Takahashi 
+' thanks for the colour routines just what i was looking for 😁
 
 
 ' Initial setup of window 
 GraphicsWindow.Width = 1024                        ' Size of Window we are using  1024 x 768 pixels 
-GraphicsWindow.Height = 768
+GraphicsWindow.Height = 768 
 GraphicsWindow.Title = "Alan's Theme"             ' Initial window Title
 windowWidth = GraphicsWindow.Width                 ' Width 
 windowHeight = GraphicsWindow.Height               ' and Height of window in Pixels
-BackgroundColour =  "Black"                        ' Make Background always Black 
+ 
 GraphicsWindow.Show()                              ' Show the window on the Desktop
 Colors_Init()
+BackgroundColour =  "Black"                        ' Make Background always Black 
 
 Start:
 windowWidth = GraphicsWindow.Width
-windowHeight= GraphicsWindow.Height
+windowHeight= GraphicsWindow.Height -50
 PenColour = GraphicsWindow.GetRandomColor()        ' Get a Random Pen coloyr  to draw in
 color = PenColour
 NearestNamedColor()
@@ -26,12 +29,14 @@ If PenColour = BackgroundColour Then               ' let's make sure we aren't d
 endif                                              ' if so try again 
 
 GraphicsWindow.BackgroundColor = BackgroundColour  ' all ok then set the backround colour
-GraphicsWindow.Clear()                            
+GraphicsWindow.Clear()    
+ QuitButton = Controls.AddButton("Quit", windowWidth - 50, windowHeight + 15)
+ NextButton = Controls.AddButton("Next", windowWidth - 100, windowHeight + 15)
 CenterX = Math.GetRandomNumber(windowWidth)        ' Get a Random  X coordinate for center
 CenterY = Math.GetRandomNumber(windowHeight)       ' and the same for a Y coordinate
 Stp = Math.GetRandomNumber(5) + 3                  ' draw a line every Stp pixels apart
 
-GraphicsWindow.Title = "Alan's Theme        Stepping By : " + Stp + "        Colour = " + PenColour   
+GraphicsWindow.Title = "Alan's Theme        Stepping By : " + Stp + "        Colour:  " + PenColour   
 
 ' Now lets draw lines first from top to bottom through the Center point  
 ' Top to Bottom, first in Colour, then 1 step ahead in black 
@@ -61,6 +66,8 @@ For I = 0 To WindowHeight Step Stp
    EndFor
  EndFor
  
+
+
 Program.Delay(3000) ' wait for 3 seconds
 Goto Start          '  before starting all over again 
 
@@ -68,10 +75,10 @@ Sub NearestNamedColor
   ' param color - "#rrggbb"
   ' return namedColor - named color[s]
   Color_RGBToValues()
-  rgbColor = rgb
-  nColor = Array.GetItemCount(colors)
-  index = Array.GetAllIndices(colors)
-  dmin = 256 * Math.SquareRoot(3)
+  rgbColor = rgb  '- rgbColor stores the RGB values of the input color.
+  nColor = Array.GetItemCount(colors) '- nColor holds the total number of named colors available in the colors array.
+  index = Array.GetAllIndices(colors) '- index stores all indices of the colors array.
+  dmin = 256 * Math.SquareRoot(3)     '- dmin is initialized to a large value (the maximum possible Euclidean distance between colors).
   namedColor = ""
   For i = 1 To nColor
     color = colors[index[i]]

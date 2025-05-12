@@ -1,0 +1,53 @@
+'Example to show changing an image skin - could be a moving sprite for example
+
+'Create graphics shapes in an array, these could be sprite images
+'Hide all balls initially
+nball = 20
+radius = 100
+For i = 1 To nball
+  scale = 255*Math.Sin((i-1)/(nball-1)*Math.Pi)
+  GraphicsWindow.BrushColor = GraphicsWindow.GetColorFromRGB(255,255-scale,scale)
+  balls[i] = Shapes.AddEllipse(2*radius,2*radius)
+  Shapes.Move(balls[i],-1000,-1000)
+EndFor
+
+'Set event to change ball mode on mouse click
+GraphicsWindow.BackgroundColor = "LightBlue"
+GraphicsWindow.MouseDown = OnMouseDown
+Timer.Interval = 50
+Timer.Tick = OnTick
+
+'Move the balls with the mouse, change when the mouse is clicked - start with balls[1] - red
+iball = 1
+new = 0
+ball = balls[iball] ' set the first ball (red)
+
+'Main loop for ever
+While ("True")
+  x = GraphicsWindow.MouseX
+  y = GraphicsWindow.MouseY
+  If (new = 1) Then
+    newBall()
+    new = 0
+  EndIf
+  Shapes.Move(ball,x-radius,y-radius)
+EndWhile
+
+Sub OnMouseDown
+  new = 1
+EndSub
+
+Sub OnTick
+  new = 1
+EndSub
+
+Sub newBall
+  'Hide current ball
+  Shapes.Move(ball,-1000,-1000)
+  iball = iball+1 ' change mode
+  If (iball > nball) Then
+    iball = 1
+  EndIf
+  'Set current ball as current
+  ball = balls[iball]
+EndSub

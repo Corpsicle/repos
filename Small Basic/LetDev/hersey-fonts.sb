@@ -1,0 +1,198 @@
+'Example reading a vector font database (Hershey font) and converting it for use in SmallBasic
+'Includes parsing a data file, creating a new format and the drawing of the font, with the Turle if you want.
+'See http://local.wasp.uwa.edu.au/~pbourke/dataformats/hershey/
+
+gw = 1400
+gh = 700
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+
+input = Program.Directory+"/hershey"
+output = Program.Directory+"/hershey.txt"
+
+scale = 1 'Scaling factor for drawing font characters
+spacing = 5*scale 'Spacing between characters and lines
+size = 35*scale 'Sizing calculated from scale factor
+startX = size
+startY = size
+Turtle.Speed = 10
+useTurtle = 0 'Set to 1 to draw with Turle (slow)
+
+'Input to convert the database, or just read a previously converted version
+TextWindow.WriteLine("Recreate database (y/n)")
+answer = TextWindow.Read()
+TextWindow.Hide()
+If (answer = "y") Then
+  parseHershey()
+Else
+  readHershey()
+EndIf
+
+'Use the converted database to draw all the font characters
+codes = Array.GetAllIndices(data)
+For i = 1 To Array.GetItemCount(codes)
+  code = codes[i]
+  screenDraw()
+EndFor
+
+'Read the converted database
+Sub readHershey
+  data = File.ReadContents(output)
+EndSub
+
+'Parse and read and convert the original database
+Sub parseHershey
+  unicodeR = Text.GetCharacterCode("R")
+  iLine = 1
+  getLine() ' Get first line
+  While (line <> "")
+    'Get code
+    code = Text.GetSubText(line,1,5)*1 'The *1 makes code a number
+    line = Text.GetSubTextToEnd(line,6)
+    'Get number of characters
+    nChar = Text.GetSubText(line,1,3)*1
+    line = Text.GetSubTextToEnd(line,4)
+    data[code] = ""
+    For iChar = 1 To nChar
+      'Check for line continuation
+      If (Text.GetLength(line) = 0) Then
+        getLine()
+      EndIf
+      'Get 2 character command and convert to numbers relative to 'R'
+      getCommand()
+      If (iChar = 1) Then ' initial offsets
+        data[code] = data[code]+"P"+val1+","+val2+":U:"
+        penDown = 0
+      Else
+        If (up = 1) Then
+          data[code] = data[code]+"U:"
+          penDown = 0
+        Else
+          data[code] = data[code]+"M"+val1+","+val2+":"
+          if (penDown = 0) Then
+            data[code] = data[code]+"D:"
+            penDown = 1
+          EndIf
+        EndIf
+      EndIf
+    EndFor
+    If ("False") Then
+      screenDraw()
+    EndIf
+    TextWindow.WriteLine(iLine)
+    'Get the next line
+    getLine()
+  EndWhile
+  File.WriteContents(output,data)
+  TextWindow.WriteLine("Parsed "+iLine+" lines")
+EndSub
+
+'Get a line from the databse utility
+Sub getLine
+  line = File.ReadLine(input,iLine)
+  iLine = iLine+1
+  'Some blank lines - not the end of the file if one blank line
+  If (line = "") Then
+    line = File.ReadLine(input,iLine)
+    iLine = iLine+1
+  EndIf
+EndSub
+
+'Get the next vector font command and convert to distance coordinates
+Sub getCommand
+  command = Text.GetSubText(line,1,2)
+  line = Text.GetSubTextToEnd(line,3)
+  'Special processing for raise pen
+  If (command = " R") Then
+    up = 1
+  Else
+    up = 0
+    val1 = Text.GetCharacterCode(Text.GetSubText(command,1,1))-unicodeR
+    val2 = Text.GetCharacterCode(Text.GetSubText(command,2,1))-unicodeR
+  EndIf
+EndSub
+
+'Draw the current vector font character
+Sub drawCharacter
+  GraphicsWindow.PenColor = GraphicsWindow.GetRandomColor()
+  letter = letter+":"
+  While (Text.GetLength(letter) > 0)
+    pos = Text.GetIndexOf(letter,":")
+    command = Text.GetSubText(letter,1,pos-1)
+    type = Text.GetSubText(command,1,1)
+    command = Text.GetSubTextToEnd(command,2)
+    If (useTurtle = 1) Then
+      If (type = "P") Then
+        pos1 = Text.GetIndexOf(command,",")
+        P1 = Text.GetSubText(command,1,pos1-1)*scale
+        P2 = Text.GetSubTextToEnd(command,pos1+1)*scale
+        startX = startX-P1
+        x1 = startX
+        y1 = startY
+      ElseIf (type = "U") Then
+        Turtle.PenUp()
+      ElseIf (type = "D") Then
+        Turtle.PenDown()
+      ElseIf (type = "M") Then
+        pos1 = Text.GetIndexOf(command,",")
+        x = startX+Text.GetSubText(command,1,pos1-1)*scale
+        y = startY+Text.GetSubTextToEnd(command,pos1+1)*scale
+        Turtle.MoveTo(x,y)
+      EndIf
+    Else
+      If (type = "P") Then
+        pos1 = Text.GetIndexOf(command,",")
+        P1 = Text.GetSubText(command,1,pos1-1)*scale
+        P2 = Text.GetSubTextToEnd(command,pos1+1)*scale
+        startX = startX-P1
+        penDown = 1
+      ElseIf (type = "U") Then
+        penDown = 0
+      ElseIf (type = "D") Then
+        penDown = 1
+      ElseIf (type = "M") Then
+        pos1 = Text.GetIndexOf(command,",")
+        x = startX+Text.GetSubText(command,1,pos1-1)*scale
+        y = startY+Text.GetSubTextToEnd(command,pos1+1)*scale
+        If (penDown = 1) Then
+          GraphicsWindow.DrawLine(x1,y1,x,y)
+        EndIf
+        x1 = x
+        y1 = y
+      EndIf
+    EndIf
+    letter = Text.GetSubTextToEnd(letter,pos+1)
+  EndWhile
+  startX = startX+P2
+EndSub
+
+'Control to draw all character, include spacing and new line behaviour
+Sub screenDraw
+  letter = data[code]
+  drawCharacter()
+  startX = startX+spacing
+  If (startX > gw-size) Then
+    startX = size
+    startY = startY+size
+    If (useTurtle = 1) Then
+      Turtle.PenUp()
+      Turtle.MoveTo(startX,startY)
+    EndIf
+  EndIf
+  If (startY > gh-size) Then
+    If (useTurtle = 1) Then
+      GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+      overlay = Shapes.AddRectangle(gw+20,gh+20)
+      Shapes.Move(overlay,-10,-10)
+    Else
+      GraphicsWindow.BrushColor = GraphicsWindow.BackgroundColor
+      GraphicsWindow.FillRectangle(0,0,gw,gh)
+    EndIf
+    startX = size
+    startY = size
+    If (useTurtle = 1) Then
+      Turtle.PenUp()
+      Turtle.MoveTo(startX,startY)
+    EndIf
+  EndIf
+EndSub

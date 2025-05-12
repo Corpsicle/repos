@@ -1,0 +1,41 @@
+SpeedX = 20
+SpeedY = 20
+
+Sub Form_OnKeyDown()
+   k = Keyboard.LastKey
+   If k = Keys.Left Then
+      x = Jerry.Left - SpeedX
+      If x < 0 Then
+         Jerry.Left = 0
+      Else
+         Jerry.Left = x
+      EndIf
+      
+   ElseIf k = Keys.Right Then
+      x = Jerry.Right + SpeedX
+      If x > Me.Width Then
+         Jerry.Right = Me.Width
+      Else
+         Jerry.Right = x
+      EndIf
+      
+   ElseIf k = Keys.Up Then
+      y = Jerry.Top - SpeedY
+      If y < 0 Then
+         Jerry.Top = 0
+      Else
+         Jerry.Top = y
+      EndIf
+      
+   ElseIf k = Keys.Down Then
+      y = Jerry.Bottom + SpeedY
+      If y > Me.Height Then
+         Jerry.Bottom = Me.Height
+      Else
+         Jerry.Bottom = y
+      EndIf
+   EndIf
+EndSub
+
+
+

@@ -1,0 +1,58 @@
+'Simple Plotting example
+
+'Create an array to plot
+
+plot["Xtitle"] = "x"
+plot["Ytitle"] = "Sin(x)"
+plot["Colour"] = "Red"
+plot["Width"] = 3
+For i = 1 To 100
+  plot["X"][i] = i-1
+  plot["Y"][i] = Math.Sin((i-1)/5)
+EndFor
+
+DrawPlot()
+
+Sub DrawPlot
+  gw = 800
+  gh = 600
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  GraphicsWindow.Title = "Plot"
+  GraphicsWindow.Top = 4
+  GraphicsWindow.Left = 4
+  GraphicsWindow.BackgroundColor = "Gray"
+  px = 50
+  py = 50
+  dpx = gw-2*px
+  dpy = gh-2*py
+  GraphicsWindow.BrushColor = "White"
+  GraphicsWindow.FillRectangle(px,py,dpx,dpy)
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.DrawRectangle(px,py,dpx,dpy)
+  GraphicsWindow.FontSize = 20
+  GraphicsWindow.DrawText(gw/2,py+dpy,plot["Xtitle"])
+  GraphicsWindow.DrawText(px,py-GraphicsWindow.FontSize-20,plot["Ytitle"])
+  xmin = plot["X"][1]
+  xmax = plot["X"][1]
+  ymin = plot["Y"][1]
+  ymax = plot["Y"][1]
+  For i = 1 To Array.GetItemCount(plot["X"])
+    xmin = Math.Min(xmin,plot["X"][i])
+    xmax = Math.Max(xmin,plot["X"][i])
+    ymin = Math.Min(ymin,plot["Y"][i])
+    ymax = Math.Max(ymax,plot["Y"][i])
+  EndFor
+  scalex = dpx/(xmax-xmin)
+  scaley = dpy/(ymax-ymin)
+  GraphicsWindow.PenWidth = plot["Width"]
+  GraphicsWindow.PenColor = plot["Colour"]
+  For i = 1 To Array.GetItemCount(plot["X"])-1
+    x1 = px + dpx*(plot["X"][i]-xmin)/(xmax-xmin)
+    y1 = py + dpy - dpy*(plot["Y"][i]-ymin)/(ymax-ymin)
+    x2 = px + dpx*(plot["X"][i+1]-xmin)/(xmax-xmin)
+    y2 = py + dpy - dpy*(plot["Y"][i+1]-ymin)/(ymax-ymin)
+    GraphicsWindow.DrawLine(x1,y1,x2,y2)
+  EndFor
+EndSub
+

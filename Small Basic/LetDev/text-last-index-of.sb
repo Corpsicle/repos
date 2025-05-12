@@ -1,0 +1,14 @@
+'Simple text manipulation example
+
+sample = "text to find text with more than one text"
+tofind = "text"
+
+pos = Text.GetIndexOf(sample,tofind)
+poslast = 0
+While (pos > 0)
+  poslast = poslast+pos
+  pos = Text.GetIndexOf(Text.GetSubTextToEnd(sample,poslast+1),tofind)
+EndWhile
+
+last = Text.GetSubText(sample,poslast,Text.GetLength(tofind))
+TextWindow.WriteLine("Last occurence of "+last+" is at position "+poslast)

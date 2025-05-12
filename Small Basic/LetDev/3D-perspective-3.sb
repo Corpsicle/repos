@@ -1,0 +1,115 @@
+'3D example
+'Strange game really, but shows some 3D possibilities
+'move mouse over shapes to turn then red, then slow them by keeping the them targeted until they go green
+
+gw=800
+gh=600
+GraphicsWindow.Width=gw
+GraphicsWindow.Height=gh
+GraphicsWindow.CanResize="false"
+GraphicsWindow.BackgroundColor="LightBlue"
+GraphicsWindow.MouseMove = OnMouseMove
+
+Program.Delay(1000)
+
+GraphicsWindow.BrushColor="LightBlue"
+GraphicsWindow.PenColor="Red"
+Sbox=40
+box=shapes.AddRectangle(Sbox,Sbox)
+
+radius=30
+
+GraphicsWindow.PenColor="Black"
+
+minZ = 0.3
+maxZ = 4
+nball = 10
+For i=1 to nball
+  'Status flag 0:unclicked 1: Clicked 2:Stationary
+  F[i] = 0
+  'Centre of rotation of ball in screen coordinates
+  CX[i] = gw/16+math.GetRandomNumber(gw*7/8)
+  CY[i] = gh/16+math.GetRandomNumber(gh*7/8)
+  'True 3D coordinates
+  X[i] = 0
+  Y[i] = 0
+  Z[i] = minZ+(maxZ-minZ)*(math.GetRandomNumber(10)/10)
+  'Radius of rotation
+  R[i] = math.GetRandomNumber(gw/8)
+  'Speed of rotation , can be negative to rotate counter clockwise
+  S[i] = 25+math.GetRandomNumber(100)
+  If (math.GetRandomNumber(2) = 1) Then
+    S[i] = -S[i]
+  endif
+endfor
+
+scale = 0 '254/maxZ
+For i = 1 To nball
+  GraphicsWindow.BrushColor = GraphicsWindow.GetColorFromRGB(0,0,254-scale*Z[i]) 'Colour is constant, could vary with depth Z using scale > 0
+  O[i] = Shapes.AddEllipse(2*radius/Z[i],2*radius/Z[i]) 'Scale size by depth Z
+EndFor
+
+t = 0
+score = 0
+scorelast = -1
+GraphicsWindow.PenColor = "Black"
+While("True")
+  shapes.Move(box,gw/2-Sbox/2+Xeye,gh/2-Sbox/2+Yeye) 'Position the box at screen centre
+  
+  For i = 1 To nball
+    'Quick approximate to convert from true to screen coordinates
+    xPos = X[i] - Xeye/Z[i]
+    yPos = Y[i] - Yeye/Z[i]
+    'Check for overlap
+    If (xPos>gw/2-Sbox/2+Xeye And xPos<gw/2+Sbox/2+Xeye And yPos>gh/2-Sbox/2+Yeye And yPos<gh/2+Sbox/2+Yeye) Then
+      score = score-1 'Loose a point
+      If (F[i] < 2) then
+        If (F[i] = 0) then
+          'Targeted
+          F[i] = 1
+          GraphicsWindow.BrushColor = GraphicsWindow.GetColorFromRGB(254,0,0)
+          new = 1
+        ElseIf (R[i] < 1) then
+          'Stationary
+          GraphicsWindow.BrushColor = GraphicsWindow.GetColorFromRGB(0,254,0)
+          F[i] = 2
+          new = 1
+          score=score+1000 'Get points for stationary ball
+        Else
+          'Reduce radius of rotation for F = 1 targeted ball
+          R[i] = R[i]*0.99
+          new = 0
+        endif
+        If (new = 1) then 'New shape colour - delete and replace it
+          Shapes.Remove(O[i])
+          O[i] = Shapes.AddEllipse(2*radius/Z[i],2*radius/Z[i])
+        endif
+      endif
+    EndIf
+    '
+    X[i] = CX[i]+R[i]*Math.Cos(t/S[i])
+    Y[i] = CY[i]+R[i]*Math.Sin(t/S[i])
+  endfor
+  
+  For i=1 To nball
+    Shapes.Move(O[i],X[i]-(Xeye+radius)/Z[i],Y[i]-(Yeye+radius)/Z[i]) 'Move ball to new screen coordinates
+  EndFor
+  
+  t = t+1 'Update time and score
+  If (math.Abs(score-scorelast) > 1) then
+    GraphicsWindow.BrushColor = "LightBlue"
+    GraphicsWindow.FillRectangle(10,10,200,20)
+    
+    GraphicsWindow.BrushColor = "Black"
+    GraphicsWindow.DrawText(10,10,"Score "+score)
+    scorelast=score
+  EndIf
+  
+  Program.Delay(10)
+EndWhile
+
+Sub OnMouseMove
+  Xeye = GraphicsWindow.MouseX-gw/2
+  Yeye = GraphicsWindow.MouseY-gh/2
+EndSub
+

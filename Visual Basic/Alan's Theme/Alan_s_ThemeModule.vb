@@ -66,12 +66,6 @@ Start:
 
         Program.Delay(3000) ' wait for 3 seconds
         GoTo Start '  before starting all over again 
-
-
-
-
-
-
     End Sub
     Sub NearestNamedColor()
         ' param color - "#rrggbb"
