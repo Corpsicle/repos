@@ -5,17 +5,7 @@
 ' with a lot of help from Nonki Takahashi 
 ' thanks for the colour routines just what i was looking for 😁
 
-
-' Initial setup of window 
-GraphicsWindow.Width = 1024                        ' Size of Window we are using  1024 x 768 pixels 
-GraphicsWindow.Height = 768 
-GraphicsWindow.Title = "Alan's Theme"             ' Initial window Title
-windowWidth = GraphicsWindow.Width                 ' Width 
-windowHeight = GraphicsWindow.Height               ' and Height of window in Pixels
- 
-GraphicsWindow.Show()                              ' Show the window on the Desktop
-Colors_Init()
-BackgroundColour =  "Black"                        ' Make Background always Black 
+Initialize()
 
 Start:
 windowWidth = GraphicsWindow.Width
@@ -35,9 +25,8 @@ GraphicsWindow.Clear()
 CenterX = Math.GetRandomNumber(windowWidth)        ' Get a Random  X coordinate for center
 CenterY = Math.GetRandomNumber(windowHeight)       ' and the same for a Y coordinate
 Stp = Math.GetRandomNumber(5) + 3                  ' draw a line every Stp pixels apart
-
-GraphicsWindow.Title = "Alan's Theme        Stepping By : " + Stp + "        Colour:  " + PenColour   
-
+Msg = "Alan's Theme        Stepping By : " + Stp + "        Colour:  " + PenColour   
+GraphicsWindow.Title = Msg
 ' Now lets draw lines first from top to bottom through the Center point  
 ' Top to Bottom, first in Colour, then 1 step ahead in black 
 For I = 0 To windowWidth Step Stp
@@ -66,10 +55,20 @@ For I = 0 To WindowHeight Step Stp
    EndFor
  EndFor
  
-
-
 Program.Delay(3000) ' wait for 3 seconds
 Goto Start          '  before starting all over again 
+
+Sub Initialize
+  '  Initial setup of window 
+  GraphicsWindow.Width = 640                        ' Size of Window we are using  1024 x 768 pixels 
+  GraphicsWindow.Height = 480 
+  GraphicsWindow.Title = "Alan's Theme"             ' Initial window Title
+  windowWidth = GraphicsWindow.Width                ' Width 
+  windowHeight = GraphicsWindow.Height              ' and Height of window in Pixels
+  GraphicsWindow.Show()                             ' Show the window on the Desktop
+  Colors_Init()                                     ' Initialize the Colors Array with values
+  BackgroundColour =  "Black"                       ' Make Background always Black 
+EndSub
 
 Sub NearestNamedColor
   ' param color - "#rrggbb"
