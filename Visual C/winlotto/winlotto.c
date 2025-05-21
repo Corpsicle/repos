@@ -6,10 +6,10 @@
 #include <time.h>
 #include <string.h>
 
-static int WINAPI winMain(
+int WINAPI WinMain(
   _In_ HINSTANCE hinstance,
   _In_opt_ HINSTANCE hPrevinstance,
-  _In_ LPWSTR lpCmdLine,
+  _In_ LPSTR lpCmdLine,
   _In_ int nCmdShow
 )
 {

@@ -41,12 +41,12 @@ Friend Module MandelbrotModule
             dist = (realCopy * realCopy) + (imagCopy * imagCopy)
             If dist > 4 Then
                 Hue = i * 360 / 20
-                HSL_2_RGB()
+                HSL_2_RGB(L)
                 color = GraphicsWindow.GetColorFromRGB(RedCompo, GreenCompo, BlueCompo)
                 i = 20
             ElseIf (i = 19) And (stripy <> CType(True, Primitive)) Then
                 Hue = 360
-                HSL_2_RGB()
+                HSL_2_RGB(L)
                 color = GraphicsWindow.GetColorFromRGB(RedCompo, GreenCompo, BlueCompo)
             End If
         Next
