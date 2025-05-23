@@ -6,7 +6,7 @@
 #include <time.h>
 #include <string.h>
 
-int WINAPI WinMain(
+static int WINAPI winMain(
   _In_ HINSTANCE hinstance,
   _In_opt_ HINSTANCE hPrevinstance,
   _In_ LPSTR lpCmdLine,
