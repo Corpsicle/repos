@@ -1,0 +1,14 @@
+/home/alanb/repos/C#/Variables/bin/Debug/net10.0/Variables
+/home/alanb/repos/C#/Variables/bin/Debug/net10.0/Variables.deps.json
+/home/alanb/repos/C#/Variables/bin/Debug/net10.0/Variables.runtimeconfig.json
+/home/alanb/repos/C#/Variables/bin/Debug/net10.0/Variables.dll
+/home/alanb/repos/C#/Variables/bin/Debug/net10.0/Variables.pdb
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.AssemblyInfo.cs
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.dll
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/refint/Variables.dll
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.pdb
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.genruntimeconfig.cache
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/ref/Variables.dll

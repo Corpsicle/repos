@@ -1,0 +1,14 @@
+/home/alanb/repos/C#/Hello/bin/Debug/net10.0/Hello
+/home/alanb/repos/C#/Hello/bin/Debug/net10.0/Hello.deps.json
+/home/alanb/repos/C#/Hello/bin/Debug/net10.0/Hello.runtimeconfig.json
+/home/alanb/repos/C#/Hello/bin/Debug/net10.0/Hello.dll
+/home/alanb/repos/C#/Hello/bin/Debug/net10.0/Hello.pdb
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/Hello.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/Hello.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/Hello.AssemblyInfo.cs
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/Hello.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/Hello.dll
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/refint/Hello.dll
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/Hello.pdb
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/Hello.genruntimeconfig.cache
+/home/alanb/repos/C#/Hello/obj/Debug/net10.0/ref/Hello.dll
