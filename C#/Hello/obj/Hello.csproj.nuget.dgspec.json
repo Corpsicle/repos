@@ -1,31 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "\\\\wsl.localhost\\Ubuntu\\home\\alanb\\repos\\C#\\Hello\\Hello.csproj": {}
+    "/home/alanb/repos/C#/Hello/Hello.csproj": {}
   },
   "projects": {
-    "\\\\wsl.localhost\\Ubuntu\\home\\alanb\\repos\\C#\\Hello\\Hello.csproj": {
+    "/home/alanb/repos/C#/Hello/Hello.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\wsl.localhost\\Ubuntu\\home\\alanb\\repos\\C#\\Hello\\Hello.csproj",
+        "projectUniqueName": "/home/alanb/repos/C#/Hello/Hello.csproj",
         "projectName": "Hello",
-        "projectPath": "\\\\wsl.localhost\\Ubuntu\\home\\alanb\\repos\\C#\\Hello\\Hello.csproj",
-        "packagesPath": "C:\\Users\\alanb\\.nuget\\packages\\",
-        "outputPath": "\\\\wsl.localhost\\Ubuntu\\home\\alanb\\repos\\C#\\Hello\\obj\\",
+        "projectPath": "/home/alanb/repos/C#/Hello/Hello.csproj",
+        "packagesPath": "/home/alanb/.nuget/packages/",
+        "outputPath": "/home/alanb/repos/C#/Hello/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alanb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/alanb/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -65,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

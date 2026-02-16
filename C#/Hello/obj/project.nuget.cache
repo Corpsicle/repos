@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jirwhwrLdq4=",
+  "dgSpecHash": "4X+wpw2oc3M=",
   "success": true,
-  "projectFilePath": "\\\\wsl.localhost\\Ubuntu\\home\\alanb\\repos\\C#\\Hello\\Hello.csproj",
+  "projectFilePath": "/home/alanb/repos/C#/Hello/Hello.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

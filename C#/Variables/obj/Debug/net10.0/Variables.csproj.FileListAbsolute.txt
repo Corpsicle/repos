@@ -12,3 +12,4 @@
 /home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.pdb
 /home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.genruntimeconfig.cache
 /home/alanb/repos/C#/Variables/obj/Debug/net10.0/ref/Variables.dll
+/home/alanb/repos/C#/Variables/obj/Debug/net10.0/Variables.sourcelink.json

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IJtlU1gUl1w=",
+  "dgSpecHash": "dw76dP5quDs=",
   "success": true,
-  "projectFilePath": "\\\\wsl.localhost\\Ubuntu\\home\\alanb\\repos\\C#\\Variables\\Variables.csproj",
+  "projectFilePath": "/home/alanb/repos/C#/Variables/Variables.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
