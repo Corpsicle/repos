@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello", "Hello\Hello.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Input", "Input\Input.csproj", "{76213D8F-E8D1-45B4-9EE0-096FE8172539}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversion", "Conversion\Conversion.csproj", "{A58C162D-CC17-4226-ACE7-67CCA405CD2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{76213D8F-E8D1-45B4-9EE0-096FE8172539}.Release|x64.Build.0 = Release|Any CPU
 		{76213D8F-E8D1-45B4-9EE0-096FE8172539}.Release|x86.ActiveCfg = Release|Any CPU
 		{76213D8F-E8D1-45B4-9EE0-096FE8172539}.Release|x86.Build.0 = Release|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Debug|x64.Build.0 = Debug|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Debug|x86.Build.0 = Debug|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Release|x64.ActiveCfg = Release|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Release|x64.Build.0 = Release|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Release|x86.ActiveCfg = Release|Any CPU
+		{A58C162D-CC17-4226-ACE7-67CCA405CD2D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

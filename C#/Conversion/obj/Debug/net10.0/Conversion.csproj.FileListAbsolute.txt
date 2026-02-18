@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Conversion/bin/Debug/net10.0/Conversion
+/home/alanb/repos/C#/Conversion/bin/Debug/net10.0/Conversion.deps.json
+/home/alanb/repos/C#/Conversion/bin/Debug/net10.0/Conversion.runtimeconfig.json
+/home/alanb/repos/C#/Conversion/bin/Debug/net10.0/Conversion.dll
+/home/alanb/repos/C#/Conversion/bin/Debug/net10.0/Conversion.pdb
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.AssemblyInfo.cs
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.sourcelink.json
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.dll
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/refint/Conversion.dll
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.pdb
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/Conversion.genruntimeconfig.cache
+/home/alanb/repos/C#/Conversion/obj/Debug/net10.0/ref/Conversion.dll

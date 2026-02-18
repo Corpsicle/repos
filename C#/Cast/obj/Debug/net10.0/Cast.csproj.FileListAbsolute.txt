@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Cast/bin/Debug/net10.0/Cast
+/home/alanb/repos/C#/Cast/bin/Debug/net10.0/Cast.deps.json
+/home/alanb/repos/C#/Cast/bin/Debug/net10.0/Cast.runtimeconfig.json
+/home/alanb/repos/C#/Cast/bin/Debug/net10.0/Cast.dll
+/home/alanb/repos/C#/Cast/bin/Debug/net10.0/Cast.pdb
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.AssemblyInfo.cs
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.sourcelink.json
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.dll
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/refint/Cast.dll
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.pdb
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/Cast.genruntimeconfig.cache
+/home/alanb/repos/C#/Cast/obj/Debug/net10.0/ref/Cast.dll

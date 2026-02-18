@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Arrays/bin/Debug/net10.0/Arrays
+/home/alanb/repos/C#/Arrays/bin/Debug/net10.0/Arrays.deps.json
+/home/alanb/repos/C#/Arrays/bin/Debug/net10.0/Arrays.runtimeconfig.json
+/home/alanb/repos/C#/Arrays/bin/Debug/net10.0/Arrays.dll
+/home/alanb/repos/C#/Arrays/bin/Debug/net10.0/Arrays.pdb
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.AssemblyInfo.cs
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.sourcelink.json
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.dll
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/refint/Arrays.dll
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.pdb
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/Arrays.genruntimeconfig.cache
+/home/alanb/repos/C#/Arrays/obj/Debug/net10.0/ref/Arrays.dll
