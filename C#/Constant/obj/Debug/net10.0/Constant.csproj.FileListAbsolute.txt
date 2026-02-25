@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.AssemblyInfo.cs
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.sourcelink.json
+/home/alanb/repos/C#/Constant/bin/Debug/net10.0/Constant
+/home/alanb/repos/C#/Constant/bin/Debug/net10.0/Constant.deps.json
+/home/alanb/repos/C#/Constant/bin/Debug/net10.0/Constant.runtimeconfig.json
+/home/alanb/repos/C#/Constant/bin/Debug/net10.0/Constant.dll
+/home/alanb/repos/C#/Constant/bin/Debug/net10.0/Constant.pdb
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.dll
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/refint/Constant.dll
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.pdb
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/Constant.genruntimeconfig.cache
+/home/alanb/repos/C#/Constant/obj/Debug/net10.0/ref/Constant.dll

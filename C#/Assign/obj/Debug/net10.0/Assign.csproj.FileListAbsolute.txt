@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.AssemblyInfo.cs
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.sourcelink.json
+/home/alanb/repos/C#/Assign/bin/Debug/net10.0/Assign
+/home/alanb/repos/C#/Assign/bin/Debug/net10.0/Assign.deps.json
+/home/alanb/repos/C#/Assign/bin/Debug/net10.0/Assign.runtimeconfig.json
+/home/alanb/repos/C#/Assign/bin/Debug/net10.0/Assign.dll
+/home/alanb/repos/C#/Assign/bin/Debug/net10.0/Assign.pdb
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.dll
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/refint/Assign.dll
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.pdb
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/Assign.genruntimeconfig.cache
+/home/alanb/repos/C#/Assign/obj/Debug/net10.0/ref/Assign.dll

@@ -1,0 +1,10 @@
+﻿// See https://aka.ms/new-console-template for more information
+Console.Title = "ForLoop";
+
+for( int i = 1; i < 4; i++ )
+{
+    Console.WriteLine( $"Loop Iteration: {i} );
+
+}
+
+Console.ReadKey();

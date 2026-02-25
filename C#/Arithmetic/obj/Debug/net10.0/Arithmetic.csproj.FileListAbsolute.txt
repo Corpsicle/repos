@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.AssemblyInfo.cs
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.sourcelink.json
+/home/alanb/repos/C#/Arithmetic/bin/Debug/net10.0/Arithmetic
+/home/alanb/repos/C#/Arithmetic/bin/Debug/net10.0/Arithmetic.deps.json
+/home/alanb/repos/C#/Arithmetic/bin/Debug/net10.0/Arithmetic.runtimeconfig.json
+/home/alanb/repos/C#/Arithmetic/bin/Debug/net10.0/Arithmetic.dll
+/home/alanb/repos/C#/Arithmetic/bin/Debug/net10.0/Arithmetic.pdb
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.dll
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/refint/Arithmetic.dll
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.pdb
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/Arithmetic.genruntimeconfig.cache
+/home/alanb/repos/C#/Arithmetic/obj/Debug/net10.0/ref/Arithmetic.dll

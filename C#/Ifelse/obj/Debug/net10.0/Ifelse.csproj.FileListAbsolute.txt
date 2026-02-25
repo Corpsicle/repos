@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Ifelse/bin/Debug/net10.0/Ifelse
+/home/alanb/repos/C#/Ifelse/bin/Debug/net10.0/Ifelse.deps.json
+/home/alanb/repos/C#/Ifelse/bin/Debug/net10.0/Ifelse.runtimeconfig.json
+/home/alanb/repos/C#/Ifelse/bin/Debug/net10.0/Ifelse.dll
+/home/alanb/repos/C#/Ifelse/bin/Debug/net10.0/Ifelse.pdb
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.AssemblyInfo.cs
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.sourcelink.json
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.dll
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/refint/Ifelse.dll
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.pdb
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/Ifelse.genruntimeconfig.cache
+/home/alanb/repos/C#/Ifelse/obj/Debug/net10.0/ref/Ifelse.dll

@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Precedence/bin/Debug/net10.0/Precedence
+/home/alanb/repos/C#/Precedence/bin/Debug/net10.0/Precedence.deps.json
+/home/alanb/repos/C#/Precedence/bin/Debug/net10.0/Precedence.runtimeconfig.json
+/home/alanb/repos/C#/Precedence/bin/Debug/net10.0/Precedence.dll
+/home/alanb/repos/C#/Precedence/bin/Debug/net10.0/Precedence.pdb
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.AssemblyInfo.cs
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.sourcelink.json
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.dll
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/refint/Precedence.dll
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.pdb
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/Precedence.genruntimeconfig.cache
+/home/alanb/repos/C#/Precedence/obj/Debug/net10.0/ref/Precedence.dll

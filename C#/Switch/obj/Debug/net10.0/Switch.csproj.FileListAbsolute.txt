@@ -1,0 +1,15 @@
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.AssemblyInfoInputs.cache
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.AssemblyInfo.cs
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.csproj.CoreCompileInputs.cache
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.sourcelink.json
+/home/alanb/repos/C#/Switch/bin/Debug/net10.0/Switch
+/home/alanb/repos/C#/Switch/bin/Debug/net10.0/Switch.deps.json
+/home/alanb/repos/C#/Switch/bin/Debug/net10.0/Switch.runtimeconfig.json
+/home/alanb/repos/C#/Switch/bin/Debug/net10.0/Switch.dll
+/home/alanb/repos/C#/Switch/bin/Debug/net10.0/Switch.pdb
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.dll
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/refint/Switch.dll
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.pdb
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/Switch.genruntimeconfig.cache
+/home/alanb/repos/C#/Switch/obj/Debug/net10.0/ref/Switch.dll
