@@ -1,10 +1,10 @@
-	.file	"forloop.c"
+	.file	"dowhile.c"
 	.text
 	.section	.rodata
 .LC0:
-	.string	"Outer loop iteration: %d\n"
+	.string	"While: arr[%d] = %d\n"
 .LC1:
-	.string	"\tinner loop iteration %d\n"
+	.string	"\nDo while: arr[%d] = %d"
 	.text
 	.globl	main
 	.type	main, @function
@@ -17,34 +17,51 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	subq	$16, %rsp
-	movl	$1, -8(%rbp)
+	subq	$32, %rsp
+	movq	%fs:40, %rax
+	movq	%rax, -8(%rbp)
+	xorl	%eax, %eax
+	movl	$10, -20(%rbp)
+	movl	$20, -16(%rbp)
+	movl	$30, -12(%rbp)
+	movl	$0, -24(%rbp)
 	jmp	.L2
-.L5:
-	movl	-8(%rbp), %eax
+.L3:
+	movl	-24(%rbp), %eax
+	cltq
+	movl	-20(%rbp,%rax,4), %edx
+	movl	-24(%rbp), %eax
 	movl	%eax, %esi
 	leaq	.LC0(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	movl	$1, -4(%rbp)
-	jmp	.L3
+	addl	$1, -24(%rbp)
+.L2:
+	cmpl	$2, -24(%rbp)
+	jle	.L3
+	movl	$0, -24(%rbp)
 .L4:
-	movl	-4(%rbp), %eax
+	movl	-24(%rbp), %eax
+	cltq
+	movl	-20(%rbp,%rax,4), %edx
+	movl	-24(%rbp), %eax
 	movl	%eax, %esi
 	leaq	.LC1(%rip), %rax
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	addl	$1, -4(%rbp)
-.L3:
-	cmpl	$3, -4(%rbp)
+	addl	$1, -24(%rbp)
+	cmpl	$2, -24(%rbp)
 	jle	.L4
-	addl	$1, -8(%rbp)
-.L2:
-	cmpl	$3, -8(%rbp)
-	jle	.L5
+	movl	$10, %edi
+	call	putchar@PLT
 	movl	$0, %eax
+	movq	-8(%rbp), %rdx
+	subq	%fs:40, %rdx
+	je	.L6
+	call	__stack_chk_fail@PLT
+.L6:
 	leave
 	.cfi_def_cfa 7, 8
 	ret

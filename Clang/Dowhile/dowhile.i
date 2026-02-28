@@ -1,9 +1,9 @@
-# 0 "forloop.c"
+# 0 "dowhile.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "forloop.c"
+# 1 "dowhile.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,21 +809,30 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "forloop.c" 2
+# 2 "dowhile.c" 2
 
 
-# 3 "forloop.c"
+# 3 "dowhile.c"
 int main()
 {
-    int i,j;
-    for( i = 1; i < 4; i++ )
-    {
+ int i, arr[3] = { 10, 20, 30 };
 
-        printf( "Outer loop iteration: %d\n", i );
-        for( j = 1; j < 4; j++ )
-     {
-      printf( "\tinner loop iteration %d\n", j );
-     }
-    }
-    return 0;
+ i = 0;
+ while( i < 3 )
+ {
+  printf( "While: arr[%d] = %d\n", i, arr[i] );
+  i++;
+ }
+
+ i = 0;
+ do
+ {
+  printf( "\nDo while: arr[%d] = %d", i, arr[i] );
+  i++;
+ }
+ while( i < 3 );
+
+ printf( "\n" );
+
+ return 0;
 }

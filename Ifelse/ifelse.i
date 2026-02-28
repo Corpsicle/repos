@@ -1,9 +1,9 @@
-# 0 "forloop.c"
+# 0 "ifelse.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "forloop.c"
+# 1 "ifelse.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,21 +809,35 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "forloop.c" 2
+# 2 "ifelse.c" 2
 
 
-# 3 "forloop.c"
-int main()
+# 3 "ifelse.c"
+int main ()
 {
-    int i,j;
-    for( i = 1; i < 4; i++ )
-    {
+ if( 5 > 1 )
+        {
+         printf( "Yes, 5 is greater than 1\n" );
+        }
+ if( 5 > 1 )
+ {
+  if ( 7 > 2 )
+  {
+   printf( "5 is greater than 1 and 7 is greater than 2\n" );
+         }
+ }
+ if( 1 > 2 )
+ {
+  printf( "1st expression is true\n" );
+ }
+ else if ( 1 > 3 )
+ {
+  printf( "2nd expression is true\n" );
+ }
+ else
+ {
+  printf( "Both expressions are false\n" );
+ }
 
-        printf( "Outer loop iteration: %d\n", i );
-        for( j = 1; j < 4; j++ )
-     {
-      printf( "\tinner loop iteration %d\n", j );
-     }
-    }
-    return 0;
+ return 0;
 }

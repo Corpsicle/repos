@@ -1,10 +1,13 @@
-	.file	"forloop.c"
+	.file	"ifelse.c"
 	.text
 	.section	.rodata
 .LC0:
-	.string	"Outer loop iteration: %d\n"
+	.string	"Yes, 5 is greater than 1"
+	.align 8
 .LC1:
-	.string	"\tinner loop iteration %d\n"
+	.string	"5 is greater than 1 and 7 is greater than 2"
+.LC2:
+	.string	"Both expressions are false"
 	.text
 	.globl	main
 	.type	main, @function
@@ -17,35 +20,17 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
-	subq	$16, %rsp
-	movl	$1, -8(%rbp)
-	jmp	.L2
-.L5:
-	movl	-8(%rbp), %eax
-	movl	%eax, %esi
 	leaq	.LC0(%rip), %rax
 	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	movl	$1, -4(%rbp)
-	jmp	.L3
-.L4:
-	movl	-4(%rbp), %eax
-	movl	%eax, %esi
+	call	puts@PLT
 	leaq	.LC1(%rip), %rax
 	movq	%rax, %rdi
+	call	puts@PLT
+	leaq	.LC2(%rip), %rax
+	movq	%rax, %rdi
+	call	puts@PLT
 	movl	$0, %eax
-	call	printf@PLT
-	addl	$1, -4(%rbp)
-.L3:
-	cmpl	$3, -4(%rbp)
-	jle	.L4
-	addl	$1, -8(%rbp)
-.L2:
-	cmpl	$3, -8(%rbp)
-	jle	.L5
-	movl	$0, %eax
-	leave
+	popq	%rbp
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
