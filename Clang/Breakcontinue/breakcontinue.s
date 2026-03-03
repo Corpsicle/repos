@@ -1,13 +1,11 @@
-	.file	"ifelse.c"
+	.file	"breakcontinue.c"
 	.text
 	.section	.rodata
-.LC0:
-	.string	"Yes, 5 is greater than 1"
 	.align 8
+.LC0:
+	.string	"Breaks inner loop when i = %d and J = %d\n"
 .LC1:
-	.string	"5 is greater than 1 and 7 is greater than 2"
-.LC2:
-	.string	"Both expressions are false"
+	.string	"Running i = %d  j = %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -20,17 +18,44 @@ main:
 	.cfi_offset 6, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
+	subq	$16, %rsp
+	movl	$1, -8(%rbp)
+	jmp	.L2
+.L7:
+	movl	$1, -4(%rbp)
+	jmp	.L3
+.L6:
+	cmpl	$2, -8(%rbp)
+	jne	.L4
+	cmpl	$1, -4(%rbp)
+	jne	.L4
+	movl	-4(%rbp), %edx
+	movl	-8(%rbp), %eax
+	movl	%eax, %esi
 	leaq	.LC0(%rip), %rax
 	movq	%rax, %rdi
-	call	puts@PLT
+	movl	$0, %eax
+	call	printf@PLT
+	jmp	.L5
+.L4:
+	movl	-4(%rbp), %edx
+	movl	-8(%rbp), %eax
+	movl	%eax, %esi
 	leaq	.LC1(%rip), %rax
 	movq	%rax, %rdi
-	call	puts@PLT
-	leaq	.LC2(%rip), %rax
-	movq	%rax, %rdi
-	call	puts@PLT
 	movl	$0, %eax
-	popq	%rbp
+	call	printf@PLT
+	addl	$1, -4(%rbp)
+.L3:
+	cmpl	$3, -4(%rbp)
+	jle	.L6
+.L5:
+	addl	$1, -8(%rbp)
+.L2:
+	cmpl	$3, -8(%rbp)
+	jle	.L7
+	movl	$0, %eax
+	leave
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
