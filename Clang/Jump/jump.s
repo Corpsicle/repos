@@ -1,14 +1,8 @@
-	.file	"breakcontinue.c"
+	.file	"jump.c"
 	.text
 	.section	.rodata
-	.align 8
 .LC0:
-	.string	"Continues inner loop when i = %d and j = %d\n"
-	.align 8
-.LC1:
-	.string	"Breaks inner loop when i = %d and J = %d\n"
-.LC2:
-	.string	"Running i = %d  j = %d\n"
+	.string	"Running i = %d, j = %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -24,14 +18,15 @@ main:
 	subq	$16, %rsp
 	movl	$1, -8(%rbp)
 	jmp	.L2
-.L9:
+.L7:
 	movl	$1, -4(%rbp)
 	jmp	.L3
-.L8:
-	cmpl	$1, -8(%rbp)
+.L6:
+	cmpl	$2, -8(%rbp)
 	jne	.L4
 	cmpl	$1, -4(%rbp)
-	jne	.L4
+	je	.L9
+.L4:
 	movl	-4(%rbp), %edx
 	movl	-8(%rbp), %eax
 	movl	%eax, %esi
@@ -39,38 +34,18 @@ main:
 	movq	%rax, %rdi
 	movl	$0, %eax
 	call	printf@PLT
-	jmp	.L5
-.L4:
-	cmpl	$2, -8(%rbp)
-	jne	.L6
-	cmpl	$1, -4(%rbp)
-	jne	.L6
-	movl	-4(%rbp), %edx
-	movl	-8(%rbp), %eax
-	movl	%eax, %esi
-	leaq	.LC1(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-	jmp	.L7
-.L6:
-	movl	-4(%rbp), %edx
-	movl	-8(%rbp), %eax
-	movl	%eax, %esi
-	leaq	.LC2(%rip), %rax
-	movq	%rax, %rdi
-	movl	$0, %eax
-	call	printf@PLT
-.L5:
 	addl	$1, -4(%rbp)
 .L3:
 	cmpl	$3, -4(%rbp)
-	jle	.L8
-.L7:
+	jle	.L6
 	addl	$1, -8(%rbp)
 .L2:
 	cmpl	$3, -8(%rbp)
-	jle	.L9
+	jle	.L7
+	jmp	.L5
+.L9:
+	nop
+.L5:
 	movl	$0, %eax
 	leave
 	.cfi_def_cfa 7, 8

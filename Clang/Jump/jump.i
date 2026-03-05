@@ -1,9 +1,9 @@
-# 0 "breakcontinue.c"
+# 0 "jump.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "breakcontinue.c"
+# 1 "jump.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,29 +809,25 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "breakcontinue.c" 2
+# 2 "jump.c" 2
 
 
-# 3 "breakcontinue.c"
+# 3 "jump.c"
 int main()
 {
  int i, j;
+
  for(i = 1; i < 4; i++)
  {
-  for(j = 1; j < 4; j++)
+  for(j = 1; j < 4; j++ )
   {
-   if( i == 1 && j == 1 )
+   if( i == 2 && j == 1)
    {
-    printf( "Continues inner loop when i = %d and j = %d\n", i, j );
-    continue;
+    goto end;
    }
-   if( i == 2 && j == 1 )
-   {
-    printf( "Breaks inner loop when i = %d and J = %d\n", i, j );
-    break;
-   }
-   printf( "Running i = %d  j = %d\n", i, j );
+   printf( "Running i = %d, j = %d\n", i, j );
   }
- }
+ } end:
+
  return 0;
 }

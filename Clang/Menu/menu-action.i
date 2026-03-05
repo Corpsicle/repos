@@ -1,9 +1,9 @@
-# 0 "breakcontinue.c"
+# 0 "action.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "breakcontinue.c"
+# 1 "action.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,29 +809,33 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "breakcontinue.c" 2
+# 2 "action.c" 2
 
 
-# 3 "breakcontinue.c"
-int main()
+# 3 "action.c"
+void menu();
+void action( int option );
+
+static int square( int a) { return ( a * a ); }
+static int multiply( int a, int b) { return a * b; }
+
+void action( int option )
 {
- int i, j;
- for(i = 1; i < 4; i++)
+ int n1, n2;
+ if( option == 1 )
  {
-  for(j = 1; j < 4; j++)
-  {
-   if( i == 1 && j == 1 )
-   {
-    printf( "Continues inner loop when i = %d and j = %d\n", i, j );
-    continue;
-   }
-   if( i == 2 && j == 1 )
-   {
-    printf( "Breaks inner loop when i = %d and J = %d\n", i, j );
-    break;
-   }
-   printf( "Running i = %d  j = %d\n", i, j );
-  }
+  printf( "Enter an integer to be squared: " );
+  scanf( "%d", &n1 );
+  printf( "%d x %d = %d \n", n1, n1, square( n1 ) );
+  menu();
  }
- return 0;
+ else if( option == 2 )
+ {
+  printf( "Enter two integers to multiply " );
+  printf( "separated by a space: " );
+  scanf( "%d", &n1); scanf( "%d", &n2 );
+  printf( "%d x %d =  %d\n", n1, n2, multiply( n1, n2 ) );
+  menu();
+ }
+ else return;
 }

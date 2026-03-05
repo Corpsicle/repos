@@ -1,9 +1,9 @@
-# 0 "breakcontinue.c"
+# 0 "menu.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "breakcontinue.c"
+# 1 "menu.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,29 +809,26 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "breakcontinue.c" 2
+# 2 "menu.c" 2
 
 
-# 3 "breakcontinue.c"
+# 3 "menu.c"
+void menu();
+void action( int option);
+
 int main()
 {
- int i, j;
- for(i = 1; i < 4; i++)
- {
-  for(j = 1; j < 4; j++)
-  {
-   if( i == 1 && j == 1 )
-   {
-    printf( "Continues inner loop when i = %d and j = %d\n", i, j );
-    continue;
-   }
-   if( i == 2 && j == 1 )
-   {
-    printf( "Breaks inner loop when i = %d and J = %d\n", i, j );
-    break;
-   }
-   printf( "Running i = %d  j = %d\n", i, j );
-  }
- }
+ menu();
  return 0;
+}
+
+void menu()
+{
+ int option;
+ printf( "\n\tWhat would you like to do?" );
+ printf( "\n\t1. Square a number" );
+ printf( "\n\t2. Multiply two numbers" );
+ printf( "\n\t3. Exit\n" );
+ scanf( "%d", &option );
+ action( option );
 }

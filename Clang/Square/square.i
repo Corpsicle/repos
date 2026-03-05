@@ -1,9 +1,9 @@
-# 0 "breakcontinue.c"
+# 0 "square.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "breakcontinue.c"
+# 1 "square.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,29 +809,34 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "breakcontinue.c" 2
+# 2 "square.c" 2
+# 1 "utils.h" 1
 
+# 1 "utils.h"
+int square( int num )
+{
+ return ( num * num );
+}
+# 3 "square.c" 2
 
-# 3 "breakcontinue.c"
+void getnum();
+
 int main()
 {
- int i, j;
- for(i = 1; i < 4; i++)
- {
-  for(j = 1; j < 4; j++)
-  {
-   if( i == 1 && j == 1 )
-   {
-    printf( "Continues inner loop when i = %d and j = %d\n", i, j );
-    continue;
-   }
-   if( i == 2 && j == 1 )
-   {
-    printf( "Breaks inner loop when i = %d and J = %d\n", i, j );
-    break;
-   }
-   printf( "Running i = %d  j = %d\n", i, j );
-  }
- }
+ getnum();
  return 0;
+}
+
+void getnum()
+{
+ int num;
+ char again;
+
+ printf( "Enter an Integer to be squared: " );
+ scanf( "%d", &num );
+ printf( "%d squared is %d\n", num, square( num ) );
+ printf( "Square another number ? Y or N: " );
+ scanf( "%1s", &again );
+ if( ( again == 'Y' ) || ( again == 'y' ) ) getnum();
+ else return;
 }

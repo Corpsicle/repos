@@ -1,9 +1,9 @@
-# 0 "breakcontinue.c"
+# 0 "recur.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "breakcontinue.c"
+# 1 "recur.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,29 +809,30 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "breakcontinue.c" 2
+# 2 "recur.c" 2
 
 
-# 3 "breakcontinue.c"
+# 3 "recur.c"
+void count_down_from( int num );
+
 int main()
 {
- int i, j;
- for(i = 1; i < 4; i++)
- {
-  for(j = 1; j < 4; j++)
-  {
-   if( i == 1 && j == 1 )
-   {
-    printf( "Continues inner loop when i = %d and j = %d\n", i, j );
-    continue;
-   }
-   if( i == 2 && j == 1 )
-   {
-    printf( "Breaks inner loop when i = %d and J = %d\n", i, j );
-    break;
-   }
-   printf( "Running i = %d  j = %d\n", i, j );
-  }
- }
+ int start;
+
+ printf( "Enter a positive integer to count down from: " );
+ scanf( "%d", &start );
+
+ count_down_from( start );
+ printf( "Lift Off!!\n" );
+
  return 0;
+}
+
+void count_down_from( int num )
+{
+ printf( "%d\n", num );
+ --num;
+ if( num < 0 ) return;
+ else
+ count_down_from( num );
 }
