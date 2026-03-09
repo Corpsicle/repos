@@ -1,9 +1,9 @@
-# 0 "file.c"
+# 0 "arrptr.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "file.c"
+# 1 "arrptr.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,27 +809,37 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "file.c" 2
+# 2 "arrptr.c" 2
 
 
-# 3 "file.c"
-int main() {
-    FILE *fp;
-    int c;
+# 3 "arrptr.c"
+int main()
+{
+ int i;
+ int nums[5] = { 1, 2, 3, 4, 5 };
 
+ int *ptr0 = &nums[0];
+ int *ptr1 = &nums[1];
+ int *ptr2 = &nums[2];
+ int *ptr3 = &nums[3];
+ int *ptr4 = &nums[4];
+ int *ptrs[5] = { ptr0, ptr1, ptr2, ptr3, ptr4 };
 
-    fp = fopen( "file.c" , "r");
+ char str[9] = { 'C', ' ', 'i', 's', ' ', 'F', 'u', 'n', '\0' };
+ char *string = str;
+ char *strings[3] = { "Alpha", "Bravo", "Charlie" };
 
-    do {
-         c = getc(fp);
-         putchar(c);
-    }
-    while(c != 
-# 14 "file.c" 3 4
-              (-1)
-# 14 "file.c"
-                 );
+ for( i = 0; i < 5; i++ )
+ {
+  printf( "The value at %p is: %d\n",ptrs[i], *ptrs[i] );
+ }
 
-    fclose(fp);
-    return 0;
+ printf( "\nString is: %s\n\n", string );
+
+ for( i = 0; i < 3; i++ )
+ {
+  printf( "String %d is %s\n", i, strings[i] );
+ }
+
+ return 0;
 }

@@ -1,9 +1,9 @@
-# 0 "file.c"
+# 0 "fgetsputs.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "file.c"
+# 1 "fgetsputs.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,27 +809,27 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "file.c" 2
+# 2 "fgetsputs.c" 2
 
 
-# 3 "file.c"
-int main() {
-    FILE *fp;
-    int c;
+# 3 "fgetsputs.c"
+int main()
+{
+ char str[51];
 
+ printf( "\nEnter up to 50 characters with spaces:\n" );
+ fgets( str, sizeof( str ), 
+# 8 "fgetsputs.c" 3 4
+                           stdin 
+# 8 "fgetsputs.c"
+                                 );
 
-    fp = fopen( "file.c" , "r");
+ printf( "fgets() read: " );
+ puts( str );
 
-    do {
-         c = getc(fp);
-         putchar(c);
-    }
-    while(c != 
-# 14 "file.c" 3 4
-              (-1)
-# 14 "file.c"
-                 );
+ printf( "\nEnter up to 50 characters with spaces:\n" );
+ scanf( "%s", str ) ;
+ printf( "scanf() read: %s\n", str );
 
-    fclose(fp);
-    return 0;
+ return 0;
 }

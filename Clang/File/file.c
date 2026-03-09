@@ -5,7 +5,7 @@ int main() {
     int c;
    
     // open the current input file
-    fp = fopen(__FILE__,"r");
+    fp = fopen( __FILE__ , "r");
 
     do {
          c = getc(fp);   // read character 

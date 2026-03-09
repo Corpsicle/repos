@@ -1,9 +1,9 @@
-# 0 "file.c"
+# 0 "fcnptr.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "file.c"
+# 1 "fcnptr.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -809,27 +809,35 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 983 "/usr/include/stdio.h" 3 4
 
-# 2 "file.c" 2
+# 2 "fcnptr.c" 2
 
 
-# 3 "file.c"
-int main() {
-    FILE *fp;
-    int c;
+# 3 "fcnptr.c"
+int bounce( int a );
+int caller( int (*function)(int), int b );
 
+int main()
+{
+ int num;
+ int (*fptr)(int) = bounce;
 
-    fp = fopen( "file.c" , "r");
+ num = (*fptr)(10);
+ printf( "Returned Value: %d\n", num );
 
-    do {
-         c = getc(fp);
-         putchar(c);
-    }
-    while(c != 
-# 14 "file.c" 3 4
-              (-1)
-# 14 "file.c"
-                 );
+ num = caller( fptr, 5 );
+ printf( "Returned Value: %d\n", num );
 
-    fclose(fp);
-    return 0;
+ return 0;
+}
+
+int bounce( int a )
+{
+ printf( "\nReceived Value: %d\n", a );
+
+ return ( ( 3 * a ) + 3 );
+}
+
+int caller( int (*function)(int), int b )
+{
+ (*function)(b);
 }
