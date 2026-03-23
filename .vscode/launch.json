@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c++/ternary",
-      "program": "/home/alanb/repos/c++/ternary/build/Release/outRelease"
+      "cwd": "/home/alanb/repos/c++/cast",
+      "program": "/home/alanb/repos/c++/cast/build/Release/outRelease"
     }
   ]
 }
