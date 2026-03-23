@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c++/assign",
-      "program": "/home/alanb/repos/c++/assign/build/Release/outRelease"
+      "cwd": "/home/alanb/repos/c++/vector",
+      "program": "/home/alanb/repos/c++/vector/build/Release/outRelease"
     }
   ]
 }
