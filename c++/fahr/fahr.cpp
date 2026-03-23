@@ -18,7 +18,7 @@ int main()
   while (fahr <= upper) {
     celsius = (5.0 /9.0) * (fahr - 32.0);
     std::cout << std::setw(6) << std::fixed << std::setprecision(0) << fahr
-              << std::setw(13) << std::setprecision(1) << celsius << std::endl;
+              << std::setw(14) << std::setprecision(1) << celsius << std::endl;
     fahr = fahr + step;
   }
 
