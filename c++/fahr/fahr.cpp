@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 
+using namespace std;
+
 /* print Fahrenheit-Celsius table
    for fahr = 0, ... 300; floating point version */
 
@@ -13,12 +15,13 @@ int main()
   upper = 300;  /* upper limit */
   step = 20;    /* step size */
 
-  std::cout << "Fahrenheit    Celsius" << std::endl;
+  cout << "Fahrenheit    Celsius" << endl;
+  cout << "----------    -------" << endl;
   fahr = lower;
   while (fahr <= upper) {
     celsius = (5.0 /9.0) * (fahr - 32.0);
-    std::cout << std::setw(6) << std::fixed << std::setprecision(0) << fahr
-              << std::setw(14) << std::setprecision(1) << celsius << std::endl;
+    cout << setw(6) << fixed << setprecision(0) << fahr
+         << setw(14) << setprecision(1) << celsius << endl;
     fahr = fahr + step;
   }
 
