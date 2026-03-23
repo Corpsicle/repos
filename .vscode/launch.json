@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c++/logic",
-      "program": "/home/alanb/repos/c++/logic/build/Debug/outDebug"
+      "cwd": "/home/alanb/repos/c++/assign",
+      "program": "/home/alanb/repos/c++/assign/build/Release/outRelease"
     }
   ]
 }
