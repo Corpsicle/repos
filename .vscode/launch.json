@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c++/switch",
-      "program": "/home/alanb/repos/c++/switch/build/Debug/outDebug"
+      "cwd": "/home/alanb/repos/c++/forloop",
+      "program": "/home/alanb/repos/c++/forloop/build/Debug/outDebug"
     }
   ]
 }
