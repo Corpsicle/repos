@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c++/cast",
-      "program": "/home/alanb/repos/c++/cast/build/Release/outRelease"
+      "cwd": "/home/alanb/repos/c++/switch",
+      "program": "/home/alanb/repos/c++/switch/build/Debug/outDebug"
     }
   ]
 }
