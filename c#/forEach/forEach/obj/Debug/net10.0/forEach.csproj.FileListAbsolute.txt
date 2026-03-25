@@ -1,5 +1,0 @@
-/home/alanb/repos/c#/forEach/forEach/obj/Debug/net10.0/forEach.GeneratedMSBuildEditorConfig.editorconfig
-/home/alanb/repos/c#/forEach/forEach/obj/Debug/net10.0/forEach.AssemblyInfoInputs.cache
-/home/alanb/repos/c#/forEach/forEach/obj/Debug/net10.0/forEach.AssemblyInfo.cs
-/home/alanb/repos/c#/forEach/forEach/obj/Debug/net10.0/forEach.csproj.CoreCompileInputs.cache
-/home/alanb/repos/c#/forEach/forEach/obj/Debug/net10.0/forEach.sourcelink.json

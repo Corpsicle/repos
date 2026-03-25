@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c#/Arithmetic",
-      "program": "/home/alanb/repos/c#/Arithmetic/build/Debug/outDebug"
+      "cwd": "/home/alanb/repos/c#",
+      "program": "/home/alanb/repos/c#/build/Debug/outDebug"
     }
   ]
 }

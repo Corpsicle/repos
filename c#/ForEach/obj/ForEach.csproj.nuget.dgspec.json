@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/alanb/repos/c#/forEach/forEach/forEach.csproj": {}
+    "/home/alanb/repos/c#/ForEach/ForEach.csproj": {}
   },
   "projects": {
-    "/home/alanb/repos/c#/forEach/forEach/forEach.csproj": {
+    "/home/alanb/repos/c#/ForEach/ForEach.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alanb/repos/c#/forEach/forEach/forEach.csproj",
-        "projectName": "forEach",
-        "projectPath": "/home/alanb/repos/c#/forEach/forEach/forEach.csproj",
+        "projectUniqueName": "/home/alanb/repos/c#/ForEach/ForEach.csproj",
+        "projectName": "ForEach",
+        "projectPath": "/home/alanb/repos/c#/ForEach/ForEach.csproj",
         "packagesPath": "/home/alanb/.nuget/packages/",
-        "outputPath": "/home/alanb/repos/c#/forEach/forEach/obj/",
+        "outputPath": "/home/alanb/repos/c#/ForEach/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/alanb/.nuget/NuGet/NuGet.Config"
