@@ -1,0 +1,15 @@
+/home/alanb/repos/c#/KeyValue/bin/Release/net10.0/KeyValue
+/home/alanb/repos/c#/KeyValue/bin/Release/net10.0/KeyValue.deps.json
+/home/alanb/repos/c#/KeyValue/bin/Release/net10.0/KeyValue.runtimeconfig.json
+/home/alanb/repos/c#/KeyValue/bin/Release/net10.0/KeyValue.dll
+/home/alanb/repos/c#/KeyValue/bin/Release/net10.0/KeyValue.pdb
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.AssemblyInfoInputs.cache
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.AssemblyInfo.cs
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.csproj.CoreCompileInputs.cache
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.sourcelink.json
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.dll
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/refint/KeyValue.dll
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.pdb
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/KeyValue.genruntimeconfig.cache
+/home/alanb/repos/c#/KeyValue/obj/Release/net10.0/ref/KeyValue.dll
