@@ -11,4 +11,5 @@ foreach ( KeyValuePair < string, string > book in BookList )
 {
     Console.WriteLine( "Key: " + book.Key + "\tValue: " + book.Value + " in easy steps" );
 }
-Console.ReadLine();
+Console.ReadKey();
+ 
