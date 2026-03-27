@@ -17,8 +17,8 @@ int main()
     cout << "Integer value: " << num << endl;
     stream.str("");         // Empty the contents
     stream.clear();         // Empty the bit flags.
-    stream << number;      // Load the integer.
-    stream >> text;        // Extract the string.
+    stream << number;       // Load the integer.
+    stream >> text;         // Extract the string.
     text += " Per Cent";
     cout << "String value: " << text << endl;
     
