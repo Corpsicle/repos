@@ -1,0 +1,15 @@
+/home/alanb/repos/c#/ForEach/bin/Debug/net10.0/ForEach
+/home/alanb/repos/c#/ForEach/bin/Debug/net10.0/ForEach.deps.json
+/home/alanb/repos/c#/ForEach/bin/Debug/net10.0/ForEach.runtimeconfig.json
+/home/alanb/repos/c#/ForEach/bin/Debug/net10.0/ForEach.dll
+/home/alanb/repos/c#/ForEach/bin/Debug/net10.0/ForEach.pdb
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.GeneratedMSBuildEditorConfig.editorconfig
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.AssemblyInfoInputs.cache
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.AssemblyInfo.cs
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.csproj.CoreCompileInputs.cache
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.sourcelink.json
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.dll
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/refint/ForEach.dll
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.pdb
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ForEach.genruntimeconfig.cache
+/home/alanb/repos/c#/ForEach/obj/Debug/net10.0/ref/ForEach.dll
