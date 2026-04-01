@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/alanb/repos/C#/Hello/Hello.csproj": {}
+    "/home/alanb/repos/c#/Hello/Hello.csproj": {}
   },
   "projects": {
-    "/home/alanb/repos/C#/Hello/Hello.csproj": {
+    "/home/alanb/repos/c#/Hello/Hello.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/alanb/repos/C#/Hello/Hello.csproj",
+        "projectUniqueName": "/home/alanb/repos/c#/Hello/Hello.csproj",
         "projectName": "Hello",
-        "projectPath": "/home/alanb/repos/C#/Hello/Hello.csproj",
+        "projectPath": "/home/alanb/repos/c#/Hello/Hello.csproj",
         "packagesPath": "/home/alanb/.nuget/packages/",
-        "outputPath": "/home/alanb/repos/C#/Hello/obj/",
+        "outputPath": "/home/alanb/repos/c#/Hello/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/alanb/.nuget/NuGet/NuGet.Config"
