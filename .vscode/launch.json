@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c#/Arrays",
-      "program": "/home/alanb/repos/c#/Arrays/build/Release/outRelease"
+      "cwd": "/home/alanb/repos/c++/format",
+      "program": "/home/alanb/repos/c++/format/build/Debug/outDebug"
     },
     {
       "name": "C/C++: g++-13 build and debug active file",

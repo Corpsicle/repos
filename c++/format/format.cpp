@@ -28,10 +28,10 @@ int main()
     while( i < RANGE )
     {
 	    cout << endl << "Record Number: " << ++j << endl;
-            cout << "Forename: " << tab[ i ++ ] << endl;
-            cout << "Surnamr: " << tab[ i++ ] << endl;
-            cout << "Department: " << tab[ i++ ] << endl;
-            cout << "Telephone: " << tab[ i++ ] << endl;
+        cout << "Forename: " << tab[ i ++ ] << endl;
+        cout << "Surnamr: " << tab[ i++ ] << endl;
+        cout << "Department: " << tab[ i++ ] << endl;
+        cout << "Telephone: " << tab[ i++ ] << endl;
     }
      
     return 0;
