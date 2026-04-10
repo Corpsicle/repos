@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/Clang/Cast",
-      "program": "/home/alanb/repos/Clang/Cast/build/Debug/outDebug"
+      "cwd": "/home/alanb/repos/C/args",
+      "program": "/home/alanb/repos/C/args/build/Release/outRelease"
     }
   ]
 }
