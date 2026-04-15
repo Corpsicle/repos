@@ -4,7 +4,7 @@ void display( char str[] );
 int square( int x );
 int cube( int y );
 
-int main()
+int main(void)
 {
 	int num;
 	char msg[50] = "String to be passed to a function";

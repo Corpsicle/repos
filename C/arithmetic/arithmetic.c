@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main()
+int main(void)
 {
 	int a = 4, b = 8, c = 1, d = 1;
 
@@ -8,7 +8,7 @@ int main()
 	printf( "Subtraction: \t\t %d \n", b - a );
 	printf( "Multiplication: \t %d \n", a * b );
 	printf( "Division: \t\t %d \n", b / a );
-        printf( "Modulus: \t\t %d \n", a % b );
+    printf( "Modulus: \t\t %d \n", a % b );
 	
 	printf( "Postfix increment: \t %d \n", c++ );
 	printf( "Postfix now: \t\t %d \n", c );

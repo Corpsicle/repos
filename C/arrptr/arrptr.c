@@ -1,9 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
-	int i;
-	int nums[5] = { 1, 2, 3, 4, 5 };
+int main()nums[5] = { 1, 2, 3, 4, 5 };
 
 	int *ptr0 = &nums[0];
 	int *ptr1 = &nums[1];

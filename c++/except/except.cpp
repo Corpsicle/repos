@@ -12,7 +12,9 @@ int main()
     int num = 1000000000000; 
     try
     {
-        lang.resize( 3 * num );
+        ifstream reader("non_existent_file.txt");
+        if ( !reader )
+            throw runtime_error("File not found");
     }
     catch ( out_of_range &e)
     {
@@ -20,6 +22,11 @@ int main()
         cerr << "Exception type: " << typeid(e).name();
         cerr << endl << "Program Terminated..." << endl;
         return -1;
+    }
+    catch ( exception &e )
+    {
+        cerr << "Exception: " << e.what() << endl;
+        cerr << "Exception type: " << typeid(e).name();
     }
 
     return 0;
