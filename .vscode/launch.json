@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/home/alanb/repos/c++/point",
-      "program": "/home/alanb/repos/c++/point/build/Debug/outDebug"
+      "cwd": "/home/alanb/repos/c++/pref",
+      "program": "/home/alanb/repos/c++/pref/build/Release/outRelease"
     },
     {
       "name": "C/C++: g++-13 build and debug active file",
