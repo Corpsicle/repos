@@ -2,7 +2,7 @@
 
 int main()
 {
-    Calculator* pcalc = new Calculator;
+    Calculator* pCalc = new Calculator;
     pCalc -> launch();
     while (pCalc -> run())
     {
