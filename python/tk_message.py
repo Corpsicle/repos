@@ -16,5 +16,3 @@ def dialog():
 btn = Button( window, text = 'Click', command = dialog)
 btn.pack( padx = 150, pady = 50 )
 window.mainloop()
-                        
-                         
