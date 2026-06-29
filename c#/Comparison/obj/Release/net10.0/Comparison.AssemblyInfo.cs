@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Comparison")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1bacc67a069440719c869e89ad990dcf011798d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4ac45179fa4d9c0702928e6c646d45236b5a916")]
 [assembly: System.Reflection.AssemblyProductAttribute("Comparison")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Comparison")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
