@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/home/alanb/repos/C/hello",
+      "program": "/home/alanb/repos/C/hello/build/Debug/outDebug"
+    }
+  ]
+}
