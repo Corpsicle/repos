@@ -6,7 +6,7 @@
 
 (define (main args)
 	(let ((n (string->number (cadr args)))
-	      (m (string->number (caddr args))))
+	      (m (string->number (cadr args))))
 	  (display (choose n m))
 	  (newline)))
 
